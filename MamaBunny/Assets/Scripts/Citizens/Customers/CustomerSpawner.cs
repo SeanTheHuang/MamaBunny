@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class CustomerSpawner : MonoBehaviour
 {
-
-    List <Vector3> m_TravelLocations;
     public GameObject m_customer;
 
     [Range(0.0f, 20.0f)]
@@ -19,9 +17,16 @@ public class CustomerSpawner : MonoBehaviour
 
     private float m_nextSpawnTime;
 
+    List<Vector3> m_travelLocations = new List<Vector3>();
+
     private void Start()
     {
         m_nextSpawnTime = Time.time + m_minSpawnTime + Random.Range(0, m_randSpawnTimeOffset);
+
+        // First travel location is infront of the shop
+        m_travelLocations.Add(transform.parent.position);
+        // Second location is at the counter
+        m_travelLocations.Add(transform.parent.Find("CustomerEndPoint").position);
     }
 
     // Update is called once per frame
@@ -33,13 +38,7 @@ public class CustomerSpawner : MonoBehaviour
             Vector2 randOffset = (Random.insideUnitCircle * m_spawnRadiusOffset);
             Vector3 startPosition = new Vector3(transform.position.x + randOffset.x, transform.position.y, transform.position.z + randOffset.y);
             GameObject customer = Instantiate(m_customer, startPosition, transform.rotation);
-
-            //Vector3 endPosition = new Vector3(m_despawnLocation.transform.position.x + randOffset.x, m_despawnLocation.transform.position.y, m_despawnLocation.transform.position.z + randOffset.y);
-
-            // First travel location is infront of the shop
-            //m_TravelLocations.Add();
-
-            // Second location is at the counter
+            customer.GetComponent<Customer>().SetTravelLocations(m_travelLocations);
         }
     }
 }

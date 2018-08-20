@@ -19,8 +19,7 @@ public class Passerby : MonoBehaviour
     }
 
     void Update()
-    {
-
+    { 
         moveTowardsDestination();
         checkDestinationReached();
     }
