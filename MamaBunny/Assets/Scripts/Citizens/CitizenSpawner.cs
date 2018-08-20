@@ -29,7 +29,9 @@ public class CitizenSpawner : MonoBehaviour {
             m_nextSpawnTime = Time.time + m_minSpawnTime + Random.Range(0, m_randSpawnTimeOffset);
             Vector2 randOffset = (Random.insideUnitCircle * m_spawnRadiusOffset);
             Vector3 startPosition = new Vector3(transform.position.x + randOffset.x, transform.position.y, transform.position.z + randOffset.y);
-            Instantiate(m_citizen, startPosition, transform.rotation);
+            GameObject passerby = Instantiate(m_citizen, startPosition, transform.rotation);
+            Vector3 endPosition = new Vector3(m_despawnLocation.transform.position.x + randOffset.x, m_despawnLocation.transform.position.y, m_despawnLocation.transform.position.z + randOffset.y);
+            passerby.GetComponent<Citizen>().SetTargetLocation(endPosition);
         }
 	}
 }

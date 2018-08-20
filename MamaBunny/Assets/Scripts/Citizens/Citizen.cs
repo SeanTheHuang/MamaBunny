@@ -4,28 +4,52 @@ using UnityEngine;
 
 public class Citizen : MonoBehaviour {
 
-    private Vector3 m_TravelTarget;
+    public float speed;
+
+    private Vector3 m_TravelLocation;
+    private bool m_destinationReached;
 
     private MeshRenderer m_meshRenderer;
 
     private void Start()
     {
         m_meshRenderer = GetComponent<MeshRenderer>();
-        StartCoroutine(Lerp_MeshRenderer_Color(3, new Color(0, 0, 0, 1), new Color(1, 1, 1, 1)));
+        StartCoroutine(Lerp_MeshRenderer_Color(3, m_meshRenderer.material.color, Color.white));
     }
 
     // Update is called once per frame
     void Update () {
-		
-	}
+
+        moveTowardsDestination();
+        checkDestinationReached();
+
+    }
+
+    void moveTowardsDestination()
+    {
+        float step = speed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, m_TravelLocation, step);
+    }
+
+    void checkDestinationReached()
+    {
+        // If the citizen is close enough to their target location, begin despawning
+        if (!m_destinationReached && Vector3.Distance(m_TravelLocation, transform.position) <= 0.2f)
+        {
+            m_destinationReached = true;
+            StartCoroutine(Lerp_MeshRenderer_Color(3, m_meshRenderer.material.color, new Color(1, 1, 1, 0)));
+        }
+    }
 
     private IEnumerator Lerp_MeshRenderer_Color(float lerpDuration, Color startLerp, Color targetLerp)
     {
         float lerpStart_Time = Time.time;
         float lerpProgress;
         bool lerping = true;
+        Debug.Log("Here");
         while (lerping)
         {
+            Debug.Log("Here2");
             yield return new WaitForEndOfFrame();
             lerpProgress = Time.time - lerpStart_Time;
             if (m_meshRenderer != null)
@@ -44,5 +68,10 @@ public class Citizen : MonoBehaviour {
             }
         }
         yield break;
+    }
+
+    public void SetTargetLocation(Vector3 TravelLocation)
+    {
+        m_TravelLocation = TravelLocation;
     }
 }
