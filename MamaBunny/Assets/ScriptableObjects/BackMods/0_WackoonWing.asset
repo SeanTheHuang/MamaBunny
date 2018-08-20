@@ -8,7 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 896abe71a9f1ebf4abb6d7ad680438d8, type: 3}
-  m_Name: Purple
+  m_Script: {fileID: 11500000, guid: 8af10c330e45d254d84e1719dc5a7974, type: 3}
+  m_Name: BatWings
   m_EditorClassIdentifier: 
-  m_color: {r: 0.94509804, g: 0.19215685, b: 0.89183986, a: 1}
+  m_ID: 0
+  m_bodyPrefab: {fileID: 0}
