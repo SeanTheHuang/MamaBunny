@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8af10c330e45d254d84e1719dc5a7974, type: 3}
   m_Name: 0_WackoonWing
   m_EditorClassIdentifier: 
-  m_modName: 
+  m_modName: Tiny-Winged
   m_bodyPrefab: {fileID: 0}

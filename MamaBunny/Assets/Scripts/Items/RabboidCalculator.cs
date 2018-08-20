@@ -20,8 +20,6 @@ public class RabboidCalculator : MonoBehaviour {
     public const float SMALL_SIZE = 0.7f;
 
     public RabboidColour[] m_possibleColours;
-    public RabboidBodyPart[] m_mouthParts;
-    public RabboidBodyPart[] m_backParts;
 
     private void Awake()
     {
@@ -58,6 +56,7 @@ public class RabboidCalculator : MonoBehaviour {
 
     string CalculateName(RabboidColour _color, float _size, RabboidBodyPart _mouthPart, RabboidBodyPart _backPart)
     {
+        // Format = [SIZE] [BACK_MOD] & [MOUTH_MOD] [COLOR]-Rabboid
         string name = "";
 
         if (_size >= LARGE_SIZE)
@@ -66,7 +65,7 @@ public class RabboidCalculator : MonoBehaviour {
             name += "Small ";
 
         if (_mouthPart && _backPart)
-            name += _backPart.m_modName + _mouthPart.m_modName + " ";
+            name += _backPart.m_modName + " & " + _mouthPart.m_modName + " ";
         else
         {
             if (_mouthPart)

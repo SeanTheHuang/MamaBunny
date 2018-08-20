@@ -1,0 +1,66 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class RabboidMama : MonoBehaviour {
+
+    List<RabboidColour> m_colourModList;
+    List<RabboidBodyPart> m_backModList, m_mouthModList;
+    List<RabboidSizeMod> m_sizeModList;
+
+    private void Awake()
+    {
+        // Create all lists
+        m_colourModList = new List<RabboidColour>();
+        m_backModList = new List<RabboidBodyPart>();
+        m_mouthModList = new List<RabboidBodyPart>();
+        m_sizeModList = new List<RabboidSizeMod>();
+    }
+
+    #region ADD_FUCTIONS
+
+    public void AddColour(RabboidColour _new)
+    {
+        m_colourModList.Add(_new);
+    }
+
+    public void AddBackMod(RabboidBodyPart _new)
+    {
+        m_backModList.Add(_new);
+    }
+
+    public void AddMouthMod(RabboidBodyPart _new)
+    {
+        m_mouthModList.Add(_new);
+    }
+
+    public void AddSizeMod(RabboidSizeMod _new)
+    {
+        m_sizeModList.Add(_new);
+    }
+
+    #endregion
+
+    public void SpawnRabboid()
+    {
+        // TODO: Spawn rabboids here here
+
+
+        ClearAllLists();
+    }
+
+    void ClearAllLists()
+    {
+        m_colourModList.Clear();
+        m_backModList.Clear();
+        m_mouthModList.Clear();
+        m_sizeModList.Clear();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // ASSUMING: Only hit item pick ups
+        PickUp pickUp = other.GetComponent<PickUp>();
+        pickUp.OnEatenByMamaRabbit(this);
+    }
+}
