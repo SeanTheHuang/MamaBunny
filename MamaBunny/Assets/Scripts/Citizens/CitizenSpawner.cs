@@ -31,7 +31,7 @@ public class CitizenSpawner : MonoBehaviour {
             Vector3 startPosition = new Vector3(transform.position.x + randOffset.x, transform.position.y, transform.position.z + randOffset.y);
             GameObject passerby = Instantiate(m_citizen, startPosition, transform.rotation);
             Vector3 endPosition = new Vector3(m_despawnLocation.transform.position.x + randOffset.x, m_despawnLocation.transform.position.y, m_despawnLocation.transform.position.z + randOffset.y);
-            passerby.GetComponent<Citizen>().SetTargetLocation(endPosition);
+            passerby.GetComponent<Passerby>().SetTargetLocation(endPosition);
         }
 	}
 }

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Citizen : MonoBehaviour {
+public class Passerby : MonoBehaviour
+{
 
     public float speed;
 
@@ -17,8 +18,8 @@ public class Citizen : MonoBehaviour {
         StartCoroutine(Lerp_MeshRenderer_Color(3, m_meshRenderer.material.color, Color.white));
     }
 
-    // Update is called once per frame
-    void Update () {
+    void Update()
+    {
 
         moveTowardsDestination();
         checkDestinationReached();
@@ -46,10 +47,8 @@ public class Citizen : MonoBehaviour {
         float lerpStart_Time = Time.time;
         float lerpProgress;
         bool lerping = true;
-        Debug.Log("Here");
         while (lerping)
         {
-            Debug.Log("Here2");
             yield return new WaitForEndOfFrame();
             lerpProgress = Time.time - lerpStart_Time;
             if (m_meshRenderer != null)
