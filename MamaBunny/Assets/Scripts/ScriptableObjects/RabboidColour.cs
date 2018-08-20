@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Rabboid/Colour")]
+[CreateAssetMenu(menuName = "Rabboid/Colour")]
 public class RabboidColour : ScriptableObject {
+    public string m_colourName;
     public Color m_color = Color.white;
 
     public float ColourDifference(Color _compareColor)
