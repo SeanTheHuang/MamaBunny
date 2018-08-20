@@ -22,7 +22,6 @@ public class Citizen : MonoBehaviour {
 
         moveTowardsDestination();
         checkDestinationReached();
-
     }
 
     void moveTowardsDestination()
@@ -38,6 +37,7 @@ public class Citizen : MonoBehaviour {
         {
             m_destinationReached = true;
             StartCoroutine(Lerp_MeshRenderer_Color(3, m_meshRenderer.material.color, new Color(1, 1, 1, 0)));
+            Invoke("DestroyGameObject", 3);
         }
     }
 
@@ -73,5 +73,10 @@ public class Citizen : MonoBehaviour {
     public void SetTargetLocation(Vector3 TravelLocation)
     {
         m_TravelLocation = TravelLocation;
+    }
+
+    void DestroyGameObject()
+    {
+        Destroy(gameObject);
     }
 }
