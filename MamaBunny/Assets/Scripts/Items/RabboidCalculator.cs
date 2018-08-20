@@ -4,7 +4,9 @@ using UnityEngine;
 
 public struct RabboidResult
 {
-    public Color m_resultColour;
+    public string m_name;
+    public float m_size;
+    public RabboidColour m_resultColour;
     public RabboidBodyPart m_mouthPart;
     public RabboidBodyPart m_backPart;
 }
@@ -13,6 +15,9 @@ public class RabboidCalculator : MonoBehaviour {
 
     public static RabboidCalculator Instance
     { get; private set; }
+
+    public const float LARGE_SIZE = 1.3f;
+    public const float SMALL_SIZE = 0.7f;
 
     public RabboidColour[] m_possibleColours;
     public RabboidBodyPart[] m_mouthParts;
@@ -29,20 +34,59 @@ public class RabboidCalculator : MonoBehaviour {
         Instance = this;
     }
 
-    public RabboidResult CalculateRabboid(List<RabboidColour> _colourList, List<RabboidBodyPart> _mouthParts, List<RabboidBodyPart> _backParts)
+    public RabboidResult CalculateRabboid(List<RabboidColour> _colourList, List<RabboidBodyPart> _mouthParts, List<RabboidBodyPart> _backParts, List<RabboidSizeMod> _sizeMods)
     {
         RabboidResult result;
         result.m_resultColour = CalculateColor(_colourList);
         result.m_mouthPart = MostFrequentBodyPart(_mouthParts);
         result.m_backPart = MostFrequentBodyPart(_backParts);
+        result.m_size = CalculateSize(_sizeMods);
+        result.m_name = CalculateName(result.m_resultColour, result.m_size, result.m_mouthPart, result.m_backPart);
 
         return result;
     }
 
-    Color CalculateColor(List<RabboidColour> _colourList)
+    float CalculateSize(List<RabboidSizeMod> _sizeMods)
+    {
+        float currentSize = 1;
+
+        foreach (RabboidSizeMod rsm in _sizeMods)
+            currentSize += rsm.m_sizeMod;
+
+        return currentSize;
+    }
+
+    string CalculateName(RabboidColour _color, float _size, RabboidBodyPart _mouthPart, RabboidBodyPart _backPart)
+    {
+        string name = "";
+
+        if (_size >= LARGE_SIZE)
+            name += "Large ";
+        else if (_size <= SMALL_SIZE)
+            name += "Small ";
+
+        if (_mouthPart && _backPart)
+            name += _backPart.m_modName + _mouthPart.m_modName + " ";
+        else
+        {
+            if (_mouthPart)
+                name += _mouthPart.m_modName + " ";
+            if (_backPart)
+                name += _backPart.m_modName + " ";
+        }
+
+        if (_color)
+            name += _color.m_colourName + "-";
+
+        name += "Rabboid";
+
+        return name;
+    }
+
+    RabboidColour CalculateColor(List<RabboidColour> _colourList)
     {
         if (_colourList.Count < 1)
-            return Color.white;
+            return null;
 
         // Calculate current color
         Color currentCol = Color.black;
@@ -65,7 +109,7 @@ public class RabboidCalculator : MonoBehaviour {
             }
         }
 
-        return currentColour.m_color;
+        return currentColour;
     }
 
     RabboidBodyPart MostFrequentBodyPart(List<RabboidBodyPart> _bodyPartList)

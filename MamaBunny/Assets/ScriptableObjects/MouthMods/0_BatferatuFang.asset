@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8af10c330e45d254d84e1719dc5a7974, type: 3}
-  m_Name: BatFangs
+  m_Name: 0_BatferatuFang
   m_EditorClassIdentifier: 
-  m_ID: 0
+  m_modName: Fanged
   m_bodyPrefab: {fileID: 0}
