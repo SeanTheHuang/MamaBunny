@@ -20,6 +20,9 @@ public class Customer : MonoBehaviour {
     private NavMeshAgent m_agent;
     private float m_timer;
 
+    [MinMaxRange(0.0f, 60.0f)]
+    public RangedFloat m_timeInShop;
+
     private void Start()
     {
         m_meshRenderer = GetComponent<MeshRenderer>();
@@ -47,6 +50,12 @@ public class Customer : MonoBehaviour {
             moveTowardsDestination(m_travelLocations[m_travelDestinationIndex]);
             checkDestinationReached();
         }
+    }
+
+    void LeaveTheShop()
+    {
+        m_leavingShop = true;
+        SetLeavingShop(true);
     }
 
     void wanderInsideNavMesh()
@@ -86,16 +95,19 @@ public class Customer : MonoBehaviour {
         transform.position = Vector3.MoveTowards(transform.position, destination, step);
     }
 
+    // Check if the destination the customer is trying to reach has been reached
     void checkDestinationReached()
     {
         // If the citizen is close enough to their target location, begin despawning
-        if (Vector3.Distance(m_travelLocations[m_travelDestinationIndex], transform.position) <= 0.2f)
+        if (Vector3.Distance(m_travelLocations[m_travelDestinationIndex], transform.position) <= 0.5f)
         {
             if (!m_leavingShop)
             {
                 ++m_travelDestinationIndex;
                 if (m_travelDestinationIndex == m_travelLocations.Count)
-                    m_travelDestinationReached = true;
+                {
+                    EnteredShop();
+                }
             }
             else
             {
@@ -112,6 +124,7 @@ public class Customer : MonoBehaviour {
         }
     }
 
+    // Fade in/out the model
     private IEnumerator Lerp_MeshRenderer_Color(float lerpDuration, Color startLerp, Color targetLerp)
     {
         float lerpStart_Time = Time.time;
@@ -139,11 +152,14 @@ public class Customer : MonoBehaviour {
         yield break;
     }
 
-    void DestroyGameObject()
+    // Called when the customer reaches the counter of the shop
+    void EnteredShop()
     {
-        Destroy(gameObject);
+        Invoke("LeaveTheShop", Random.Range(m_timeInShop.minValue, m_timeInShop.maxValue));
+        m_travelDestinationReached = true;
     }
 
+    // Called by the spawner to set where the customer should walk to
     public void SetTravelLocations(List<Vector3> travelLocations)
     {
         m_travelLocations.Add(transform.position);
@@ -154,10 +170,16 @@ public class Customer : MonoBehaviour {
         }
     }
 
+    // Called once the customer leaves the shop
     public void SetLeavingShop(bool leavingShop)
     {
         m_leavingShop = leavingShop;
         --m_travelDestinationIndex;
         m_agent.enabled = false;
+    }
+
+    void DestroyGameObject()
+    {
+        Destroy(gameObject);
     }
 }

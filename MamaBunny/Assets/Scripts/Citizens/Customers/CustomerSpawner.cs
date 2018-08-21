@@ -6,11 +6,8 @@ public class CustomerSpawner : MonoBehaviour
 {
     public GameObject m_customer;
 
-    [Range(0.0f, 20.0f)]
-    public float m_minSpawnTime;
-
-    [Range(0.0f, 10.0f)]
-    public float m_randSpawnTimeOffset;
+    [MinMaxRange(0.0f, 20.0f)]
+    public RangedFloat m_spawnTime;
 
     [Range(0.0f, 10.0f)]
     public float m_spawnRadiusOffset;
@@ -21,12 +18,12 @@ public class CustomerSpawner : MonoBehaviour
 
     private void Start()
     {
-        m_nextSpawnTime = Time.time + m_minSpawnTime + Random.Range(0, m_randSpawnTimeOffset);
+        m_nextSpawnTime = Time.time + Random.Range(m_spawnTime.minValue, m_spawnTime.maxValue);
 
         // First travel location is infront of the shop
         m_travelLocations.Add(transform.parent.position);
         // Second location is at the counter
-        m_travelLocations.Add(transform.parent.Find("CustomerEndPoint").position);
+        m_travelLocations.Add(transform.parent.Find("ShopEntryPoint").position);
     }
 
     // Update is called once per frame
@@ -34,7 +31,7 @@ public class CustomerSpawner : MonoBehaviour
     {
         if (Time.time > m_nextSpawnTime)
         {
-            m_nextSpawnTime = Time.time + m_minSpawnTime + Random.Range(0, m_randSpawnTimeOffset);
+            m_nextSpawnTime = Time.time + Random.Range(m_spawnTime.minValue, m_spawnTime.maxValue);
             Vector2 randOffset = (Random.insideUnitCircle * m_spawnRadiusOffset);
             Vector3 startPosition = new Vector3(transform.position.x + randOffset.x, transform.position.y, transform.position.z + randOffset.y);
             GameObject customer = Instantiate(m_customer, startPosition, transform.rotation);

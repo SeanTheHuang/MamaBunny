@@ -249,7 +249,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 151361735}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20, y: -1, z: 0}
+  m_LocalPosition: {x: -20, y: -2, z: 0}
   m_LocalScale: {x: 8, y: 2, z: 8}
   m_Children:
   - {fileID: 5599281}
@@ -362,7 +362,71 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4666075247541052, guid: e04cd45986a1ca54794a9e84580d0e4e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -20
+      value: -17.004
+      objectReference: {fileID: 0}
+    - target: {fileID: 114209390811014796, guid: e04cd45986a1ca54794a9e84580d0e4e,
+        type: 2}
+      propertyPath: m_minSpawnTime.maxValue
+      value: 8.282347
+      objectReference: {fileID: 0}
+    - target: {fileID: 114209390811014796, guid: e04cd45986a1ca54794a9e84580d0e4e,
+        type: 2}
+      propertyPath: m_minSpawnTime.minValue
+      value: 4.9882355
+      objectReference: {fileID: 0}
+    - target: {fileID: 114403522101761628, guid: e04cd45986a1ca54794a9e84580d0e4e,
+        type: 2}
+      propertyPath: m_minSpawnTime.minValue
+      value: 5.035294
+      objectReference: {fileID: 0}
+    - target: {fileID: 114403522101761628, guid: e04cd45986a1ca54794a9e84580d0e4e,
+        type: 2}
+      propertyPath: m_minSpawnTime.maxValue
+      value: 8.047059
+      objectReference: {fileID: 0}
+    - target: {fileID: 114403522101761628, guid: e04cd45986a1ca54794a9e84580d0e4e,
+        type: 2}
+      propertyPath: m_spawnTime.maxValue
+      value: 8.058822
+      objectReference: {fileID: 0}
+    - target: {fileID: 114403522101761628, guid: e04cd45986a1ca54794a9e84580d0e4e,
+        type: 2}
+      propertyPath: m_spawnTime.minValue
+      value: 5.047059
+      objectReference: {fileID: 0}
+    - target: {fileID: 114209390811014796, guid: e04cd45986a1ca54794a9e84580d0e4e,
+        type: 2}
+      propertyPath: m_spawnTime.minValue
+      value: 5.047059
+      objectReference: {fileID: 0}
+    - target: {fileID: 114209390811014796, guid: e04cd45986a1ca54794a9e84580d0e4e,
+        type: 2}
+      propertyPath: m_spawnTime.maxValue
+      value: 8.058827
+      objectReference: {fileID: 0}
+    - target: {fileID: 114988539362172018, guid: e04cd45986a1ca54794a9e84580d0e4e,
+        type: 2}
+      propertyPath: m_spawnTime.minValue
+      value: 15.305882
+      objectReference: {fileID: 0}
+    - target: {fileID: 114988539362172018, guid: e04cd45986a1ca54794a9e84580d0e4e,
+        type: 2}
+      propertyPath: m_spawnTime.maxValue
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114255142858471826, guid: e04cd45986a1ca54794a9e84580d0e4e,
+        type: 2}
+      propertyPath: m_spawnTime.minValue
+      value: 15.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114255142858471826, guid: e04cd45986a1ca54794a9e84580d0e4e,
+        type: 2}
+      propertyPath: m_spawnTime.maxValue
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576196541725052, guid: e04cd45986a1ca54794a9e84580d0e4e, type: 2}
+      propertyPath: m_Name
+      value: ShopEntryPoint
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e04cd45986a1ca54794a9e84580d0e4e, type: 2}
