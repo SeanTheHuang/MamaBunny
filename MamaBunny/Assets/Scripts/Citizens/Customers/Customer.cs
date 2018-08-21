@@ -14,11 +14,15 @@ public class Customer : MonoBehaviour {
     private int m_travelDestinationIndex;
     private bool m_travelDestinationReached, m_leavingShop, m_despawning;
 
-    public float m_wanderRadius;
-    public float m_wanderTimer;
+    [MinMaxRange(0.0f, 20.0f)]
+    public RangedFloat m_wanderRadius;
+
+    [MinMaxRange(0.0f, 20.0f)]
+    public RangedFloat m_wanderTimer;
 
     private NavMeshAgent m_agent;
     private float m_timer;
+    private float m_randomWandertime;
 
     [MinMaxRange(0.0f, 60.0f)]
     public RangedFloat m_timeInShop;
@@ -27,7 +31,6 @@ public class Customer : MonoBehaviour {
     {
         m_meshRenderer = GetComponent<MeshRenderer>();
         StartCoroutine(Lerp_MeshRenderer_Color(3, m_meshRenderer.material.color, Color.white));
-        m_timer = m_wanderTimer;
         m_travelSpeed += Random.Range(-m_travelSpeed / 4, m_travelSpeed / 4);
     }
 
@@ -68,9 +71,10 @@ public class Customer : MonoBehaviour {
 
         m_timer += Time.deltaTime;
 
-        if (m_timer >= m_wanderTimer)
+        if (m_timer >= m_randomWandertime)
         {
-            Vector3 newPos = RandomNavSphere(transform.position, m_wanderRadius, -1);
+            m_randomWandertime = Random.Range(m_wanderTimer.minValue, m_wanderTimer.maxValue);
+            Vector3 newPos = RandomNavSphere(transform.position, Random.Range(m_wanderRadius.minValue, m_wanderRadius.maxValue), -1);
             m_agent.SetDestination(newPos);
             m_timer = 0;
         }
