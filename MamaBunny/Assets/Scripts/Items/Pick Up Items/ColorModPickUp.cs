@@ -5,7 +5,7 @@ using UnityEngine;
 public class ColorModPickUp : PickUp
 {
     [SerializeField]
-    RabboidColour m_colourMod;
+    public RabboidColour m_colourMod;
 
     public override void OnEatenByMamaRabbit(RabboidMama _mama)
     {

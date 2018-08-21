@@ -4,31 +4,81 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour {
 
-    List<PickUp> m_pickUpList;
-    public uint m_capacity = 10; 
+    List<RabboidModBase> m_pickUpList;
+    public uint m_capacity = 10;
+    public bool m_displaying = false;
 
 	void Start ()
     {
-        m_pickUpList = new List<PickUp>();
+        m_pickUpList = new List<RabboidModBase>();
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+    {
+		if(Input.GetKeyDown(KeyCode.I))
+        {
+            InventoryUI.Instance.SetCapacity(m_capacity);
+            if (m_displaying)
+            {
+                InventoryUI.Instance.Display(false, null);
+            }
+            else
+            {
+                InventoryUI.Instance.Display(true, m_pickUpList);
+            }
+            m_displaying = !m_displaying;
+        }
 	}
 
     public bool AddToInventory(PickUp _pickup)
     {
         if (m_pickUpList.Count != m_capacity)
         {
-            m_pickUpList.Add(_pickup);
+            m_pickUpList.Add(PickUptoBase(_pickup));
             return true;
         }
+
         return false;
+    }
+
+    void TakeFromInventory()
+    {
+        //return the object for the player to spawn
     }
 
     private void OnGUI()
     {
         GUI.Box(new Rect(0, 0, 50, 50), m_pickUpList.Count.ToString());
+    }
+
+    RabboidModBase PickUptoBase(PickUp _pickUp)
+    {
+        if(_pickUp.GetComponent<ColorModPickUp>())
+        {
+            return _pickUp.GetComponent<ColorModPickUp>().m_colourMod;
+        }
+        else if (_pickUp.GetComponent<BackModPickUp>())
+        {
+            return _pickUp.GetComponent<BackModPickUp>().m_bodyPart;
+        }
+        else if (_pickUp.GetComponent<MouthModPickUp>())
+        {
+            return _pickUp.GetComponent<MouthModPickUp>().m_mouthMod;
+        }
+        else if (_pickUp.GetComponent<SizeModPickUp>())
+        {
+            return _pickUp.GetComponent<SizeModPickUp>().m_sizeMod;
+        }
+        else
+        {
+            Debug.Log("SCREAMING");
+            return null;
+        }
+    }
+
+    PickUp BasetoPickUp(RabboidModBase _rmb)
+    {
+        return _rmb.m_pickUpItemForm.GetComponent<PickUp>();
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class MouthModPickUp : PickUp
 {
     [SerializeField]
-    RabboidBodyPart m_mouthMod;
+    public RabboidBodyPart m_mouthMod;
 
     public override void OnEatenByMamaRabbit(RabboidMama _mama)
     {

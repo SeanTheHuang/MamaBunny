@@ -9,7 +9,8 @@ public class GrabHand : MonoBehaviour {
     public Inventory m_inventory;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         m_grabCam = Camera.main;
        // m_inventory = GetComponent<Inventory>();
 	}
@@ -31,10 +32,11 @@ public class GrabHand : MonoBehaviour {
             PickUp pickup = hit.transform.GetComponent<PickUp>();
             if(pickup != null)
             {
-                Debug.Log("pick up " + pickup.name);
+                //Debug.Log("pick up " + pickup.name);
                 if(m_inventory.AddToInventory(pickup))
                 {
-                    Destroy(pickup);
+                   // Debug.Log("added" + pickup.name);
+                    Destroy(pickup.gameObject);
                 }
             }
         }

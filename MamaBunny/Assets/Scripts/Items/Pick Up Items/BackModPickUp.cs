@@ -5,7 +5,7 @@ using UnityEngine;
 public class BackModPickUp : PickUp
 {
     [SerializeField]
-    private RabboidBodyPart m_bodyPart;
+    public RabboidBodyPart m_bodyPart;
 
     public override void OnEatenByMamaRabbit(RabboidMama _mama)
     {
