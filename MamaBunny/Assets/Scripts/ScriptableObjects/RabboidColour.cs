@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Rabboid/Colour")]
-public class RabboidColour : ScriptableObject {
+public class RabboidColour : RabboidModBase
+{
     public string m_colourName;
     public Color m_color = Color.white;
 
