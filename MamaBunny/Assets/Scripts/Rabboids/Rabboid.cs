@@ -16,8 +16,14 @@ public class Rabboid : MonoBehaviour {
 
     public Transform[] m_otherBodyParts;
 
+    public RabboidResult RabboidStats
+    {
+        get; private set;
+    }
+
     public void Initialize(RabboidResult _result)
     {
+        RabboidStats = _result;
         Transform newBack = null, newMouth = null;
 
         // Set back
