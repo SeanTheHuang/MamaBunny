@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RabboidMama : MonoBehaviour {
 
+    public Transform m_baseRabboidPrefab;
+
     List<RabboidColour> m_colourModList;
     List<RabboidBodyPart> m_backModList, m_mouthModList;
     List<RabboidSizeMod> m_sizeModList;
@@ -15,6 +17,13 @@ public class RabboidMama : MonoBehaviour {
         m_backModList = new List<RabboidBodyPart>();
         m_mouthModList = new List<RabboidBodyPart>();
         m_sizeModList = new List<RabboidSizeMod>();
+    }
+
+    // TEMP CODE TO TEST SPAWNING
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Z))
+            SpawnRabboid();
     }
 
     #region ADD_FUCTIONS
@@ -43,8 +52,9 @@ public class RabboidMama : MonoBehaviour {
 
     public void SpawnRabboid()
     {
-        // TODO: Spawn rabboids here here
-
+        RabboidResult results = RabboidCalculator.Instance.CalculateRabboid(m_colourModList, m_mouthModList, m_backModList, m_sizeModList);
+        Transform rabboid = Instantiate(m_baseRabboidPrefab, Vector3.up * 4, Quaternion.identity);
+        rabboid.GetComponent<Rabboid>().Initialize(results);
 
         ClearAllLists();
     }

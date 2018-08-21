@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Name: 0_WackoonWing
   m_EditorClassIdentifier: 
   m_modName: Tiny-Winged
-  m_bodyPrefab: {fileID: 0}
+  m_bodyPrefab: {fileID: 4231342668504758, guid: 8c26dda80d310e047bfb0fd6c4ccf65e,
+    type: 2}
