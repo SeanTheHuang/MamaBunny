@@ -56,7 +56,7 @@ public class Gun : MonoBehaviour
         if (Application.isPlaying)
         {
             Gizmos.color = Color.cyan;
-            Gizmos.DrawLine(transform.position, m_fpsCam.transform.forward * 100);
+            Gizmos.DrawLine(transform.position, transform.position + m_fpsCam.transform.forward * m_range);
         }
     }
 }

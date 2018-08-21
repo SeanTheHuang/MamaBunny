@@ -16,12 +16,6 @@ public class GunTarget : MonoBehaviour
     {
         m_startPos = transform.position;
 	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-		
-	}
 
     public void TakeHit(float _damage)
     {
