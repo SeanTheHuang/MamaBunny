@@ -11,4 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f58fd5c54db559341ab1b45f6d28776a, type: 3}
   m_Name: 0_BurgerFruit
   m_EditorClassIdentifier: 
+  m_pickUpItemForm: {fileID: 4859594228748120, guid: 33b2116604501f241a2923e703a9a1f7,
+    type: 2}
   m_sizeMod: 1.15

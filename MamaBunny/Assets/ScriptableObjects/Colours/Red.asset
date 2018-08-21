@@ -11,5 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 896abe71a9f1ebf4abb6d7ad680438d8, type: 3}
   m_Name: Red
   m_EditorClassIdentifier: 
+  m_pickUpItemForm: {fileID: 4490795494014116, guid: 5d1171a98e66c61469bc5d552fb03e9e,
+    type: 2}
   m_colourName: Red
   m_color: {r: 0.9433962, g: 0.19134924, b: 0.19134924, a: 1}
