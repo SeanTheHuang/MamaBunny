@@ -7,10 +7,14 @@ public class Gun : MonoBehaviour
     Camera m_fpsCam;
     public float m_range = 100.0f;
 
-    public float timeBetweenShots = 0.2f;
+    public float m_timeBetweenShots = 0.2f;
     float lastShotTime = 0;
 
+    public float m_damage = 10.0f;
+
     ParticleSystem m_shotPart;
+    public GameObject impactParticle;
+
 	void Start () {
         m_fpsCam = Camera.main;
         m_shotPart = GetComponentInChildren<ParticleSystem>();
@@ -19,7 +23,7 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time - lastShotTime >= timeBetweenShots)
+        if (Time.time - lastShotTime >= m_timeBetweenShots)
         {
             if (Input.GetButton("Fire1"))
             {
@@ -31,12 +35,28 @@ public class Gun : MonoBehaviour
 	
     void Shoot()
     {
-        Debug.Log("shot");
         m_shotPart.Play();
         RaycastHit hit;
+
         if (Physics.Raycast(transform.position, m_fpsCam.transform.forward, out hit, m_range))
         {
-            
+            GameObject go = Instantiate(impactParticle, hit.point, Quaternion.LookRotation(hit.normal));
+            Destroy(go, 1.0f);
+
+            GunTarget gt = hit.transform.GetComponent<GunTarget>();
+            if (gt != null) 
+            {
+                gt.TakeHit(m_damage);
+            }
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (Application.isPlaying)
+        {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawLine(transform.position, m_fpsCam.transform.forward * 100);
         }
     }
 }

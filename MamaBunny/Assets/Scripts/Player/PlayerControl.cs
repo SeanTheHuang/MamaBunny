@@ -76,7 +76,7 @@ public class PlayerControl : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("jump");
+           // Debug.Log("jump");
             return m_jumpForce;
         }
         return 0.0f;
