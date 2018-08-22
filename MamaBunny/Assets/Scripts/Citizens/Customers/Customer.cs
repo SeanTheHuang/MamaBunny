@@ -12,7 +12,7 @@ public class Customer : MonoBehaviour {
     private List<Vector3> m_travelLocations = new List<Vector3>();
 
     private int m_travelDestinationIndex;
-    private bool m_travelDestinationReached, m_leavingShop, m_despawning;
+    private bool m_travelDestinationReached, m_leavingShop, m_despawning, m_wanderinginStore;
 
     [MinMaxRange(0.0f, 20.0f)]
     public RangedFloat m_wanderRadius;
@@ -27,11 +27,15 @@ public class Customer : MonoBehaviour {
     [MinMaxRange(0.0f, 60.0f)]
     public RangedFloat m_timeInShop;
 
+    GameObject m_bunnyPens;
+    Vector3 m_targetBunnyPen;
+
     private void Start()
     {
         m_meshRenderer = GetComponent<MeshRenderer>();
         StartCoroutine(Lerp_MeshRenderer_Color(3, m_meshRenderer.material.color, Color.white));
         m_travelSpeed += Random.Range(-m_travelSpeed / 4, m_travelSpeed / 4);
+        m_bunnyPens = GameObject.Find("BunnyPens");
     }
 
     private void Update()
@@ -42,33 +46,66 @@ public class Customer : MonoBehaviour {
             moveTowardsDestination(m_travelLocations[m_travelDestinationIndex]);
             checkDestinationReached();
         }
-        // Customer is wandering
+        // Customer is insdie the store
         else if(!m_leavingShop)
         {
-            wanderInsideNavMesh();
+            if (m_agent == null)
+            {
+                m_agent = gameObject.AddComponent<NavMeshAgent>();
+                m_agent.speed = m_wanderSpeed;
+            }
+            if(m_wanderinginStore)
+                wanderInsideNavMesh();
+
+            else
+                MoveTowardsBunnyPen();
         }
         // Customer leaving shop
         else if(!m_despawning)
         {
-            moveTowardsDestination(m_travelLocations[m_travelDestinationIndex]);
+            if (m_travelDestinationIndex == (m_travelLocations.Count - 1))
+            {
+                m_agent.SetDestination(m_travelLocations[m_travelDestinationIndex]);
+            }
+            else
+            {
+                m_agent.enabled = false;
+                moveTowardsDestination(m_travelLocations[m_travelDestinationIndex]);
+            }
             checkDestinationReached();
         }
     }
 
-    void LeaveTheShop()
+    void MoveTowardsBunnyPen()
     {
-        m_leavingShop = true;
-        SetLeavingShop(true);
+        if (m_targetBunnyPen == null)
+        {
+            int randomPen = Random.Range(0, m_bunnyPens.transform.childCount);
+            m_targetBunnyPen = m_bunnyPens.transform.GetChild(randomPen).position;
+            m_targetBunnyPen.x += Random.Range(-1.0f, 1.0f);
+            m_targetBunnyPen.z += Random.Range(-1.0f, 1.0f);
+        }
+        m_agent.SetDestination(m_targetBunnyPen);
+
+        if(Vector3.Distance(m_targetBunnyPen, transform.position) < 3.0f)
+        {
+            Invoke("StopLookingAtBunnyPen", Random.Range(3.0f, 6.0f));
+        }
+    }
+
+    void StopLookingAtBunnyPen()
+    {
+        m_wanderinginStore = true;
+        Invoke("MoveTowardsPen", Random.Range(5.0f, 10.0f));
+    }
+
+    void MoveTowardsPen()
+    {
+        m_wanderinginStore = false;
     }
 
     void wanderInsideNavMesh()
     {
-        if (m_agent == null)
-        {
-            m_agent = gameObject.AddComponent<NavMeshAgent>();
-            m_agent.speed = m_wanderSpeed;
-        }
-
         m_timer += Time.deltaTime;
 
         if (m_timer >= m_randomWandertime)
@@ -175,11 +212,10 @@ public class Customer : MonoBehaviour {
     }
 
     // Called once the customer leaves the shop
-    public void SetLeavingShop(bool leavingShop)
+    void LeaveTheShop()
     {
-        m_leavingShop = leavingShop;
+        m_leavingShop = true;
         --m_travelDestinationIndex;
-        m_agent.enabled = false;
     }
 
     void DestroyGameObject()
