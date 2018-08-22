@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class GunTarget : MonoBehaviour
 {
+    [HideInInspector]
+    public ItemSpawner m_parent;
+    [HideInInspector]
+    public int m_index;
+
+    public Transform m_spawnedItemPrefab;
     public float m_health = 50.0f;
     bool m_dying = false;
 
@@ -38,7 +44,20 @@ public class GunTarget : MonoBehaviour
     }
 
     void Death()
-    {//spawn whatever here
+    {
+        if (m_parent)
+            m_parent.OnItemsDeath(m_index);
+
+        Transform t = Instantiate(m_spawnedItemPrefab, transform.position, transform.rotation);
+        Rigidbody rb = t.GetComponent<Rigidbody>();
+        float rStr = 20;
+        float pStr = 3;
+        if (rb)
+        {
+            rb.AddTorque(new Vector3(Random.Range(-rStr, rStr), Random.Range(-rStr, rStr), Random.Range(-rStr, rStr)), ForceMode.VelocityChange);
+            rb.AddForce(new Vector3(Random.Range(-pStr, pStr), 0, Random.Range(-pStr, pStr)), ForceMode.VelocityChange);
+        }
+
         m_dying = true;
         Destroy(gameObject);
     }
@@ -49,7 +68,7 @@ public class GunTarget : MonoBehaviour
 
         while (Time.time - m_shakeStartTime < 0.2f)
         {
-            transform.position = m_startPos + (Random.onUnitSphere * 0.1f);
+            transform.position = m_startPos + (Random.onUnitSphere * 0.03f);
             yield return null;
         }
 

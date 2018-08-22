@@ -14,6 +14,7 @@ public class Gun : MonoBehaviour
 
     ParticleSystem m_shotPart;
     public GameObject impactParticle;
+    public LayerMask m_gunHitLayers;
 
     bool m_gunLocked;
 
@@ -46,12 +47,13 @@ public class Gun : MonoBehaviour
         m_shotPart.Play();
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, m_fpsCam.transform.forward, out hit, m_range))
+        if (Physics.Raycast(transform.position, m_fpsCam.transform.forward, out hit, m_range, m_gunHitLayers))
         {
             GameObject go = Instantiate(impactParticle, hit.point, Quaternion.LookRotation(hit.normal));
             Destroy(go, 1.0f);
 
             GunTarget gt = hit.transform.GetComponent<GunTarget>();
+            Debug.Log(hit.transform.name);
             if (gt != null) 
             {
                 gt.TakeHit(m_damage);
