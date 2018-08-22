@@ -18,18 +18,7 @@ public class Inventory : MonoBehaviour {
     {
 		if(Input.GetKeyDown(KeyCode.I))
         {
-            InventoryUI.Instance.SetCapacity(m_capacity);
-
-            GetComponent<PlayerControl>().LockPlayer(!m_displaying);
-            if (m_displaying)
-            {
-                InventoryUI.Instance.Display(false, null);
-            }
-            else
-            {
-                InventoryUI.Instance.Display(true, m_pickUpList);
-            }
-            m_displaying = !m_displaying;
+            OpenInventory();
         }
 	}
 
@@ -44,10 +33,13 @@ public class Inventory : MonoBehaviour {
         return false;
     }
 
-    void TakeFromInventory()
+    public void TakeFromInventory(int _index)
     {
         //return the object for the player to spawn
-        
+        OpenInventory();
+        Instantiate(m_pickUpList[_index].m_pickUpItemForm, transform.position + transform.forward, Quaternion.identity);
+        m_pickUpList.RemoveAt(_index);
+
     }
 
     private void OnGUI()
@@ -83,5 +75,23 @@ public class Inventory : MonoBehaviour {
     PickUp BasetoPickUp(RabboidModBase _rmb)
     {
         return _rmb.m_pickUpItemForm.GetComponent<PickUp>();
+    }
+
+    void OpenInventory()
+    {
+        InventoryUI.Instance.SetCapacity(m_capacity);
+
+        GetComponent<PlayerControl>().LockPlayer(!m_displaying);
+        if (m_displaying)
+        {
+            InventoryUI.Instance.m_linkedInventory = transform.GetComponent<Inventory>();
+            InventoryUI.Instance.Display(false, null);
+
+        }
+        else
+        {
+            InventoryUI.Instance.Display(true, m_pickUpList);
+        }
+        m_displaying = !m_displaying;
     }
 }
