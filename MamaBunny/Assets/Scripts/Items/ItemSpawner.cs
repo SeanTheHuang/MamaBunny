@@ -8,7 +8,8 @@ public class ItemSpawner : MonoBehaviour {
     public RangedFloat m_spawnTime;
     public Transform m_spawnPrefab;
     public Transform[] m_spawnPoints;
-
+    public bool m_rotateItemOnSpawn = true;
+    
     bool m_needToSpawn;
     int m_currentNumSpawned;
     float m_nextSpawnTime;
@@ -51,7 +52,9 @@ public class ItemSpawner : MonoBehaviour {
     void SpawnNewItem(int _index)
     {
         Transform newBoy = Instantiate(m_spawnPrefab, m_spawnPoints[_index].position, m_spawnPoints[_index].rotation);
-        newBoy.localEulerAngles = new Vector3(newBoy.localEulerAngles.x, Random.Range(0, 360), newBoy.localEulerAngles.z);
+        if (m_rotateItemOnSpawn)
+            newBoy.localEulerAngles = new Vector3(newBoy.localEulerAngles.x, Random.Range(0, 360), newBoy.localEulerAngles.z);
+
         newBoy.GetComponent<GunTarget>().m_parent = this;
         newBoy.GetComponent<GunTarget>().m_index = _index;
     }
