@@ -545,7 +545,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4774860537328228, guid: 3cc9ae998e65a4447b35e1ea77aefcc9, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.35
+      value: -0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4774860537328228, guid: 3cc9ae998e65a4447b35e1ea77aefcc9, type: 2}
       propertyPath: m_LocalPosition.z
@@ -574,58 +574,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3cc9ae998e65a4447b35e1ea77aefcc9, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1320141817 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1570001827985580, guid: 3cc9ae998e65a4447b35e1ea77aefcc9,
-    type: 2}
-  m_PrefabInternal: {fileID: 1320141816}
---- !u!4 &1320141818 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4206770973279924, guid: 3cc9ae998e65a4447b35e1ea77aefcc9,
-    type: 2}
-  m_PrefabInternal: {fileID: 1320141816}
---- !u!4 &1320141819 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4950747969495488, guid: 3cc9ae998e65a4447b35e1ea77aefcc9,
-    type: 2}
-  m_PrefabInternal: {fileID: 1320141816}
---- !u!4 &1320141820 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4146636736073470, guid: 3cc9ae998e65a4447b35e1ea77aefcc9,
-    type: 2}
-  m_PrefabInternal: {fileID: 1320141816}
---- !u!4 &1320141821 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4597659290193830, guid: 3cc9ae998e65a4447b35e1ea77aefcc9,
-    type: 2}
-  m_PrefabInternal: {fileID: 1320141816}
---- !u!4 &1320141822 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4503597117023728, guid: 3cc9ae998e65a4447b35e1ea77aefcc9,
-    type: 2}
-  m_PrefabInternal: {fileID: 1320141816}
---- !u!114 &1320141823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1320141817}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7820500c2cb6ed04da1f65068203d4b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_spawnTime:
-    minValue: 5
-    maxValue: 15.136187
-  m_spawnPrefab: {fileID: 4973228593524808, guid: 65104597b1f732849b544e8ed5f92f4b,
-    type: 2}
-  m_spawnPoints:
-  - {fileID: 1320141822}
-  - {fileID: 1320141821}
-  - {fileID: 1320141820}
-  - {fileID: 1320141819}
-  - {fileID: 1320141818}
 --- !u!1001 &1717770294
 Prefab:
   m_ObjectHideFlags: 0
