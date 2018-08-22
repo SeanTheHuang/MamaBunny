@@ -15,14 +15,22 @@ public class Gun : MonoBehaviour
     ParticleSystem m_shotPart;
     public GameObject impactParticle;
 
+    bool m_gunLocked;
+
 	void Start () {
         m_fpsCam = Camera.main;
         m_shotPart = GetComponentInChildren<ParticleSystem>();
+        m_gunLocked = false;
 	}
 
     // Update is called once per frame
     void Update()
     {
+        if(m_gunLocked)
+        {
+            return;
+        }
+
         if (Time.time - lastShotTime >= m_timeBetweenShots)
         {
             if (Input.GetButton("Fire1"))
@@ -58,5 +66,10 @@ public class Gun : MonoBehaviour
             Gizmos.color = Color.cyan;
             Gizmos.DrawLine(transform.position, transform.position + m_fpsCam.transform.forward * m_range);
         }
+    }
+
+    public void LockGun(bool _lock)
+    {
+        m_gunLocked = _lock;
     }
 }

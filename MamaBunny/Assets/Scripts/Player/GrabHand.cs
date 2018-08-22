@@ -7,6 +7,7 @@ public class GrabHand : MonoBehaviour {
     public float m_range = 3.0f;
     Camera m_grabCam;
     public Inventory m_inventory;
+    bool m_handLocked = false;
 
 	// Use this for initialization
 	void Start ()
@@ -17,6 +18,11 @@ public class GrabHand : MonoBehaviour {
 
     void Update()
     {
+        if(m_handLocked )
+        {
+            return;
+        }
+
         if(Input.GetButtonDown("Fire2"))
         {
             Grab();
@@ -40,6 +46,11 @@ public class GrabHand : MonoBehaviour {
                 }
             }
         }
+    }
+
+    public void LockHand(bool _lock)
+    {
+        m_handLocked = _lock;
     }
 
     private void OnDrawGizmos()

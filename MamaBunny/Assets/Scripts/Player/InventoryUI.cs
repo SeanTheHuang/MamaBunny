@@ -95,17 +95,11 @@ public class InventoryUI : MonoBehaviour {
     void DisplayInventory(List<RabboidModBase> _rmb)
     {
         //show their sprites
+        //set the sprites too
         for (int i = 0; i < _rmb.Count; i++) 
         {
             m_capacityList[i].transform.GetChild(0).gameObject.SetActive(true);
-            /*
-            GameObject go = new GameObject("itemtext");
-            go.transform.parent = m_capacityList[i].transform;
-            go.AddComponent<Text>();
-            go.GetComponent<Text>().font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
-            go.GetComponent<Text>().text = _rmb[i].name;
-            go.GetComponent<Text>().alignment = TextAnchor.MiddleCenter;
-            go.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);*/
+            m_capacityList[i].transform.GetChild(0).GetComponent<Image>().sprite = _rmb[i].m_itemSprite;
         }
     }
 
