@@ -41,11 +41,17 @@ public class ShopElevator : MonoBehaviour {
     {
         if(!m_platformTriggered && other.gameObject.layer == LayerMask.NameToLayer("Citizen"))
         {
+            other.transform.parent = transform;
             m_platformTriggered = true;
             if (transform.position == m_topPosition)
                 m_movingDown = true;
             else
                 m_movingDown = false;
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        other.transform.parent = null;
     }
 }
