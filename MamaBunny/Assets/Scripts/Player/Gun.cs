@@ -13,6 +13,7 @@ public class Gun : MonoBehaviour
     public float m_damage = 10.0f;
 
     ParticleSystem m_shotPart;
+    public Transform m_firePoint;
     public GameObject impactParticle;
     public LayerMask m_gunHitLayers;
 
@@ -47,7 +48,7 @@ public class Gun : MonoBehaviour
         m_shotPart.Play();
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, m_fpsCam.transform.forward, out hit, m_range, m_gunHitLayers))
+        if (Physics.Raycast(m_firePoint.position, m_fpsCam.transform.forward, out hit, m_range, m_gunHitLayers))
         {
             GameObject go = Instantiate(impactParticle, hit.point, Quaternion.LookRotation(hit.normal));
             Destroy(go, 1.0f);
@@ -66,7 +67,7 @@ public class Gun : MonoBehaviour
         if (Application.isPlaying)
         {
             Gizmos.color = Color.cyan;
-            Gizmos.DrawLine(transform.position, transform.position + m_fpsCam.transform.forward * m_range);
+            Gizmos.DrawLine(m_firePoint.position, m_firePoint.position + m_fpsCam.transform.forward * m_range);
         }
     }
 

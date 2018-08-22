@@ -21,6 +21,7 @@ public class GunTarget : MonoBehaviour
 	void Start ()
     {
         m_startPos = transform.position;
+        StartCoroutine(SpawnAnimation());
 	}
 
     public void TakeHit(float _damage)
@@ -75,5 +76,22 @@ public class GunTarget : MonoBehaviour
         transform.position = m_startPos;
         m_shaking = false;
         yield return null;
+    }
+
+    IEnumerator SpawnAnimation()
+    {
+        float spawnTime = 0.3f;
+        float targetScale = transform.localScale.x;
+        float scaleRate = targetScale / spawnTime;
+        transform.localScale = Vector3.zero;
+
+        while (transform.localScale.x < targetScale)
+        {
+            float newScale = transform.localScale.x + scaleRate * Time.deltaTime;
+            transform.localScale = new Vector3(newScale, newScale, newScale);
+            yield return null;
+        }
+
+        transform.localScale = new Vector3(targetScale, targetScale, targetScale);
     }
 }

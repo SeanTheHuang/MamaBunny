@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class InventoryUI : MonoBehaviour {
+public class InventoryUI : MonoBehaviour{
 
-    public Image blockbacker;
+    public Image m_block;
     Image m_Background;
+    public Image m_selectSquare;
 
     public Inventory m_linkedInventory;
 
@@ -17,6 +19,11 @@ public class InventoryUI : MonoBehaviour {
     public uint m_downMax = 4;
     public Vector2 m_startPos;
     public uint m_distance = 100;
+    bool m_displaying = false;
+
+    Color m_blockColor;
+
+    List<RabboidModBase> m_rmb;
 
     public static InventoryUI Instance
     { get; private set; }
@@ -25,15 +32,17 @@ public class InventoryUI : MonoBehaviour {
         Instance = this;//singleton
         m_capacityList = new List<Image> { };
         m_Background = GetComponent<Image>();
+        m_blockColor = m_block.color;
+        m_rmb = new List<RabboidModBase> { };
         Display(false, null);
 	}
 	
 	void Update ()
     {
-		//if(Input.GetKeyDown(KeyCode.P))
-  //      {
-  //          SetCapacity((uint)Random.Range(1, 20));
-  //      }
+        if(m_displaying == true)
+        {
+            Manage();
+        }
 	}
 
     public void Display(bool _display, List<RabboidModBase> _rmb)
@@ -80,7 +89,7 @@ public class InventoryUI : MonoBehaviour {
                     break;//leave the double for loop
                 }
 
-                GameObject go = Instantiate(blockbacker.gameObject);
+                GameObject go = Instantiate(m_block.gameObject);
                 go.transform.SetParent(transform, false);
                 go.GetComponent<RectTransform>().anchoredPosition = new Vector2(m_startPos.x + (j * m_distance), m_startPos.y - (i * m_distance));
 
@@ -94,22 +103,47 @@ public class InventoryUI : MonoBehaviour {
 
     void DisplayInventory(List<RabboidModBase> _rmb)
     {
+        m_rmb = _rmb;
+        m_displaying = true;
         //show their sprites
         //set the sprites too
         for (int i = 0; i < _rmb.Count; i++) 
         {
             m_capacityList[i].transform.GetChild(0).gameObject.SetActive(true);
             m_capacityList[i].transform.GetChild(0).GetComponent<Image>().sprite = _rmb[i].m_itemSprite;
+            m_capacityList[i].GetComponent<InventoryBlock>().m_listIndex = i;
         }
     }
 
     void HideInventory()
     {
+        m_linkedInventory = null;
+        m_rmb.Clear();
+        m_displaying = false;
         foreach(Image im in m_capacityList)
         {
             //set to defualt
             im.transform.GetChild(0).gameObject.SetActive(false);
             //remove sprite
         }
+    }
+
+    void Manage()
+    {
+
+    }
+
+    public void BlockClicked(int _index)
+    {
+        if(m_displaying == false)
+        {
+            return;
+        }
+        if(_index < m_rmb.Count)
+        {//there is an object there
+            //dopr it
+            m_linkedInventory.TakeFromInventory(_index);
+        }
+
     }
 }

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_pickUpItemForm: {fileID: 4338471142912978, guid: a24e740e8b72adc48b2c7327e2ef98ae,
     type: 2}
+  m_itemSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_modName: Tiny-Winged
   m_bodyPrefab: {fileID: 4231342668504758, guid: 8c26dda80d310e047bfb0fd6c4ccf65e,
     type: 2}
