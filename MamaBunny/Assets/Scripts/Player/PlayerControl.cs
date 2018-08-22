@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour {
 
@@ -8,7 +9,7 @@ public class PlayerControl : MonoBehaviour {
     public float m_maxWalkSpeed = 5;
     public float m_maxRunSpeed = 10;
     float m_timeToReachMaxSpeed = 0.1f;
-    float m_timeToWalkSpeed = 0.1f, m_timeToRunSpeed = 0.8f;
+    float m_timeToWalkSpeed = 0.1f, m_timeToRunSpeed = 0.5f;
     float m_moveSpeed;
     float m_yVel;
     public float m_jumpForce;
@@ -35,8 +36,8 @@ public class PlayerControl : MonoBehaviour {
         float vAxis = 0, hAxis = 0;
         if (m_playerlocked == false)
         {
-            vAxis = Input.GetAxis("Vertical");
-            hAxis = Input.GetAxis("Horizontal");
+            vAxis = Input.GetAxisRaw("Vertical");
+            hAxis = Input.GetAxisRaw("Horizontal");
             if (m_chara.isGrounded)
             {
                 m_yVel = 0 + Jumping();
