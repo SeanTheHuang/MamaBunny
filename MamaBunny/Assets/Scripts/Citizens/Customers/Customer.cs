@@ -32,6 +32,7 @@ public class Customer : MonoBehaviour {
 
     private void Start()
     {
+        m_agent = GetComponent<NavMeshAgent>();
         m_meshRenderer = GetComponent<MeshRenderer>();
         StartCoroutine(Lerp_MeshRenderer_Color(3, m_meshRenderer.material.color, Color.white));
         m_travelSpeed += Random.Range(-m_travelSpeed / 4, m_travelSpeed / 4);
@@ -49,14 +50,8 @@ public class Customer : MonoBehaviour {
         // Customer is insdie the store
         else if(!m_leavingShop)
         {
-            if (m_agent == null)
-            {
-                m_agent = gameObject.AddComponent<NavMeshAgent>();
-                m_agent.speed = m_wanderSpeed;
-            }
-            if(m_wanderinginStore)
+            if (m_wanderinginStore)
                 wanderInsideNavMesh();
-
             else
                 MoveTowardsBunnyPen();
         }
@@ -78,30 +73,26 @@ public class Customer : MonoBehaviour {
 
     void MoveTowardsBunnyPen()
     {
-        if (m_targetBunnyPen == null)
-        {
-            int randomPen = Random.Range(0, m_bunnyPens.transform.childCount);
-            m_targetBunnyPen = m_bunnyPens.transform.GetChild(randomPen).position;
-            m_targetBunnyPen.x += Random.Range(-1.0f, 1.0f);
-            m_targetBunnyPen.z += Random.Range(-1.0f, 1.0f);
-        }
         m_agent.SetDestination(m_targetBunnyPen);
-
         if(Vector3.Distance(m_targetBunnyPen, transform.position) < 3.0f)
         {
-            Invoke("StopLookingAtBunnyPen", Random.Range(3.0f, 6.0f));
+            Invoke("StopLookingAtBunnyPen", Random.Range(3.0f, 8.0f));
         }
     }
 
     void StopLookingAtBunnyPen()
     {
         m_wanderinginStore = true;
-        Invoke("MoveTowardsPen", Random.Range(5.0f, 10.0f));
+        //Invoke("MoveTowardsPen", Random.Range(5.0f, 10.0f));
     }
 
     void MoveTowardsPen()
     {
         m_wanderinginStore = false;
+        int randomPen = Random.Range(0, m_bunnyPens.transform.childCount);
+        m_targetBunnyPen = m_bunnyPens.transform.GetChild(randomPen).position;
+        m_targetBunnyPen.z += Random.Range(-1.0f, 1.0f);
+        m_targetBunnyPen = getClosestPointOnNavMesh(m_targetBunnyPen);
     }
 
     void wanderInsideNavMesh()
@@ -110,6 +101,7 @@ public class Customer : MonoBehaviour {
 
         if (m_timer >= m_randomWandertime)
         {
+            Debug.Log("new wander Place");
             m_randomWandertime = Random.Range(m_wanderTimer.minValue, m_wanderTimer.maxValue);
             Vector3 newPos = RandomNavSphere(transform.position, Random.Range(m_wanderRadius.minValue, m_wanderRadius.maxValue), -1);
             m_agent.SetDestination(newPos);
@@ -117,7 +109,7 @@ public class Customer : MonoBehaviour {
         }
     }
 
-    public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
+    static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
     {
         Vector3 randDirection = Random.insideUnitSphere * dist;
 
@@ -127,6 +119,13 @@ public class Customer : MonoBehaviour {
 
         NavMesh.SamplePosition(randDirection, out navHit, dist, layermask);
 
+        return navHit.position;
+    }
+
+    Vector3 getClosestPointOnNavMesh(Vector3 point)
+    {
+        NavMeshHit navHit;
+        NavMesh.SamplePosition(point, out navHit, 50.0f, NavMesh.AllAreas);
         return navHit.position;
     }
 
@@ -198,6 +197,8 @@ public class Customer : MonoBehaviour {
     {
         Invoke("LeaveTheShop", Random.Range(m_timeInShop.minValue, m_timeInShop.maxValue));
         m_travelDestinationReached = true;
+        MoveTowardsPen();
+        m_agent.enabled = true;
     }
 
     // Called by the spawner to set where the customer should walk to
