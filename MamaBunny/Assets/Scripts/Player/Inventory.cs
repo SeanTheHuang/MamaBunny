@@ -19,6 +19,8 @@ public class Inventory : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.I))
         {
             InventoryUI.Instance.SetCapacity(m_capacity);
+
+            GetComponent<PlayerControl>().LockPlayer(!m_displaying);
             if (m_displaying)
             {
                 InventoryUI.Instance.Display(false, null);
@@ -45,6 +47,7 @@ public class Inventory : MonoBehaviour {
     void TakeFromInventory()
     {
         //return the object for the player to spawn
+        
     }
 
     private void OnGUI()
