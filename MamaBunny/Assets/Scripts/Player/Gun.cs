@@ -54,7 +54,6 @@ public class Gun : MonoBehaviour
             Destroy(go, 1.0f);
 
             GunTarget gt = hit.transform.GetComponent<GunTarget>();
-            Debug.Log(hit.transform.name);
             if (gt != null) 
             {
                 gt.TakeHit(m_damage);
