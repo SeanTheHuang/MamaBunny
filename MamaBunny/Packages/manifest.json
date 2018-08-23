@@ -1,4 +1,6 @@
 {
-	"dependencies": {
-	}
+  "dependencies": {
+    "com.unity.textmeshpro": "1.2.4",
+    "com.unity.postprocessing": "2.0.11-preview"
+  }
 }
