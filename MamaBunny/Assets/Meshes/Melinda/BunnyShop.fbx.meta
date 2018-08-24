@@ -51,6 +51,17 @@ ModelImporter:
     100090: transform27
     100092: transform3
     100094: transform9
+    100096: BunnyShop_1F_Ceiling
+    100098: BunnyShop_1F_CeilingSquare
+    100100: BunnyShop_1F_ElevatorGap
+    100102: BunnyShop_1F_Floor
+    100104: BunnyShop_1F_Wall
+    100106: BunnyShop_BF_Ceiling
+    100108: BunnyShop_BF_Ceiling_Baseboard
+    100110: BunnyShop_BF_ElevatorGap
+    100112: BunnyShop_BF_Floor
+    100114: BunnyShop_BF_Floor_Baseboard
+    100116: BunnyShop_BF_Wall
     400000: //RootNode
     400002: BunnyShop
     400004: BunnyShop_Frames
@@ -99,18 +110,62 @@ ModelImporter:
     400090: transform27
     400092: transform3
     400094: transform9
+    400096: BunnyShop_1F_Ceiling
+    400098: BunnyShop_1F_CeilingSquare
+    400100: BunnyShop_1F_ElevatorGap
+    400102: BunnyShop_1F_Floor
+    400104: BunnyShop_1F_Wall
+    400106: BunnyShop_BF_Ceiling
+    400108: BunnyShop_BF_Ceiling_Baseboard
+    400110: BunnyShop_BF_ElevatorGap
+    400112: BunnyShop_BF_Floor
+    400114: BunnyShop_BF_Floor_Baseboard
+    400116: BunnyShop_BF_Wall
     2100000: lambert1
     2300000: //RootNode
     2300002: BunnyShop
     2300004: BunnyShop_Frames
     2300006: BunnyShop_Windows
+    2300008: BunnyShop_1F_Ceiling
+    2300010: BunnyShop_1F_CeilingSquare
+    2300012: BunnyShop_1F_ElevatorGap
+    2300014: BunnyShop_1F_Floor
+    2300016: BunnyShop_1F_Wall
+    2300018: BunnyShop_BF_Ceiling
+    2300020: BunnyShop_BF_Ceiling_Baseboard
+    2300022: BunnyShop_BF_ElevatorGap
+    2300024: BunnyShop_BF_Floor
+    2300026: BunnyShop_BF_Floor_Baseboard
+    2300028: BunnyShop_BF_Wall
     3300000: //RootNode
     3300002: BunnyShop
     3300004: BunnyShop_Frames
     3300006: BunnyShop_Windows
+    3300008: BunnyShop_1F_Ceiling
+    3300010: BunnyShop_1F_CeilingSquare
+    3300012: BunnyShop_1F_ElevatorGap
+    3300014: BunnyShop_1F_Floor
+    3300016: BunnyShop_1F_Wall
+    3300018: BunnyShop_BF_Ceiling
+    3300020: BunnyShop_BF_Ceiling_Baseboard
+    3300022: BunnyShop_BF_ElevatorGap
+    3300024: BunnyShop_BF_Floor
+    3300026: BunnyShop_BF_Floor_Baseboard
+    3300028: BunnyShop_BF_Wall
     4300000: BunnyShop
     4300002: BunnyShop_Frames
     4300004: BunnyShop_Windows
+    4300006: BunnyShop_1F_CeilingSquare
+    4300008: BunnyShop_1F_Ceiling
+    4300010: BunnyShop_1F_Wall
+    4300012: BunnyShop_1F_Floor
+    4300014: BunnyShop_1F_ElevatorGap
+    4300016: BunnyShop_BF_Ceiling
+    4300018: BunnyShop_BF_Ceiling_Baseboard
+    4300020: BunnyShop_BF_Wall
+    4300022: BunnyShop_BF_Floor_Baseboard
+    4300024: BunnyShop_BF_Floor
+    4300026: BunnyShop_BF_ElevatorGap
   externalObjects: {}
   materials:
     importMaterials: 1
