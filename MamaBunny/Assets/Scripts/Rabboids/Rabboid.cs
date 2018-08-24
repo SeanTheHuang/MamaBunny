@@ -14,7 +14,7 @@ public class Rabboid : MonoBehaviour {
     public Transform m_defaultBack;
     public Transform m_defaultMouth;
 
-    public Transform[] m_otherBodyParts;
+    public MeshRenderer[] m_mainBodyRenderers;
 
     public RabboidResult RabboidStats
     {
@@ -52,40 +52,37 @@ public class Rabboid : MonoBehaviour {
 
     void SetColours(RabboidColour _colours, Transform _newBack, Transform _newMouth)
     {
-        // Set colours - body
-        Material newBodyMat = new Material(GetComponent<Renderer>().sharedMaterial);
-        newBodyMat.color = _colours.m_color;
-        GetComponent<Renderer>().sharedMaterial = newBodyMat;
+        Material newBodyMat = null;
 
         // Set colours - extra features
-        foreach (Transform t in m_otherBodyParts)
+        foreach (MeshRenderer r in m_mainBodyRenderers)
         {
-            newBodyMat = new Material(t.GetComponent<Renderer>().sharedMaterial);
+            newBodyMat = new Material(r.sharedMaterial);
             newBodyMat.color = _colours.m_color;
-            t.GetComponent<Renderer>().sharedMaterial = newBodyMat;
+            r.sharedMaterial = newBodyMat;
         }
 
-        if (_newBack)
-        {
-            Renderer[] rendList = _newBack.GetComponentsInChildren<Renderer>();
-            foreach (Renderer r in rendList)
-            {
-                newBodyMat = new Material(r.sharedMaterial);
-                newBodyMat.color = _colours.m_color;
-                r.sharedMaterial = newBodyMat;
-            }
-        }
+        //if (_newBack)
+        //{
+        //    Renderer[] rendList = _newBack.GetComponentsInChildren<Renderer>();
+        //    foreach (Renderer r in rendList)
+        //    {
+        //        newBodyMat = new Material(r.sharedMaterial);
+        //        newBodyMat.color = _colours.m_color;
+        //        r.sharedMaterial = newBodyMat;
+        //    }
+        //}
 
-        if (_newMouth)
-        {
-            Renderer[] rendList = _newMouth.GetComponentsInChildren<Renderer>();
-            foreach (Renderer r in rendList)
-            {
-                newBodyMat = new Material(r.sharedMaterial);
-                newBodyMat.color = _colours.m_color;
-                r.sharedMaterial = newBodyMat;
-            }
-        }
+        //if (_newMouth)
+        //{
+        //    Renderer[] rendList = _newMouth.GetComponentsInChildren<Renderer>();
+        //    foreach (Renderer r in rendList)
+        //    {
+        //        newBodyMat = new Material(r.sharedMaterial);
+        //        newBodyMat.color = _colours.m_color;
+        //        r.sharedMaterial = newBodyMat;
+        //    }
+        //}
     }
 
 }
