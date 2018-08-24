@@ -107,24 +107,30 @@ public class InventoryUI : MonoBehaviour{
         m_displaying = true;
         //show their sprites
         //set the sprites too
+
         for (int i = 0; i < _rmb.Count; i++) 
         {
-            m_capacityList[i].transform.GetChild(0).gameObject.SetActive(true);
-            m_capacityList[i].transform.GetChild(0).GetComponent<Image>().sprite = _rmb[i].m_itemSprite;
-            m_capacityList[i].GetComponent<InventoryBlock>().m_listIndex = i;
+            m_capacityList[i].transform.GetChild(0).gameObject.SetActive(true);//turn on
+            m_capacityList[i].transform.GetChild(0).GetComponent<Image>().sprite = _rmb[i].m_itemSprite;// set sprite
+            m_capacityList[i].GetComponent<InventoryBlock>().m_listIndex = i;//set index
         }
     }
 
     void HideInventory()
     {
         m_linkedInventory = null;
-        m_rmb.Clear();
+        m_rmb = null;
         m_displaying = false;
         foreach(Image im in m_capacityList)
         {
             //set to defualt
             im.transform.GetChild(0).gameObject.SetActive(false);
             //remove sprite
+        }
+
+        for (int i = 0; i < m_capacity; i++)
+        {//stop them from appearing bad when they pop up straight away
+            m_capacityList[i].GetComponent<InventoryBlock>().ResetColor();
         }
     }
 
@@ -144,6 +150,5 @@ public class InventoryUI : MonoBehaviour{
             //dopr it
             m_linkedInventory.TakeFromInventory(_index);
         }
-
     }
 }

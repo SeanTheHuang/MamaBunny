@@ -15,10 +15,13 @@ public class HelpMenu : MonoBehaviour {
 
     public PlayerControl m_player;
 
+    Inventory m_inventory;
+
     private void Start()
     {
         // Start off with game object turned off
         m_helpBookImage.gameObject.SetActive(false);
+        m_inventory = m_player.GetComponent<Inventory>();
     }
 
     private void Update()
