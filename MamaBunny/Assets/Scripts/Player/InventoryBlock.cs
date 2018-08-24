@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventoryBlock : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class InventoryBlock : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,  IPointerUpHandler , IPointerClickHandler
 {
     public int m_listIndex;
     Color m_startColor;
@@ -14,6 +14,9 @@ public class InventoryBlock : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public void OnPointerClick(PointerEventData eventData)
     {
         //report to inventory to drop;
+    }
+    public void OnPointerUp(PointerEventData eventData)
+    {
         m_invUI.BlockClicked(m_listIndex);
     }
 
@@ -24,7 +27,7 @@ public class InventoryBlock : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        m_image.color = m_startColor;
+        ResetColor();
     }
 
     // Use this for initialization
@@ -38,4 +41,11 @@ public class InventoryBlock : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 	void Update () {
 		
 	}
+
+    public void ResetColor()
+    {
+        m_image.color = m_startColor;
+    }
+
+
 }

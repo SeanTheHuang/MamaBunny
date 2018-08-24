@@ -13,14 +13,14 @@ public class Inventory : MonoBehaviour {
         m_pickUpList = new List<RabboidModBase>();
 	}
 	
-	// Update is called once per frame
-	//void Update ()
- //   {
-	//	if(Input.GetKeyDown(KeyCode.I))
- //       {
- //           OpenInventory();
- //       }
-	//}
+     //Update is called once per frame
+    void Update ()
+    {
+    	if(Input.GetKeyDown(KeyCode.I))
+        {
+            OpenInventory();
+        }
+    }
 
     public bool AddToInventory(PickUp _pickup)
     {
@@ -36,9 +36,11 @@ public class Inventory : MonoBehaviour {
     public void TakeFromInventory(int _index)
     {
         //return the object for the player to spawn
-        OpenInventory();
         Instantiate(m_pickUpList[_index].m_pickUpItemForm, transform.position + transform.forward, Quaternion.identity);
         m_pickUpList.RemoveAt(_index);
+        InventoryUI.Instance.Display(false, m_pickUpList);
+        InventoryUI.Instance.m_linkedInventory = transform.GetComponent<Inventory>();
+        InventoryUI.Instance.Display(true, m_pickUpList);
 
     }
 
@@ -82,6 +84,7 @@ public class Inventory : MonoBehaviour {
         InventoryUI.Instance.SetCapacity(m_capacity);
 
         GetComponent<PlayerControl>().LockPlayer(!m_displaying);
+        InventoryUI.Instance.m_linkedInventory = transform.GetComponent<Inventory>();
         if (m_displaying)
         {
             InventoryUI.Instance.m_linkedInventory = transform.GetComponent<Inventory>();
