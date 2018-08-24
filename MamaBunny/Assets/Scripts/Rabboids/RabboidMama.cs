@@ -6,6 +6,14 @@ public class RabboidMama : MonoBehaviour {
 
     public Transform m_baseRabboidPrefab;
 
+    [Header("Move variables")]
+    public float m_floatDist = 0.3f;
+    public float m_floatFreq = 0.3f;
+    public Vector3 m_rotateAxis = Vector3.one;
+    public float m_rotateSpeed = 45;
+
+    Vector3 m_startPosition;
+
     List<RabboidColour> m_colourModList;
     List<RabboidBodyPart> m_backModList, m_mouthModList;
     List<RabboidSizeMod> m_sizeModList;
@@ -17,6 +25,7 @@ public class RabboidMama : MonoBehaviour {
         m_backModList = new List<RabboidBodyPart>();
         m_mouthModList = new List<RabboidBodyPart>();
         m_sizeModList = new List<RabboidSizeMod>();
+        m_startPosition = transform.position;
     }
 
     // TEMP CODE TO TEST SPAWNING
@@ -24,6 +33,19 @@ public class RabboidMama : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.Z))
             SpawnRabboid();
+
+        MoveLogic();
+        RotateLogic();
+    }
+
+    void MoveLogic()
+    {
+        transform.position = m_startPosition + Vector3.up * Mathf.Sin(Time.time * m_floatFreq) * m_floatDist;
+    }
+
+    void RotateLogic()
+    {
+        transform.Rotate(m_rotateAxis * Time.deltaTime * m_rotateSpeed);
     }
 
     #region ADD_FUCTIONS
