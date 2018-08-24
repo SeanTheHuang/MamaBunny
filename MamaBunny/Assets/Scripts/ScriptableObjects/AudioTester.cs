@@ -21,6 +21,8 @@ public class AudioTester : ScriptableObject {
 
     public void Reset()
     {
-        m_volume.minValue = m_volume.maxValue = m_pitch.minValue = m_pitch.maxValue = 1;
+        m_volume.minValue = m_pitch.minValue = 0.98f;
+        m_volume.maxValue = 1.0f;
+        m_pitch.maxValue = 1.02f;
     }
 }

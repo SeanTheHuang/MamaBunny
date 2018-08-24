@@ -3,6 +3,6 @@
 [Serializable]
 public class RangedFloat
 {
-    public float minValue = 1;
-    public float maxValue = 1;
+    public float minValue = 0.98f;
+    public float maxValue = 1.02f;
 }

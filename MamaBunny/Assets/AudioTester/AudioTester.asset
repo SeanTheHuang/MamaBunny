@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: AudioTester
   m_EditorClassIdentifier: 
   m_volume:
-    minValue: 1
+    minValue: 0.98
     maxValue: 1
   m_pitch:
-    minValue: 1
-    maxValue: 1
+    minValue: 0.98
+    maxValue: 1.02
   m_audioClip: {fileID: 0}
