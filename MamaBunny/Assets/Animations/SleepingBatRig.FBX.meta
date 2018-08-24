@@ -1,0 +1,349 @@
+fileFormatVersion: 2
+guid: d2b18ac5c6553ea4aac622ce160d8422
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Batferatu_
+    100002: Batferatu_BonesMaster
+    100004: Batferatu_Head
+    100006: Batferatu_Jaw
+    100008: Batferatu_L_BottomLid
+    100010: Batferatu_L_Ear
+    100012: Batferatu_L_Eye
+    100014: Batferatu_LCalf
+    100016: Batferatu_LCollarbone
+    100018: Batferatu_LDigit11
+    100020: Batferatu_LDigit11 1
+    100022: Batferatu_LDigit12
+    100024: Batferatu_LDigit12 1
+    100026: Batferatu_LDigit13
+    100028: Batferatu_LDigit13 1
+    100030: Batferatu_LDigit14
+    100032: Batferatu_LDigit21
+    100034: Batferatu_LDigit21 1
+    100036: Batferatu_LDigit22
+    100038: Batferatu_LDigit22 1
+    100040: Batferatu_LDigit23
+    100042: Batferatu_LDigit24
+    100044: Batferatu_LDigit31
+    100046: Batferatu_LDigit31 1
+    100048: Batferatu_LDigit32
+    100050: Batferatu_LDigit32 1
+    100052: Batferatu_LDigit33
+    100054: Batferatu_LDigit33 1
+    100056: Batferatu_LDigit41
+    100058: Batferatu_LDigit41 1
+    100060: Batferatu_LDigit42
+    100062: Batferatu_LDigit42 1
+    100064: Batferatu_LDigit43
+    100066: Batferatu_LDigit43 1
+    100068: Batferatu_LDigit51
+    100070: Batferatu_LDigit52
+    100072: Batferatu_LDigit53
+    100074: Batferatu_LFoot
+    100076: Batferatu_LForearm
+    100078: Batferatu_LPalm
+    100080: Batferatu_LPlatform
+    100082: Batferatu_LThigh
+    100084: Batferatu_LUpperarm
+    100086: BATFERATU_Mesh
+    100088: Batferatu_Neck1
+    100090: Batferatu_Neck2
+    100092: Batferatu_NeckWool
+    100094: Batferatu_Pelvis
+    100096: Batferatu_R_BottomLid
+    100098: Batferatu_R_Ear
+    100100: Batferatu_R_Eye
+    100102: Batferatu_R_UpperBrow
+    100104: Batferatu_R_UpperBrow 1
+    100106: Batferatu_RCalf
+    100108: Batferatu_RCollarbone
+    100110: Batferatu_RDigit11
+    100112: Batferatu_RDigit11 1
+    100114: Batferatu_RDigit12
+    100116: Batferatu_RDigit12 1
+    100118: Batferatu_RDigit13
+    100120: Batferatu_RDigit13 1
+    100122: Batferatu_RDigit14
+    100124: Batferatu_RDigit21
+    100126: Batferatu_RDigit21 1
+    100128: Batferatu_RDigit22
+    100130: Batferatu_RDigit22 1
+    100132: Batferatu_RDigit23
+    100134: Batferatu_RDigit24
+    100136: Batferatu_RDigit31
+    100138: Batferatu_RDigit31 1
+    100140: Batferatu_RDigit32
+    100142: Batferatu_RDigit32 1
+    100144: Batferatu_RDigit33
+    100146: Batferatu_RDigit33 1
+    100148: Batferatu_RDigit41
+    100150: Batferatu_RDigit41 1
+    100152: Batferatu_RDigit42
+    100154: Batferatu_RDigit42 1
+    100156: Batferatu_RDigit43
+    100158: Batferatu_RDigit43 1
+    100160: Batferatu_RDigit51
+    100162: Batferatu_RDigit52
+    100164: Batferatu_RDigit53
+    100166: Batferatu_RFoot
+    100168: Batferatu_RForearm
+    100170: Batferatu_Ribcage
+    100172: Batferatu_RPalm
+    100174: Batferatu_RPlatform
+    100176: Batferatu_RThigh
+    100178: Batferatu_RUpperarm
+    100180: Batferatu_Spine1
+    100182: Batferatu_Spine2
+    100184: Batferatu_Spine3
+    100186: Batferatu_Spine4
+    100188: L_eye
+    100190: L_Fang
+    100192: L_Wing
+    100194: Lower_Teeth
+    100196: Main_Body
+    100198: Neck_Fur
+    100200: R_Eye
+    100202: R_Fang
+    100204: R_Wing
+    100206: //RootNode
+    100208: Upper_Teeth
+    400000: Batferatu_
+    400002: Batferatu_BonesMaster
+    400004: Batferatu_Head
+    400006: Batferatu_Jaw
+    400008: Batferatu_L_BottomLid
+    400010: Batferatu_L_Ear
+    400012: Batferatu_L_Eye
+    400014: Batferatu_LCalf
+    400016: Batferatu_LCollarbone
+    400018: Batferatu_LDigit11
+    400020: Batferatu_LDigit11 1
+    400022: Batferatu_LDigit12
+    400024: Batferatu_LDigit12 1
+    400026: Batferatu_LDigit13
+    400028: Batferatu_LDigit13 1
+    400030: Batferatu_LDigit14
+    400032: Batferatu_LDigit21
+    400034: Batferatu_LDigit21 1
+    400036: Batferatu_LDigit22
+    400038: Batferatu_LDigit22 1
+    400040: Batferatu_LDigit23
+    400042: Batferatu_LDigit24
+    400044: Batferatu_LDigit31
+    400046: Batferatu_LDigit31 1
+    400048: Batferatu_LDigit32
+    400050: Batferatu_LDigit32 1
+    400052: Batferatu_LDigit33
+    400054: Batferatu_LDigit33 1
+    400056: Batferatu_LDigit41
+    400058: Batferatu_LDigit41 1
+    400060: Batferatu_LDigit42
+    400062: Batferatu_LDigit42 1
+    400064: Batferatu_LDigit43
+    400066: Batferatu_LDigit43 1
+    400068: Batferatu_LDigit51
+    400070: Batferatu_LDigit52
+    400072: Batferatu_LDigit53
+    400074: Batferatu_LFoot
+    400076: Batferatu_LForearm
+    400078: Batferatu_LPalm
+    400080: Batferatu_LPlatform
+    400082: Batferatu_LThigh
+    400084: Batferatu_LUpperarm
+    400086: BATFERATU_Mesh
+    400088: Batferatu_Neck1
+    400090: Batferatu_Neck2
+    400092: Batferatu_NeckWool
+    400094: Batferatu_Pelvis
+    400096: Batferatu_R_BottomLid
+    400098: Batferatu_R_Ear
+    400100: Batferatu_R_Eye
+    400102: Batferatu_R_UpperBrow
+    400104: Batferatu_R_UpperBrow 1
+    400106: Batferatu_RCalf
+    400108: Batferatu_RCollarbone
+    400110: Batferatu_RDigit11
+    400112: Batferatu_RDigit11 1
+    400114: Batferatu_RDigit12
+    400116: Batferatu_RDigit12 1
+    400118: Batferatu_RDigit13
+    400120: Batferatu_RDigit13 1
+    400122: Batferatu_RDigit14
+    400124: Batferatu_RDigit21
+    400126: Batferatu_RDigit21 1
+    400128: Batferatu_RDigit22
+    400130: Batferatu_RDigit22 1
+    400132: Batferatu_RDigit23
+    400134: Batferatu_RDigit24
+    400136: Batferatu_RDigit31
+    400138: Batferatu_RDigit31 1
+    400140: Batferatu_RDigit32
+    400142: Batferatu_RDigit32 1
+    400144: Batferatu_RDigit33
+    400146: Batferatu_RDigit33 1
+    400148: Batferatu_RDigit41
+    400150: Batferatu_RDigit41 1
+    400152: Batferatu_RDigit42
+    400154: Batferatu_RDigit42 1
+    400156: Batferatu_RDigit43
+    400158: Batferatu_RDigit43 1
+    400160: Batferatu_RDigit51
+    400162: Batferatu_RDigit52
+    400164: Batferatu_RDigit53
+    400166: Batferatu_RFoot
+    400168: Batferatu_RForearm
+    400170: Batferatu_Ribcage
+    400172: Batferatu_RPalm
+    400174: Batferatu_RPlatform
+    400176: Batferatu_RThigh
+    400178: Batferatu_RUpperarm
+    400180: Batferatu_Spine1
+    400182: Batferatu_Spine2
+    400184: Batferatu_Spine3
+    400186: Batferatu_Spine4
+    400188: L_eye
+    400190: L_Fang
+    400192: L_Wing
+    400194: Lower_Teeth
+    400196: Main_Body
+    400198: Neck_Fur
+    400200: R_Eye
+    400202: R_Fang
+    400204: R_Wing
+    400206: //RootNode
+    400208: Upper_Teeth
+    2100000: lambert1
+    2100002: M_BatFeratu
+    2100004: M_BunnyParts
+    4300000: L_eye
+    4300002: Upper_Teeth
+    4300004: R_Eye
+    4300006: Lower_Teeth
+    4300008: L_Wing
+    4300010: L_Fang
+    4300012: R_Wing
+    4300014: Main_Body
+    4300016: Neck_Fur
+    4300018: R_Fang
+    7400000: SleepingBatferatu
+    9500000: //RootNode
+    13700000: L_eye
+    13700002: L_Fang
+    13700004: L_Wing
+    13700006: Lower_Teeth
+    13700008: Main_Body
+    13700010: Neck_Fur
+    13700012: R_Eye
+    13700014: R_Fang
+    13700016: R_Wing
+    13700018: Upper_Teeth
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: SleepingBatferatu
+      takeName: SleepingBatferatu
+      firstFrame: 15
+      lastFrame: 115
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
