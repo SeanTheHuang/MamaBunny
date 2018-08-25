@@ -8,6 +8,7 @@ public class RabboidEgg : MonoBehaviour {
     Transform[] m_pathToFollow;
     Rigidbody m_rb;
     RabboidMama m_mama;
+    RabboidResult m_results;
 
     private void Awake()
     {
@@ -15,7 +16,7 @@ public class RabboidEgg : MonoBehaviour {
         m_rb.isKinematic = true;
     }
 
-    public void StartAnimation(Transform[] _path, RabboidMama _mama)
+    public void StartAnimation(Transform[] _path, RabboidMama _mama, RabboidResult _results)
     {
         if (m_started)
             return;
@@ -23,6 +24,7 @@ public class RabboidEgg : MonoBehaviour {
         m_started = true;
         m_pathToFollow = _path;
         m_mama = _mama;
+        m_results = _results;
         StartCoroutine(SpawnAnimation());
     }
 
@@ -68,7 +70,7 @@ public class RabboidEgg : MonoBehaviour {
 
         // Wait and then spawn rabboid
         yield return new WaitForSeconds(Random.Range(2.0f, 3.0f));
-        m_mama.SpawnRabboid(transform.position);
+        m_mama.SpawnRabboid(transform.position, m_results);
         Destroy(gameObject);
 
         yield return null;

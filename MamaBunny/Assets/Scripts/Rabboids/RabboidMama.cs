@@ -77,17 +77,16 @@ public class RabboidMama : MonoBehaviour {
     public void SpawnRabboidEgg()
     {
         RabboidEgg egg = Instantiate(m_rabboidEggPrefab, Vector3.zero, Quaternion.identity).GetComponent<RabboidEgg>();
-        egg.StartAnimation(m_spawnEggPath.m_movePath, this);
+        RabboidResult results = RabboidCalculator.Instance.CalculateRabboid(m_colourModList, m_mouthModList, m_backModList, m_sizeModList);
+        ClearAllLists(); // Clear results list in rabboid mama
+        egg.StartAnimation(m_spawnEggPath.m_movePath, this, results);
     }
 
-    public void SpawnRabboid(Vector3 _position)
+    public void SpawnRabboid(Vector3 _position, RabboidResult _results)
     {
         Vector3 eulers = new Vector3(Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f));
-        RabboidResult results = RabboidCalculator.Instance.CalculateRabboid(m_colourModList, m_mouthModList, m_backModList, m_sizeModList);
         Transform rabboid = Instantiate(m_baseRabboidPrefab, _position, Quaternion.Euler(eulers));
-        rabboid.GetComponent<Rabboid>().Initialize(results);
-
-        ClearAllLists();
+        rabboid.GetComponent<Rabboid>().Initialize(_results);
     }
 
     void ClearAllLists()
