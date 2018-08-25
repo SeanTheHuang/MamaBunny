@@ -5,6 +5,8 @@ using UnityEngine;
 public class RabboidMama : MonoBehaviour {
 
     public Transform m_baseRabboidPrefab;
+    public Transform m_rabboidEggPrefab;
+    public EggSpawnPath m_spawnEggPath;
 
     [Header("Move variables")]
     public float m_floatDist = 0.3f;
@@ -32,7 +34,7 @@ public class RabboidMama : MonoBehaviour {
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Z))
-            SpawnRabboid();
+            SpawnRabboidEgg();
 
         MoveLogic();
         RotateLogic();
@@ -72,10 +74,17 @@ public class RabboidMama : MonoBehaviour {
 
     #endregion
 
-    public void SpawnRabboid()
+    public void SpawnRabboidEgg()
     {
+        RabboidEgg egg = Instantiate(m_rabboidEggPrefab, Vector3.zero, Quaternion.identity).GetComponent<RabboidEgg>();
+        egg.StartAnimation(m_spawnEggPath.m_movePath, this);
+    }
+
+    public void SpawnRabboid(Vector3 _position)
+    {
+        Vector3 eulers = new Vector3(Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f));
         RabboidResult results = RabboidCalculator.Instance.CalculateRabboid(m_colourModList, m_mouthModList, m_backModList, m_sizeModList);
-        Transform rabboid = Instantiate(m_baseRabboidPrefab, Vector3.up * 4, Quaternion.identity);
+        Transform rabboid = Instantiate(m_baseRabboidPrefab, _position, Quaternion.Euler(eulers));
         rabboid.GetComponent<Rabboid>().Initialize(results);
 
         ClearAllLists();
