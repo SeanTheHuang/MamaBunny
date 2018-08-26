@@ -47,7 +47,7 @@ public class InventoryUI : MonoBehaviour{
 
     public void Display(bool _display, List<RabboidModBase> _rmb)
     {
-        Debug.Log("called");
+        //Debug.Log("called");
         //m_Background.gameObject.SetActive(_display);
         foreach(Image rt in m_capacityList)
         {

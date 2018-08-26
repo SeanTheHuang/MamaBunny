@@ -15,7 +15,7 @@ public class InventoryBlock : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
 
     // Use this for initialization
-    void Start () {
+    void Awake () {
         m_image = GetComponent<Image>();
         m_selectColor = m_image.color;
         m_invUI = transform.parent.GetComponent<InventoryUI>();
