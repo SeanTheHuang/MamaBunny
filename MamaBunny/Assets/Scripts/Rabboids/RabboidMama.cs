@@ -33,9 +33,6 @@ public class RabboidMama : MonoBehaviour {
     // TEMP CODE TO TEST SPAWNING
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
-            SpawnRabboidEgg();
-
         MoveLogic();
         RotateLogic();
     }
