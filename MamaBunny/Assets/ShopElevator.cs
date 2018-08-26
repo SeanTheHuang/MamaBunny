@@ -37,16 +37,27 @@ public class ShopElevator : MonoBehaviour {
         }
     }
 
+    public void MoveLiftUp()
+    {
+        m_platformTriggered = true;
+        m_movingDown = false;
+    }
+
+    public void MoveLiftDown()
+    {
+        m_platformTriggered = true;
+        m_movingDown = true;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(!m_platformTriggered && other.gameObject.layer == LayerMask.NameToLayer("Citizen"))
         {
             other.transform.parent = transform;
-            m_platformTriggered = true;
             if (transform.position == m_topPosition)
-                m_movingDown = true;
+                MoveLiftDown();
             else
-                m_movingDown = false;
+                MoveLiftUp();
         }
     }
 
