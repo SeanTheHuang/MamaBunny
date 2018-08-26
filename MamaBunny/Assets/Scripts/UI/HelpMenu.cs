@@ -67,6 +67,7 @@ public class HelpMenu : MonoBehaviour {
         {
             // Flip toggle state
             m_helpBookImage.gameObject.SetActive(false);
+            HideInventory();
             if (m_player)
                 m_player.LockPlayer(false);
         }

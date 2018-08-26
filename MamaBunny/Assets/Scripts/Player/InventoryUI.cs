@@ -30,7 +30,7 @@ public class InventoryUI : MonoBehaviour{
 
 	void Awake () {
         Instance = this;//singleton
-        m_capacityList = new List<Image> { };
+        //m_capacityList = new List<Image> { };
         //m_Background = GetComponent<Image>();
         //m_blockColor = m_block.color;
         m_rmb = new List<RabboidModBase> { };
