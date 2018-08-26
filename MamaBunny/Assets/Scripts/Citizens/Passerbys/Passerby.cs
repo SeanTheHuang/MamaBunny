@@ -10,12 +10,18 @@ public class Passerby : MonoBehaviour
     private Vector3 m_TravelLocation;
     private bool m_destinationReached;
 
-    private MeshRenderer m_meshRenderer;
+    private MeshRenderer[] m_meshRenderers;
 
     private void Start()
     {
-        m_meshRenderer = GetComponent<MeshRenderer>();
-        StartCoroutine(Lerp_MeshRenderer_Color(3, m_meshRenderer.material.color, Color.white));
+        Transform model = transform.GetChild(0);
+        model.transform.position = new Vector3(model.transform.position.x, model.transform.position.y - 0.5f, model.transform.position.z);
+        m_meshRenderers = model.GetComponentsInChildren<MeshRenderer>();
+        
+        foreach(MeshRenderer m in m_meshRenderers)
+        {
+            StartCoroutine(Lerp_MeshRenderer_Color(3, m.material, Color.white));
+        }
     }
 
     void Update()
@@ -36,12 +42,15 @@ public class Passerby : MonoBehaviour
         if (!m_destinationReached && Vector3.Distance(m_TravelLocation, transform.position) <= 0.2f)
         {
             m_destinationReached = true;
-            StartCoroutine(Lerp_MeshRenderer_Color(3, m_meshRenderer.material.color, new Color(1, 1, 1, 0)));
+            foreach (MeshRenderer m in m_meshRenderers)
+            {
+                StartCoroutine(Lerp_MeshRenderer_Color(3, m.material, new Color(1, 1, 1, 0)));
+            }
             Invoke("DestroyGameObject", 3);
         }
     }
 
-    private IEnumerator Lerp_MeshRenderer_Color(float lerpDuration, Color startLerp, Color targetLerp)
+    private IEnumerator Lerp_MeshRenderer_Color(float lerpDuration, Material material, Color targetLerp)
     {
         float lerpStart_Time = Time.time;
         float lerpProgress;
@@ -50,9 +59,9 @@ public class Passerby : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
             lerpProgress = Time.time - lerpStart_Time;
-            if (m_meshRenderer != null)
+            if (material != null)
             {
-                m_meshRenderer.material.color = Color.Lerp(startLerp, targetLerp, lerpProgress / lerpDuration);
+                material.color = Color.Lerp(material.color, targetLerp, lerpProgress / lerpDuration);
             }
             else
             {
