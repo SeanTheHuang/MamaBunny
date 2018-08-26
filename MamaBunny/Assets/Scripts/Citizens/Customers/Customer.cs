@@ -30,8 +30,15 @@ public class Customer : MonoBehaviour {
     GameObject m_bunnyPens;
     Vector3 m_targetBunnyPen;
 
+    public bool m_DemandingCustomer;
+
     private void Start()
     {
+        if (m_DemandingCustomer)
+        {
+            MakeACustomerDemand();
+        }
+
         Transform model = transform.GetChild(0);
         model.transform.position = new Vector3(model.transform.position.x, model.transform.position.y - 0.5f, model.transform.position.z);
         m_meshRenderers = model.GetComponentsInChildren<MeshRenderer>();
@@ -234,5 +241,10 @@ public class Customer : MonoBehaviour {
     void DestroyGameObject()
     {
         Destroy(gameObject);
+    }
+
+    void MakeACustomerDemand()
+    {
+
     }
 }
