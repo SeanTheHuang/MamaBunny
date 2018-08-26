@@ -18,7 +18,7 @@ public class Bird : GunTarget {
     public float m_distTooClose = 5;
 
     [Header("Time stuff")]
-    [MinMaxRange(0.3f, 1f)]
+    [MinMaxRange(0.05f, 1f)]
     public RangedFloat m_walkDuration;
 
     [MinMaxRange(1, 3)]
@@ -48,6 +48,7 @@ public class Bird : GunTarget {
 
     private void Update()
     {
+        Debug.Log(m_cc.isGrounded);
         if (m_dead)
         {
             // Only fall
@@ -77,7 +78,7 @@ public class Bird : GunTarget {
                 break;
         }
 
-        m_cc.SimpleMove(m_currentVel);
+        m_cc.Move(m_currentVel * Time.deltaTime);
     }
 
     void IdleLogic()
@@ -91,8 +92,9 @@ public class Bird : GunTarget {
         if (Time.time >= m_stateChangeTime)
         {
             m_currentState = BirdState.WALK;
-            m_moveDir = Quaternion.Euler(0, Random.Range(0, 360), 0) * Vector3.forward;
+            m_moveDir = Quaternion.Euler(0, Random.Range(45, 315), 0) * transform.forward;
             m_stateChangeTime = Time.time + Random.Range(m_walkDuration.minValue, m_walkDuration.maxValue);
+            m_anim.SetBool("false", false);
         }
     }
 
@@ -110,14 +112,15 @@ public class Bird : GunTarget {
             m_currentVel.x = m_currentVel.z = 0;
             m_stateChangeTime = Time.time + Random.Range(m_pauseDuration.minValue, m_pauseDuration.maxValue);
             m_currentState = BirdState.IDLE;
+            m_anim.SetBool("Moving", false);
             return;
         }
 
         Vector3 newMove = m_currentVel;
         newMove.y = 0;
-        newMove = Vector3.Lerp(newMove, m_moveDir * m_walkSpeed, Time.deltaTime * 8);
+        newMove = Vector3.Lerp(newMove, m_moveDir * m_walkSpeed, Time.deltaTime * 15);
         // Rotation
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(newMove.normalized), 10 * Time.deltaTime);
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(newMove.normalized), 25 * Time.deltaTime);
         newMove.y = m_currentVel.y;
 
         // Movement

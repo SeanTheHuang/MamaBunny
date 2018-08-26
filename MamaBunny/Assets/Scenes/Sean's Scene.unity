@@ -307,11 +307,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 17
       objectReference: {fileID: 0}
-    - target: {fileID: 114652512847619032, guid: e2c3ca64cf594364c9b046e9afa95789,
-        type: 2}
-      propertyPath: m_walkDuration.maxValue
-      value: 0.3717769
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e2c3ca64cf594364c9b046e9afa95789, type: 2}
   m_IsPrefabParent: 0
