@@ -66,6 +66,9 @@ public class HelpMenu : MonoBehaviour {
         }
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
+            if (!m_helpBookImage.gameObject.activeInHierarchy)
+                return; // Nothing to close
+
             // Flip toggle state
             m_helpBookImage.gameObject.SetActive(false);
             HideInventory();
