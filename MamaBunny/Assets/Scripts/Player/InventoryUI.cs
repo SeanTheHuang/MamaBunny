@@ -129,7 +129,7 @@ public class InventoryUI : MonoBehaviour{
             //remove sprite
         }
 
-        for (int i = 0; i < m_capacity; i++)
+        for (int i = 0; i < m_capacityList.Count; i++)
         {//stop them from appearing bad when they pop up straight away
             m_capacityList[i].GetComponent<InventoryBlock>().ResetColor();
         }

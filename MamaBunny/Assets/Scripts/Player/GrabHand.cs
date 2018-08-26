@@ -24,7 +24,7 @@ public class GrabHand : MonoBehaviour {
             return;
         }
 
-        if(Input.GetButtonDown("Fire2"))
+        if(Input.GetKeyDown(KeyCode.E))
         {
             Grab();
         }
