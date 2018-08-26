@@ -109,7 +109,7 @@ public class Inventory : MonoBehaviour {
 
     public void HideInventory()
     {
-        Debug.Log("hiding");
+        //Debug.Log("hiding");
         InventoryUI.Instance.Display(false, null);
         m_displaying = false;
     }

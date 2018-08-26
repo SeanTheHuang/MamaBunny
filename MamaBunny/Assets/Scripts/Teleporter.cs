@@ -7,6 +7,8 @@ public class Teleporter : MonoBehaviour {
 
     public int m_sceneIndexToGo;
     public float m_timeToTeleport = 2;
+    public Transform m_canvasPrefab;
+    Transform m_spawnedPrefab = null;
     float m_currentTimer;
     bool m_channeling = false;
     bool m_teleporting = false;
@@ -35,6 +37,8 @@ public class Teleporter : MonoBehaviour {
             Debug.Log("Player entered teleporter");
             m_channeling = true;
             m_currentTimer = 0;
+            if (!m_spawnedPrefab)
+                m_spawnedPrefab = Instantiate(m_canvasPrefab, m_canvasPrefab.position, m_canvasPrefab.rotation);
         }
     }
 
@@ -45,6 +49,11 @@ public class Teleporter : MonoBehaviour {
             Debug.Log("Player exited teleporter");
             m_channeling = false;
             m_currentTimer = 0;
+            if (m_spawnedPrefab)
+            {
+                Destroy(m_spawnedPrefab.gameObject);
+                m_spawnedPrefab = null;
+            }
         }
     }
 
