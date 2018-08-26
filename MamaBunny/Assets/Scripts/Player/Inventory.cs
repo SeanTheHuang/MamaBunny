@@ -16,10 +16,10 @@ public class Inventory : MonoBehaviour {
      //Update is called once per frame
     void Update ()
     {
-    	if(Input.GetKeyDown(KeyCode.I))
+    	/*if(Input.GetKeyDown(KeyCode.I))
         {
             OpenInventory();
-        }
+        }*/
     }
 
     public bool AddToInventory(PickUp _pickup)
@@ -96,5 +96,20 @@ public class Inventory : MonoBehaviour {
             InventoryUI.Instance.Display(true, m_pickUpList);
         }
         m_displaying = !m_displaying;
+    }
+
+    public void ShowInventory()
+    {
+        InventoryUI.Instance.SetCapacity(m_capacity);
+        InventoryUI.Instance.m_linkedInventory = transform.GetComponent<Inventory>();
+        InventoryUI.Instance.Display(true, m_pickUpList);
+        m_displaying = true;
+    }
+
+    public void HideInventory()
+    {
+        Debug.Log("hiding");
+        InventoryUI.Instance.Display(false, null);
+        m_displaying = false;
     }
 }

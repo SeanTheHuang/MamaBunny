@@ -6,14 +6,14 @@ using UnityEngine.EventSystems;
 
 public class InventoryUI : MonoBehaviour{
 
-    public Image m_block;
-    Image m_Background;
-    public Image m_selectSquare;
+    //public Image m_block;
+    //Image m_Background;
+    //public Image m_selectSquare;
 
     public Inventory m_linkedInventory;
 
     uint m_capacity = 0;
-    List<Image> m_capacityList;
+    public List<Image> m_capacityList;
 
     public uint m_rightMax = 5;
     public uint m_downMax = 4;
@@ -31,8 +31,8 @@ public class InventoryUI : MonoBehaviour{
 	void Awake () {
         Instance = this;//singleton
         m_capacityList = new List<Image> { };
-        m_Background = GetComponent<Image>();
-        m_blockColor = m_block.color;
+        //m_Background = GetComponent<Image>();
+        //m_blockColor = m_block.color;
         m_rmb = new List<RabboidModBase> { };
         Display(false, null);
 	}
@@ -47,7 +47,8 @@ public class InventoryUI : MonoBehaviour{
 
     public void Display(bool _display, List<RabboidModBase> _rmb)
     {
-        m_Background.gameObject.SetActive(_display);
+        Debug.Log("called");
+        //m_Background.gameObject.SetActive(_display);
         foreach(Image rt in m_capacityList)
         {
             rt.gameObject.SetActive(_display);
@@ -65,7 +66,7 @@ public class InventoryUI : MonoBehaviour{
 
     public void SetCapacity(uint _capacity)
     {
-        if(m_capacity == _capacity)
+       /* if(m_capacity == _capacity)
         {//no need to change
             return;
         }
@@ -98,7 +99,7 @@ public class InventoryUI : MonoBehaviour{
                 count++;
             }
         }
-
+        */
     }
 
     void DisplayInventory(List<RabboidModBase> _rmb)

@@ -99,11 +99,11 @@ public class HelpMenu : MonoBehaviour {
     // === FILL THESE FUNCTIONS HUGO
     void HideInventory()
     {
-
+        m_inventory.HideInventory();
     }
 
     void ShowInventory()
     {
-
+        m_inventory.ShowInventory();
     }
 }
