@@ -24,7 +24,7 @@ public class GunTarget : MonoBehaviour
         StartCoroutine(SpawnAnimation());
 	}
 
-    public void TakeHit(float _damage)
+    public virtual void TakeHit(float _damage)
     {
         m_health -= _damage;
 
