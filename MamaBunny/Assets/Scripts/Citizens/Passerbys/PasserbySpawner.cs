@@ -8,6 +8,8 @@ public class PasserbySpawner : MonoBehaviour
     public GameObject m_despawnLocation;
     public GameObject m_passerby;
 
+    public List<GameObject> m_characterModels;
+
     [MinMaxRange(0.0f, 20.0f)]
     public RangedFloat m_spawnTime;
 
@@ -32,6 +34,9 @@ public class PasserbySpawner : MonoBehaviour
             GameObject passerby = Instantiate(m_passerby, startPosition, transform.rotation);
             Vector3 endPosition = new Vector3(m_despawnLocation.transform.position.x + randOffset.x, m_despawnLocation.transform.position.y, m_despawnLocation.transform.position.z + randOffset.y);
             passerby.GetComponent<Passerby>().SetTargetLocation(endPosition);
+
+            GameObject model = Instantiate(m_characterModels[Random.Range(0, m_characterModels.Count)], passerby.transform.position, passerby.transform.rotation);
+            model.transform.parent = passerby.transform;
         }
     }
 }
