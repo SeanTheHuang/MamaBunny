@@ -4,17 +4,26 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour {
 
+    public SaveInventory_Player m_inve;
     List<RabboidModBase> m_pickUpList;
     public uint m_capacity = 10;
     public bool m_displaying = false;
 
 	void Start ()
     {
-        m_pickUpList = new List<RabboidModBase>();
-        m_capacity = (uint)InventoryUI.Instance.m_capacityList.Count;
+        m_pickUpList = m_inve.m_inventory;
+        m_capacity = m_inve.m_capacity;
+        //m_pickUpList = new List<RabboidModBase>();
+        //m_capacity = (uint)InventoryUI.Instance.m_capacityList.Count;
 	}
-	
-     //Update is called once per frame
+
+    private void OnDisable()
+    {
+        m_inve.m_inventory = m_pickUpList;
+        m_inve.m_capacity = m_capacity;
+    }
+
+    //Update is called once per frame
     void Update ()
     {
     	/*if(Input.GetKeyDown(KeyCode.I))
