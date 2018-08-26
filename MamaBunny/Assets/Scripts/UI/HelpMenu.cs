@@ -57,6 +57,7 @@ public class HelpMenu : MonoBehaviour {
             else if (m_helpBookImage.sprite == m_itemsBackgroundSprite)
             {
                 m_helpBookImage.gameObject.SetActive(false);
+                HideInventory();
                 if (m_player)
                     m_player.LockPlayer(false);
             }
