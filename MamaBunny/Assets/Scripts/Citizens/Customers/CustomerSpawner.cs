@@ -18,6 +18,8 @@ public class CustomerSpawner : MonoBehaviour
 
     List<Vector3> m_travelLocations = new List<Vector3>();
 
+    public int m_customersCount; // A count that keeps track of number of customers. Every x customer makes an order
+
     private void Start()
     {
         m_nextSpawnTime = Time.time + Random.Range(m_spawnTime.minValue, m_spawnTime.maxValue);
@@ -41,6 +43,13 @@ public class CustomerSpawner : MonoBehaviour
 
             GameObject model = Instantiate(m_characterModels[Random.Range(0, m_characterModels.Count)], customer.transform.position, customer.transform.rotation);
             model.transform.parent = customer.transform;
+
+            ++m_customersCount;
+            if(m_customersCount > 8)
+            {
+                m_customersCount = 0;
+                customer.GetComponent<Customer>().m_DemandingCustomer = true;
+            }
         }
     }
 }
