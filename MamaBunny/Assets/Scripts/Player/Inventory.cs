@@ -11,6 +11,7 @@ public class Inventory : MonoBehaviour {
 	void Start ()
     {
         m_pickUpList = new List<RabboidModBase>();
+        m_capacity = (uint)InventoryUI.Instance.m_capacityList.Count;
 	}
 	
      //Update is called once per frame

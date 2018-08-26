@@ -8,6 +8,7 @@ public class GrabHand : MonoBehaviour {
     Camera m_grabCam;
     public Inventory m_inventory;
     bool m_handLocked = false;
+    public LayerMask m_pickupLayer;
 
 	// Use this for initialization
 	void Start ()
@@ -23,7 +24,7 @@ public class GrabHand : MonoBehaviour {
             return;
         }
 
-        if(Input.GetButtonDown("Fire2"))
+        if(Input.GetKeyDown(KeyCode.E))
         {
             Grab();
         }
@@ -32,8 +33,23 @@ public class GrabHand : MonoBehaviour {
     void Grab()
     {
         RaycastHit hit;
+        Ray rayy = new Ray(transform.position, m_grabCam.transform.forward);
 
-        if (Physics.Raycast(transform.position, m_grabCam.transform.forward, out hit, m_range)) 
+        if (Physics.SphereCast(rayy, 0.5f, out hit, m_range, m_pickupLayer)) 
+        {
+            PickUp pickUp = hit.transform.GetComponent<PickUp>();
+            if(pickUp != null)
+            {
+                if(m_inventory.AddToInventory(pickUp))
+                {
+                    //Debug.Log("sphere pickup");
+                    Destroy(pickUp.gameObject);
+                    return;
+                }
+            }
+        }
+
+        /*if (Physics.Raycast(rayy, out hit, m_range)) 
         {
             PickUp pickup = hit.transform.GetComponent<PickUp>();
             if(pickup != null)
@@ -45,7 +61,7 @@ public class GrabHand : MonoBehaviour {
                     Destroy(pickup.gameObject);
                 }
             }
-        }
+        }*/
     }
 
     public void LockHand(bool _lock)
@@ -59,6 +75,9 @@ public class GrabHand : MonoBehaviour {
         {
             Gizmos.color = Color.red;
             Gizmos.DrawLine(transform.position, transform.position + m_grabCam.transform.forward * m_range);
+
+            Gizmos.DrawWireSphere(transform.position, 0.5f);
+            Gizmos.DrawWireSphere(transform.position + m_grabCam.transform.forward * m_range, 0.5f);
         }
     }
 }
