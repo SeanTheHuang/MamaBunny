@@ -8,7 +8,7 @@ public class Customer : MonoBehaviour {
     public float m_travelSpeed;
     public float m_wanderSpeed;
 
-    private MeshRenderer m_meshRenderer;
+    private MeshRenderer[] m_meshRenderers;
     private List<Vector3> m_travelLocations = new List<Vector3>();
 
     private int m_travelDestinationIndex;
@@ -32,9 +32,17 @@ public class Customer : MonoBehaviour {
 
     private void Start()
     {
+        Transform model = transform.GetChild(0);
+        model.transform.position = new Vector3(model.transform.position.x, model.transform.position.y - 0.5f, model.transform.position.z);
+        m_meshRenderers = model.GetComponentsInChildren<MeshRenderer>();
+
+        foreach (MeshRenderer m in m_meshRenderers)
+        {
+            StartCoroutine(Lerp_MeshRenderer_Color(3, m.material, Color.white));
+        }
+
         m_agent = GetComponent<NavMeshAgent>();
-        m_meshRenderer = GetComponent<MeshRenderer>();
-        StartCoroutine(Lerp_MeshRenderer_Color(3, m_meshRenderer.material.color, Color.white));
+
         m_travelSpeed += Random.Range(-m_travelSpeed / 4, m_travelSpeed / 4);
         m_bunnyPens = GameObject.Find("BunnyPens");
     }
@@ -51,7 +59,7 @@ public class Customer : MonoBehaviour {
         else if(!m_leavingShop)
         {
             if (m_wanderinginStore)
-                wanderInsideNavMesh();
+                WanderInsideNavMesh();
             else
                 MoveTowardsBunnyPen();
         }
@@ -95,7 +103,7 @@ public class Customer : MonoBehaviour {
         m_targetBunnyPen = getClosestPointOnNavMesh(m_targetBunnyPen);
     }
 
-    void wanderInsideNavMesh()
+    void WanderInsideNavMesh()
     {
         m_timer += Time.deltaTime;
 
@@ -133,6 +141,7 @@ public class Customer : MonoBehaviour {
     {
         float step = m_travelSpeed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, destination, step);
+        transform.LookAt(destination);
     }
 
     // Check if the destination the customer is trying to reach has been reached
@@ -154,7 +163,10 @@ public class Customer : MonoBehaviour {
                 // Despawn if leaving and reached the final destination
                 if (m_travelDestinationIndex == 0)
                 {
-                    StartCoroutine(Lerp_MeshRenderer_Color(3, m_meshRenderer.material.color, new Color(1, 1, 1, 0)));
+                    foreach (MeshRenderer m in m_meshRenderers)
+                    {
+                        StartCoroutine(Lerp_MeshRenderer_Color(3, m.material, new Color(1, 1, 1, 0)));
+                    }
                     Invoke("DestroyGameObject", 3);
                     m_despawning = true;
                 }
@@ -165,7 +177,7 @@ public class Customer : MonoBehaviour {
     }
 
     // Fade in/out the model
-    private IEnumerator Lerp_MeshRenderer_Color(float lerpDuration, Color startLerp, Color targetLerp)
+    private IEnumerator Lerp_MeshRenderer_Color(float lerpDuration, Material material, Color targetLerp)
     {
         float lerpStart_Time = Time.time;
         float lerpProgress;
@@ -174,9 +186,9 @@ public class Customer : MonoBehaviour {
         {
             yield return new WaitForEndOfFrame();
             lerpProgress = Time.time - lerpStart_Time;
-            if (m_meshRenderer != null)
+            if (material != null)
             {
-                m_meshRenderer.material.color = Color.Lerp(startLerp, targetLerp, lerpProgress / lerpDuration);
+                material.color = Color.Lerp(material.color, targetLerp, lerpProgress / lerpDuration);
             }
             else
             {
