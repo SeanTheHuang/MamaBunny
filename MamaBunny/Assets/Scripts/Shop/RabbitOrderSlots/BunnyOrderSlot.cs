@@ -11,6 +11,8 @@ public class BunnyOrderSlot : MonoBehaviour {
     BunnyOrderController m_bunnyOrderController;
     GameObject m_customer;
 
+    public SaveInventory_Player m_playerInventory;
+
     public struct RabboidOrder
     {
         public float m_size;
@@ -197,6 +199,9 @@ public class BunnyOrderSlot : MonoBehaviour {
 
             // Add coins based on performance
             Debug.Log("New Coin Total: " + rabbitScore);
+            if (rabbitScore < 0)
+                rabbitScore = 0;
+            m_playerInventory.m_money += (uint)rabbitScore;
 
             // Tidy up
             Destroy(other.gameObject);
