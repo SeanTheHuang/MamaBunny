@@ -9,11 +9,13 @@ public class HelpMenu : MonoBehaviour {
 
     [Header("Different page sprites")]
     public Sprite m_recipeSprite;
-    public Sprite m_goalSprite;
+    public Sprite[] m_goalSprites;
     public Sprite m_controlsSprite;
     public Sprite m_itemsBackgroundSprite;
+    public Button[] m_goalPageButtons;
 
     public PlayerControl m_player;
+    int m_goalPageIndex;
 
     Inventory m_inventory;
 
@@ -80,6 +82,7 @@ public class HelpMenu : MonoBehaviour {
     public void ToRecipePage()
     {
         HideInventory();
+        GoalPageButtons(false);
         SoundEffectsPlayer.Instance.PlaySound("TurnPage");
         m_helpBookImage.sprite = m_recipeSprite;
     }
@@ -87,13 +90,16 @@ public class HelpMenu : MonoBehaviour {
     public void ToGoalPage()
     {
         HideInventory();
+        GoalPageButtons(true);
         SoundEffectsPlayer.Instance.PlaySound("TurnPage");
-        m_helpBookImage.sprite = m_goalSprite;
+        m_goalPageIndex = 0;
+        m_helpBookImage.sprite = m_goalSprites[0];
     }
 
     public void ToControlPage()
     {
         HideInventory();
+        GoalPageButtons(false);
         SoundEffectsPlayer.Instance.PlaySound("TurnPage");
         m_helpBookImage.sprite = m_controlsSprite;
     }
@@ -101,11 +107,32 @@ public class HelpMenu : MonoBehaviour {
     public void ToItemsPage()
     {
         ShowInventory();
+        GoalPageButtons(false);
         SoundEffectsPlayer.Instance.PlaySound("TurnPage");
         m_helpBookImage.sprite = m_itemsBackgroundSprite;
     }
 
-    // === FILL THESE FUNCTIONS HUGO
+    public void TurnPage(bool _right)
+    {
+        if (_right)
+            m_goalPageIndex++;
+        else
+            m_goalPageIndex--;
+
+        if (m_goalPageIndex < 0)
+            m_goalPageIndex += m_goalSprites.Length;
+        else if (m_goalPageIndex >= m_goalSprites.Length)
+            m_goalPageIndex -= m_goalSprites.Length;
+
+        m_helpBookImage.sprite = m_goalSprites[m_goalPageIndex];
+    }
+
+    void GoalPageButtons(bool _on)
+    {
+        foreach (Button b in m_goalPageButtons)
+            b.gameObject.SetActive(_on);
+    }
+
     void HideInventory()
     {
         m_inventory.HideInventory();
