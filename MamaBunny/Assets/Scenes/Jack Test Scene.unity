@@ -276,7 +276,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0e1aefd544765da4f988265de4541746, type: 2}
   m_possibleOrderHeads:
   - {fileID: 11400000, guid: 097127c06caddf74fb27522893d84f25, type: 2}
-  m_coinCounter: {fileID: 1752637662}
+  m_coinCounter: {fileID: 0}
 --- !u!4 &41120710
 Transform:
   m_ObjectHideFlags: 0
@@ -2449,6 +2449,26 @@ Prefab:
       propertyPath: m_player
       value: 
       objectReference: {fileID: 1510849136}
+    - target: {fileID: 114272467550595600, guid: b49f061c9885edb40b9ce91f0640d7b5,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114272467550595600, guid: b49f061c9885edb40b9ce91f0640d7b5,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114824760553624070, guid: b49f061c9885edb40b9ce91f0640d7b5,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114824760553624070, guid: b49f061c9885edb40b9ce91f0640d7b5,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 114926101679529560, guid: b49f061c9885edb40b9ce91f0640d7b5,
         type: 2}
       propertyPath: m_havePropertiesChanged
@@ -2478,20 +2498,6 @@ Prefab:
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114824760553624070, guid: b49f061c9885edb40b9ce91f0640d7b5,
-        type: 2}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114824760553624070, guid: b49f061c9885edb40b9ce91f0640d7b5,
-        type: 2}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1012580196685364, guid: b49f061c9885edb40b9ce91f0640d7b5, type: 2}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b49f061c9885edb40b9ce91f0640d7b5, type: 2}
@@ -3544,12 +3550,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.3
   m_Center: {x: -0.95, y: 0.28, z: -0.15}
---- !u!114 &1752637662 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114824760553624070, guid: b49f061c9885edb40b9ce91f0640d7b5,
-    type: 2}
-  m_PrefabInternal: {fileID: 1419886019}
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
 --- !u!1 &1794893719
 GameObject:
   m_ObjectHideFlags: 0
@@ -3847,6 +3847,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 114093977486696162, guid: 5043c488b6ef9c44190b56e6dba906bc,
+        type: 2}
+      propertyPath: m_bulletPrefab
+      value: 
+      objectReference: {fileID: 4785379380362302, guid: 3f0c1f1bcc18aea4cb1ef1e3d6efa7f6,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5043c488b6ef9c44190b56e6dba906bc, type: 2}
   m_IsPrefabParent: 0
