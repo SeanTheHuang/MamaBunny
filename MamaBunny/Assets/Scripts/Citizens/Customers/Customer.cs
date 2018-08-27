@@ -234,8 +234,11 @@ public class Customer : MonoBehaviour {
     // Called once the customer leaves the shop
     void LeaveTheShop()
     {
-        m_leavingShop = true;
-        --m_travelDestinationIndex;
+        if (!m_leavingShop)
+        {
+            m_leavingShop = true;
+            --m_travelDestinationIndex;
+        }
     }
 
     void DestroyGameObject()
@@ -243,9 +246,16 @@ public class Customer : MonoBehaviour {
         Destroy(gameObject);
     }
 
+    // The customer makes a demand for a new order
     void MakeACustomerDemand()
     {
         m_bunnyOrderController = GameObject.Find("BunnyOrderController").GetComponent<BunnyOrderController>();
-        m_bunnyOrderController.MakeANewOrder();
+        m_bunnyOrderController.MakeANewOrder(this.gameObject);
+    }
+
+    // The customers order is complete
+    void OrderComplete()
+    {
+        LeaveTheShop();
     }
 }
