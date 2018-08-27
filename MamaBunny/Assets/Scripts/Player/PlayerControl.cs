@@ -56,7 +56,7 @@ public class PlayerControl : MonoBehaviour {
         float stepTime = sprinting ? m_footstepDelay * m_modWhenSprinting : m_footstepDelay;
         if (Time.time - m_lastStepTime > stepTime)
         {
-            m_footstepDelay = Time.time + stepTime;
+            m_lastStepTime = Time.time + stepTime;
             m_stepAudio.pitch = Random.Range(m_pitchChange.minValue, m_pitchChange.maxValue);
             m_stepAudio.Play();
         }
