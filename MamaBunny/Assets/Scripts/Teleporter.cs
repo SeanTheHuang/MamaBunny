@@ -27,14 +27,12 @@ public class Teleporter : MonoBehaviour {
     {
         m_teleporting = true;
         SceneManager.LoadScene(m_sceneIndexToGo);
-        Debug.Log("Change scene!");
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player entered teleporter");
             m_channeling = true;
             m_currentTimer = 0;
             if (!m_spawnedPrefab)
@@ -46,7 +44,6 @@ public class Teleporter : MonoBehaviour {
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player exited teleporter");
             m_channeling = false;
             m_currentTimer = 0;
             if (m_spawnedPrefab)
