@@ -12,8 +12,6 @@ public class InventoryBlock : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     Image m_image;
     InventoryUI m_invUI;
 
-
-
     // Use this for initialization
     void Awake () {
         m_image = GetComponent<Image>();
