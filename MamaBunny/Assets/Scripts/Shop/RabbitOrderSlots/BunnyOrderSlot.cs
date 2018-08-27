@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class BunnyOrderSlot : MonoBehaviour {
 
@@ -11,9 +13,21 @@ public class BunnyOrderSlot : MonoBehaviour {
 
     public CustomerOrder m_customerOrder;
 
+    public Image m_OrderUI;
+    private TextMeshProUGUI m_OrderTextUI;
+    private Image[] m_OrderIngredientsUI = new Image[3];
+
     // Use this for initialization
     void Start () {
         m_bunnyOrderController = transform.GetComponentInParent<BunnyOrderController>();
+
+        m_OrderTextUI = m_OrderUI.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+
+        m_OrderIngredientsUI[0] = m_OrderUI.transform.GetChild(1).GetComponent<Image>();
+        m_OrderIngredientsUI[1] = m_OrderUI.transform.GetChild(2).GetComponent<Image>();
+        m_OrderIngredientsUI[2] = m_OrderUI.transform.GetChild(3).GetComponent<Image>();
+
+        ShowUI(false);
     }
 	
 	// Update is called once per frame
@@ -41,9 +55,13 @@ public class BunnyOrderSlot : MonoBehaviour {
         //}
     }
 
-    void EndOrder()
+    void ShowUI(bool isEnabled)
     {
-        m_customerOrder.m_isActive = false;
+        m_OrderUI.enabled = isEnabled;
+        m_OrderTextUI.enabled = isEnabled;
+        m_OrderIngredientsUI[0].enabled = isEnabled;
+        m_OrderIngredientsUI[1].enabled = isEnabled;
+        m_OrderIngredientsUI[2].enabled = isEnabled;
     }
 
     public bool GetIsActive()
@@ -55,6 +73,7 @@ public class BunnyOrderSlot : MonoBehaviour {
     {
         // Set Timer
         m_customerOrder.m_isActive = true;
+        ShowUI(true);
         //m_startOfOrderTime = Time.time;
         m_customerOrder.m_customer = customer;
 
@@ -201,7 +220,8 @@ public class BunnyOrderSlot : MonoBehaviour {
 
             // Tidy up
             //m_customerOrder.m_customer.GetComponent<Customer>().OrderComplete();
-
+            ShowUI(false);
+            m_customerOrder.m_isActive = false;
             m_customerOrder.ResetVariables();
             Destroy(other.gameObject);
         }
