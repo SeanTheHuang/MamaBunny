@@ -7,5 +7,5 @@ public class SaveInventory_Player : ScriptableObject
 {
     public List<RabboidModBase> m_inventory;
     public uint m_capacity;
-
+    public uint m_money;
 }
