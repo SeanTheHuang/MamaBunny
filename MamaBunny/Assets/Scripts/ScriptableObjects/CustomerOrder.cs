@@ -13,7 +13,7 @@ public class CustomerOrder : ScriptableObject
 
     public GameObject m_customer;
 
-    private void OnEnable()
+    private void OnEnablee()
     {
         ResetVariables();
     }
