@@ -7,7 +7,7 @@ public class BunnyOrderSlot : MonoBehaviour {
     public float m_orderTime; // How long the player has before the order is cancelled
 
     bool m_isActive;
-    float m_startOfOrderTime;
+    //float m_startOfOrderTime;
     BunnyOrderController m_bunnyOrderController;
     GameObject m_customer;
 
@@ -59,7 +59,7 @@ public class BunnyOrderSlot : MonoBehaviour {
     {
         // Set Timer
         m_isActive = true;
-        m_startOfOrderTime = Time.time;
+        //m_startOfOrderTime = Time.time;
         m_customer = customer;
 
         // Generate a random set of ingredients for the rabbit

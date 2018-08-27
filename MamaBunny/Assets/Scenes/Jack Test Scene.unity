@@ -485,6 +485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_orderTime: 120
+  m_playerInventory: {fileID: 11400000, guid: d12a3e6992b99a74dad465200c48d34a, type: 2}
 --- !u!1001 &126829376
 Prefab:
   m_ObjectHideFlags: 0
@@ -2867,6 +2868,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_orderTime: 120
+  m_playerInventory: {fileID: 11400000, guid: d12a3e6992b99a74dad465200c48d34a, type: 2}
 --- !u!65 &1548435736
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3047,6 +3049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_orderTime: 120
+  m_playerInventory: {fileID: 11400000, guid: d12a3e6992b99a74dad465200c48d34a, type: 2}
 --- !u!65 &1605733654
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3491,6 +3494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_orderTime: 120
+  m_playerInventory: {fileID: 11400000, guid: d12a3e6992b99a74dad465200c48d34a, type: 2}
 --- !u!65 &1744227649
 BoxCollider:
   m_ObjectHideFlags: 0
