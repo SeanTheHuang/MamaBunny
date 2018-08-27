@@ -4,15 +4,30 @@ using UnityEngine;
 
 public class BunnyOrderController : MonoBehaviour {
 
-    public List<bool> m_ordersActive;
+    private List<BunnyOrderSlot> m_orderSpots;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private void Start()
+    {
+        foreach(Transform child in transform)
+        {
+            m_orderSpots.Add(child.gameObject.GetComponent<BunnyOrderSlot>());
+        }
+    }
+
+    public void MakeANewOrder()
+    {
+        for(int i = 0; i < m_orderSpots.Count; ++i)
+        {
+            if (!m_orderSpots[i].GetIsActive())
+            {
+                StartOrder(i);
+                break;
+            }
+        }
+    }
+
+    void StartOrder(int orderNumber)
+    {
+        m_orderSpots[orderNumber].StartOrder();
+    }
 }
