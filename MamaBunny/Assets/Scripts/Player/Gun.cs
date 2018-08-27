@@ -10,11 +10,10 @@ public class Gun : MonoBehaviour
     public float m_timeBetweenShots = 0.2f;
     float lastShotTime = 0;
 
-    //public float m_damage = 10.0f;
-    public Transform m_bulletPrefab;
-    public Transform m_firePoint;
+    public float m_damage = 10.0f;
 
     public ParticleSystem m_shotPart, m_sparkPart;
+    public Transform m_firePoint;
     public LayerMask m_gunHitLayers;
     public GameObject impactParticle;
     bool m_gunLocked;
@@ -48,27 +47,24 @@ public class Gun : MonoBehaviour
 	
     void Shoot()
     {
-        //m_shotPart.Play();
+        m_shotPart.Play();
         m_sparkPart.Play();
         m_anim.Stop();
         m_anim.Play();
         m_source.PlayOneShot(m_source.clip);
-        //RaycastHit hit;
+        RaycastHit hit;
 
-        //if (Physics.Raycast(m_firePoint.position, m_fpsCam.transform.forward, out hit, m_range, m_gunHitLayers))
-        //{
-        //    GameObject go = Instantiate(impactParticle, hit.point, Quaternion.LookRotation(hit.normal));
-        //    Destroy(go, 1.0f);
+        if (Physics.Raycast(m_firePoint.position, m_fpsCam.transform.forward, out hit, m_range, m_gunHitLayers))
+        {
+            GameObject go = Instantiate(impactParticle, hit.point, Quaternion.LookRotation(hit.normal));
+            Destroy(go, 1.0f);
 
-        //    GunTarget gt = hit.transform.GetComponent<GunTarget>();
-        //    if (gt != null) 
-        //    {
-        //        gt.TakeHit(m_damage);
-        //    }
-        //}
-
-        Transform bullet = Instantiate(m_bulletPrefab, m_firePoint.position, m_firePoint.rotation);
-        bullet.GetComponent<Bullet>().Initialize(transform.forward);
+            GunTarget gt = hit.transform.GetComponent<GunTarget>();
+            if (gt != null) 
+            {
+                gt.TakeHit(m_damage);
+            }
+        }
     }
 
     private void OnDrawGizmos()
