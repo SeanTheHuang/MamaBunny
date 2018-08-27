@@ -62,6 +62,8 @@ public class Bird : GunTarget {
             {
                 m_currentVel.y += -15 * Time.deltaTime;
                 m_cc.SimpleMove(m_currentVel);
+                float newXEuler = Mathf.Lerp(transform.localEulerAngles.x, 45, Time.time * 7);
+                transform.localEulerAngles = new Vector3(newXEuler, transform.localEulerAngles.y, transform.localEulerAngles.z);
             }
             else
             {
@@ -185,6 +187,7 @@ public class Bird : GunTarget {
 
     void OnDeath()
     {
+        m_anim.SetBool("Moving", false);
         m_dead = true;
         m_currentVel *= 0.2f;
         m_currentVel.y = 0;

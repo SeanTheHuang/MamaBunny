@@ -10,7 +10,6 @@ public class ItemMovePath : MonoBehaviour {
     // ONLY PICKUPS SHOULD BE ON THE PICKUP LAYER
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("TRIGGERED OwO");
         other.GetComponent<PickUp>().OnBeingEaten(m_movePath);
     }
 

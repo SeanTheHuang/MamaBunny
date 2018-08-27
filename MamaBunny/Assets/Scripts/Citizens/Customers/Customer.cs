@@ -112,7 +112,6 @@ public class Customer : MonoBehaviour {
 
         if (m_timer >= m_randomWandertime)
         {
-            Debug.Log("new wander Place");
             m_randomWandertime = Random.Range(m_wanderTimer.minValue, m_wanderTimer.maxValue);
             Vector3 newPos = RandomNavSphere(transform.position, Random.Range(m_wanderRadius.minValue, m_wanderRadius.maxValue), -1);
             m_agent.SetDestination(newPos);
