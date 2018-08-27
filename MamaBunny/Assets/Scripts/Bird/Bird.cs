@@ -147,15 +147,20 @@ public class Bird : GunTarget {
     }
 
 
-    public void NewRunAwayTarget(Transform _target)
+    public void NewRunAwayTarget(Transform _target = null)
     {
         m_anim.SetBool("Moving", true);
         m_currentState = BirdState.SCARED;
-        m_citizen = _target;
 
-        m_moveDir = transform.position - m_citizen.position;
-        m_moveDir.y = 0;
-        m_moveDir = Quaternion.Euler(new Vector3(0, Random.Range(-90, 90), 0)) * m_moveDir.normalized;
+        if (_target)
+        {
+            m_citizen = _target;
+            m_moveDir = transform.position - m_citizen.position;
+            m_moveDir.y = 0;
+            m_moveDir = Quaternion.Euler(new Vector3(0, Random.Range(-90, 90), 0)) * m_moveDir.normalized;
+        }
+        else
+            m_moveDir = transform.forward;
 
         // Destroy after 10 seconds
         Destroy(gameObject, 10);
@@ -166,6 +171,8 @@ public class Bird : GunTarget {
         m_health -= _damage;
         if (m_health < 1)
             OnDeath();
+
+        NewRunAwayTarget();
     }
 
     void OnDeath()
@@ -173,13 +180,11 @@ public class Bird : GunTarget {
         m_dead = true;
         m_currentVel *= 0.2f;
         m_currentVel.y = 0;
-
-        Debug.Log("Wackoon Died");
     }
 
     void SpawnItemsAndDestroy()
     {
-        // TODO: Spawn
+        Instantiate(m_spawnedItemPrefab, transform.position, transform.rotation);
         Destroy(gameObject);
     }
 }
