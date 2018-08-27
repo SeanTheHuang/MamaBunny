@@ -11,7 +11,7 @@ public class Customer : MonoBehaviour {
     private MeshRenderer[] m_meshRenderers;
     private List<Vector3> m_travelLocations = new List<Vector3>();
 
-    private int m_travelDestinationIndex;
+    public int m_travelDestinationIndex;
     private bool m_travelDestinationReached, m_leavingShop, m_despawning, m_wanderinginStore;
 
     [MinMaxRange(0.0f, 20.0f)]
@@ -39,10 +39,10 @@ public class Customer : MonoBehaviour {
         model.transform.position = new Vector3(model.transform.position.x, model.transform.position.y - 0.5f, model.transform.position.z);
         m_meshRenderers = model.GetComponentsInChildren<MeshRenderer>();
 
-        foreach (MeshRenderer m in m_meshRenderers)
-        {
-            StartCoroutine(Lerp_MeshRenderer_Color(3, m.material, Color.white));
-        }
+        //foreach (MeshRenderer m in m_meshRenderers)
+        //{
+        //    StartCoroutine(Lerp_MeshRenderer_Color(3, m.material, Color.white));
+        //}
 
         m_agent = GetComponent<NavMeshAgent>();
 
@@ -165,10 +165,10 @@ public class Customer : MonoBehaviour {
                 // Despawn if leaving and reached the final destination
                 if (m_travelDestinationIndex == 0)
                 {
-                    foreach (MeshRenderer m in m_meshRenderers)
-                    {
-                        StartCoroutine(Lerp_MeshRenderer_Color(3, m.material, new Color(1, 1, 1, 0)));
-                    }
+                    //foreach (MeshRenderer m in m_meshRenderers)
+                    //{
+                    //    StartCoroutine(Lerp_MeshRenderer_Color(3, m.material, new Color(1, 1, 1, 0)));
+                    //}
                     Invoke("DestroyGameObject", 3);
                     m_despawning = true;
                 }
@@ -184,6 +184,7 @@ public class Customer : MonoBehaviour {
         float lerpStart_Time = Time.time;
         float lerpProgress;
         bool lerping = true;
+
         while (lerping)
         {
             yield return new WaitForEndOfFrame();
@@ -207,8 +208,9 @@ public class Customer : MonoBehaviour {
     }
 
     // Called when the customer reaches the counter of the shop
-    void EnteredShop()
+    public void EnteredShop()
     {
+        Debug.Log(m_travelDestinationIndex);
         Invoke("LeaveTheShop", Random.Range(m_timeInShop.minValue, m_timeInShop.maxValue));
         m_travelDestinationReached = true;
         MoveTowardsPen();

@@ -10,6 +10,12 @@ public class CustomerOrder : ScriptableObject
     public RabboidBodyPart m_mouthPart;
     public RabboidBodyPart m_backPart;
     public GameObject m_customer;
+    public bool m_isActive;
+
+    private void Awake()
+    {
+        ResetVariables();
+    }
 
     public void ResetVariables()
     {
@@ -17,5 +23,6 @@ public class CustomerOrder : ScriptableObject
         m_colour = Color.white;
         m_mouthPart = null;
         m_backPart = null;
+        m_isActive = false;
     }
 }
