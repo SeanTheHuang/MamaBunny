@@ -51,11 +51,12 @@ public class BunnyOrderSlot : MonoBehaviour {
         return m_isActive;
     }
 
-    public void GenerateOrder(RabboidColour[] possibleColours, RabboidBodyPart[] possibleBodyMods, RabboidBodyPart[] possibleHeadMods)
+    public void GenerateOrder(GameObject customer, RabboidColour[] possibleColours, RabboidBodyPart[] possibleBodyMods, RabboidBodyPart[] possibleHeadMods)
     {
         // Set Timer
         m_isActive = true;
         m_startOfOrderTime = Time.time;
+        m_customer = customer;
 
         // Generate a random set of ingredients for the rabbit
         int numOfIngredients = Random.Range(1, 4);
