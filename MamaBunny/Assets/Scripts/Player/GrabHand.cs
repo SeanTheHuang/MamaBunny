@@ -9,6 +9,7 @@ public class GrabHand : MonoBehaviour {
     public Inventory m_inventory;
     bool m_handLocked = false;
     public LayerMask m_pickupLayer;
+    public HoldHand m_holdHand;
 
 	// Use this for initialization
 	void Start ()
@@ -47,7 +48,21 @@ public class GrabHand : MonoBehaviour {
                     return;
                 }
             }
+
+            Rabboid rab = hit.transform.GetComponent<Rabboid>();
+            if (rab != null) 
+            {
+                m_holdHand.Hold(rab.transform);
+                return;
+            }    
         }
+
+        //didnt hit anything//drop holditem
+        if(m_holdHand.IsHolding())
+        {
+            m_holdHand.Drop();
+        }
+
 
         /*if (Physics.Raycast(rayy, out hit, m_range)) 
         {

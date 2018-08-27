@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_pickUpItemForm: {fileID: 4067948799487036, guid: 0640b7797fcf5724cbc4942be25951a2,
     type: 2}
-  m_itemSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_itemSprite: {fileID: 21300030, guid: 291d958d7cab4674589761c90d3067cf, type: 3}
   m_modName: Fanged
   m_bodyPrefab: {fileID: 4307710145969282, guid: 39733bde76048124cbf0043cc7931b79,
     type: 2}
