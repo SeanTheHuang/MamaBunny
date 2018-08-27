@@ -7,6 +7,7 @@ public class Gun : MonoBehaviour
     Camera m_fpsCam;
     public float m_range = 100.0f;
 
+    public float m_damage = 10;
     public float m_timeBetweenShots = 0.2f;
     float lastShotTime = 0;
     public Transform m_bulletPrefab;
@@ -56,19 +57,19 @@ public class Gun : MonoBehaviour
         Transform bullet = Instantiate(m_bulletPrefab, m_firePoint.position, m_firePoint.rotation);
         bullet.GetComponent<Bullet>().Initialize(transform.forward);
 
-        //RaycastHit hit;
+        RaycastHit hit;
 
-        //if (Physics.Raycast(m_firePoint.position, m_fpsCam.transform.forward, out hit, m_range, m_gunHitLayers))
-        //{
-        //    GameObject go = Instantiate(impactParticle, hit.point, Quaternion.LookRotation(hit.normal));
-        //    Destroy(go, 1.0f);
+        if (Physics.Raycast(m_firePoint.position, m_fpsCam.transform.forward, out hit, m_range, m_gunHitLayers))
+        {
+            GameObject go = Instantiate(impactParticle, hit.point, Quaternion.LookRotation(hit.normal));
+            Destroy(go, 1.0f);
 
-        //    GunTarget gt = hit.transform.GetComponent<GunTarget>();
-        //    if (gt != null) 
-        //    {
-        //        gt.TakeHit(m_damage);
-        //    }
-        //}
+            GunTarget gt = hit.transform.GetComponent<GunTarget>();
+            if (gt != null)
+            {
+                gt.TakeHit(m_damage);
+            }
+        }
     }
 
     private void OnDrawGizmos()
