@@ -15,6 +15,6 @@ MonoBehaviour:
     minValue: 0.98
     maxValue: 1
   m_pitch:
-    minValue: 0.9800001
-    maxValue: 1.1237614
-  m_audioClip: {fileID: 8300000, guid: 145717a8c77c75b40987eb5eb134c266, type: 3}
+    minValue: 0.76783407
+    maxValue: 0.76783407
+  m_audioClip: {fileID: 8300000, guid: 11fc0d0f9fafb384ca6503e28b015eda, type: 3}

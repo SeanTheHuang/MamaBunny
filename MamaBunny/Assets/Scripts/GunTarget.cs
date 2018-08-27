@@ -13,9 +13,10 @@ public class GunTarget : MonoBehaviour
     public float m_health = 50.0f;
     bool m_dying = false;
 
-    Vector3 m_startPos;
-    float m_shakeStartTime = 0;
-    bool m_shaking = false;
+    protected Vector3 m_startPos;
+    protected float m_shakeStartTime = 0;
+    protected bool m_shaking = false;
+    public float m_shakeAmount = 0.03f;
 
 	// Use this for initialization
 	void Start ()
@@ -63,13 +64,13 @@ public class GunTarget : MonoBehaviour
         Destroy(gameObject);
     }
 
-    IEnumerator Shake()
+    protected IEnumerator Shake()
     {
         m_shaking = true;
 
         while (Time.time - m_shakeStartTime < 0.2f)
         {
-            transform.position = m_startPos + (Random.onUnitSphere * 0.03f);
+            transform.position = m_startPos + (Random.onUnitSphere * m_shakeAmount);
             yield return null;
         }
 

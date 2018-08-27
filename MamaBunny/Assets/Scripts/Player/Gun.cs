@@ -12,18 +12,18 @@ public class Gun : MonoBehaviour
 
     public float m_damage = 10.0f;
 
-    ParticleSystem m_shotPart;
+    public ParticleSystem m_shotPart, m_sparkPart;
     public Transform m_firePoint;
-    public GameObject impactParticle;
     public LayerMask m_gunHitLayers;
-
+    public GameObject impactParticle;
     bool m_gunLocked;
     AudioSource m_source;
+    Animation m_anim;
 
 	void Start () {
         m_fpsCam = Camera.main;
-        m_shotPart = GetComponentInChildren<ParticleSystem>();
         m_source = GetComponent<AudioSource>();
+        m_anim = GetComponent<Animation>();
         m_gunLocked = false;
 	}
 
@@ -48,6 +48,9 @@ public class Gun : MonoBehaviour
     void Shoot()
     {
         m_shotPart.Play();
+        m_sparkPart.Play();
+        m_anim.Stop();
+        m_anim.Play();
         m_source.PlayOneShot(m_source.clip);
         RaycastHit hit;
 

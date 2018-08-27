@@ -17,7 +17,7 @@ public class PlayerControl : MonoBehaviour {
     public float m_maxWalkSpeed = 5;
     public float m_maxRunSpeed = 10;
     float m_timeToReachMaxSpeed = 0.1f;
-    float m_timeToWalkSpeed = 0.1f, m_timeToRunSpeed = 0.5f;
+    float m_smoothMoveTime = 0.1f;
     float m_moveSpeed;
     float m_yVel;
     public float m_jumpForce;
@@ -100,12 +100,12 @@ public class PlayerControl : MonoBehaviour {
         if(Input.GetKey(KeyCode.LeftShift))
         {
             m_moveSpeed = m_maxRunSpeed;
-            m_timeToReachMaxSpeed = m_timeToRunSpeed;
+            m_timeToReachMaxSpeed = m_smoothMoveTime;
         }
         else
         {
             m_moveSpeed = m_maxWalkSpeed;
-            m_timeToReachMaxSpeed = m_timeToWalkSpeed;
+            m_timeToReachMaxSpeed = m_smoothMoveTime;
         }
     }
 

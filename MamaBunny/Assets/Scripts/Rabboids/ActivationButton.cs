@@ -13,7 +13,7 @@ public class ActivationButton : GunTarget {
     private void Awake()
     {
         m_anim = GetComponentInParent<Animation>();
-        m_cooldown = m_anim.clip.length * 4;
+        m_cooldown = m_anim.clip.length * 1.1f;
     }
 
     public override void TakeHit(float _damage)
