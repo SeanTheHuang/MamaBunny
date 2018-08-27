@@ -54,6 +54,8 @@ public class HoldHand : MonoBehaviour {
         m_holdItem.parent = null;
         m_holdItem.position = transform.position + transform.forward;
         m_holdItem.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
+        Transform camtr = Camera.main.transform;
+        m_holdItem.GetComponent<Rigidbody>().AddForce(camtr.forward.normalized * 500 * Time.deltaTime, ForceMode.Impulse);
         m_holdItem = null;
     }
 }
