@@ -79,25 +79,41 @@ public class HelpMenu : MonoBehaviour {
 
     public void ToRecipePage()
     {
+        if (m_helpBookImage.sprite == m_recipeSprite)
+            return;
+
         HideInventory();
+        SoundEffectsPlayer.Instance.PlaySound("TurnPage");
         m_helpBookImage.sprite = m_recipeSprite;
     }
 
     public void ToGoalPage()
     {
+        if (m_helpBookImage.sprite == m_goalSprite)
+            return;
+
         HideInventory();
+        SoundEffectsPlayer.Instance.PlaySound("TurnPage");
         m_helpBookImage.sprite = m_goalSprite;
     }
 
     public void ToControlPage()
     {
+        if (m_helpBookImage.sprite == m_controlsSprite)
+            return;
+
         HideInventory();
+        SoundEffectsPlayer.Instance.PlaySound("TurnPage");
         m_helpBookImage.sprite = m_controlsSprite;
     }
 
     public void ToItemsPage()
     {
+        if (m_helpBookImage.sprite == m_itemsBackgroundSprite)
+            return;
+
         ShowInventory();
+        SoundEffectsPlayer.Instance.PlaySound("TurnPage");
         m_helpBookImage.sprite = m_itemsBackgroundSprite;
     }
 
