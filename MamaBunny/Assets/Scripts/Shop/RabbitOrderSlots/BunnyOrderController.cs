@@ -16,20 +16,20 @@ public class BunnyOrderController : MonoBehaviour {
         Debug.Log(m_orderSpots.Length);
     }
 
-    public void MakeANewOrder()
+    public void MakeANewOrder(GameObject customer)
     {
         for(int i = 0; i < m_orderSpots.Length; ++i)
         {
             if (!m_orderSpots[i].GetIsActive())
             {
-                StartOrder(i);
+                StartOrder(i, customer);
                 break;
             }
         }
     }
 
-    void StartOrder(int orderNumber)
+    void StartOrder(int orderNumber, GameObject customer)
     {
-        m_orderSpots[orderNumber].GenerateOrder(m_possibleOrderColours, m_possibleOrderBodies, m_possibleOrderHeads);
+        m_orderSpots[orderNumber].GenerateOrder(customer, m_possibleOrderColours, m_possibleOrderBodies, m_possibleOrderHeads);
     }
 }
