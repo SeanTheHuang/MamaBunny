@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class BunnyOrderSlot : MonoBehaviour {
 
-    public float m_orderTime; // How long the player has before the order is cancelled
-
-    bool m_isActive;
     //float m_startOfOrderTime;
     BunnyOrderController m_bunnyOrderController;
 
@@ -34,20 +31,30 @@ public class BunnyOrderSlot : MonoBehaviour {
     //    }
     //}
 
+    private void Awake()
+    {
+        //if(m_customerOrder.m_isActive)
+        //{
+        //    GameObject customer = Instantiate(m_customerOrder.m_customer, transform.position, transform.rotation);
+        //    customer.GetComponent<Customer>().EnteredShop();
+        //    customer.GetComponent<Customer>().m_travelDestinationIndex = 3;
+        //}
+    }
+
     void EndOrder()
     {
-        m_isActive = false;
+        m_customerOrder.m_isActive = false;
     }
 
     public bool GetIsActive()
     {
-        return m_isActive;
+        return m_customerOrder.m_isActive;
     }
 
     public void GenerateOrder(GameObject customer, RabboidColour[] possibleColours, RabboidBodyPart[] possibleBodyMods, RabboidBodyPart[] possibleHeadMods)
     {
         // Set Timer
-        m_isActive = true;
+        m_customerOrder.m_isActive = true;
         //m_startOfOrderTime = Time.time;
         m_customerOrder.m_customer = customer;
 
@@ -100,7 +107,7 @@ public class BunnyOrderSlot : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (m_isActive)
+        if (m_customerOrder.m_isActive)
         {
             RabboidResult RabboidStats = other.transform.parent.GetComponent<Rabboid>().RabboidStats;
             // Check the order
@@ -193,11 +200,10 @@ public class BunnyOrderSlot : MonoBehaviour {
             m_playerInventory.m_money += (uint)rabbitScore;
 
             // Tidy up
-            if (m_customerOrder.m_customer != null)
-                m_customerOrder.m_customer.GetComponent<Customer>().OrderComplete();
+            m_customerOrder.m_customer.GetComponent<Customer>().OrderComplete();
+
             m_customerOrder.ResetVariables();
             Destroy(other.gameObject);
-            m_isActive = false;
         }
     }
 }

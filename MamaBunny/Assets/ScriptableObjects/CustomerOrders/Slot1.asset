@@ -15,3 +15,5 @@ MonoBehaviour:
   m_colour: {r: 1, g: 1, b: 1, a: 1}
   m_mouthPart: {fileID: 0}
   m_backPart: {fileID: 0}
+  m_customer: {fileID: 1588253943932980, guid: c228d7e2d9c8df64584c03175ecb0a81, type: 2}
+  m_isActive: 1
