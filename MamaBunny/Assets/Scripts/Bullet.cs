@@ -16,9 +16,9 @@ public class Bullet : MonoBehaviour {
 
     private void OnTriggerEnter(Collider c)
     {
-        GunTarget gt = c.transform.GetComponent<GunTarget>();
-        if (gt)
-            gt.TakeHit(m_damage);
+        //GunTarget gt = c.transform.GetComponent<GunTarget>();
+        //if (gt)
+        //    gt.TakeHit(m_damage);
 
         Destroy(gameObject);
     }
