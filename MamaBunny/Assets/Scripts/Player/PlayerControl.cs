@@ -23,7 +23,7 @@ public class PlayerControl : MonoBehaviour {
     public float m_jumpForce;
     Vector3 m_currentVel, m_refVel;
 
-    bool m_playerlocked = false;
+    bool m_playerlocked = false, m_canRun = true, m_canJump = true;
     // Use this for initialization
     void Start()
     {
@@ -97,7 +97,7 @@ public class PlayerControl : MonoBehaviour {
 
     void Running()
     {
-        if(Input.GetKey(KeyCode.LeftShift))
+        if(m_canRun && Input.GetKey(KeyCode.LeftShift))
         {
             m_moveSpeed = m_maxRunSpeed;
             m_timeToReachMaxSpeed = m_smoothMoveTime;
@@ -109,10 +109,9 @@ public class PlayerControl : MonoBehaviour {
         }
     }
 
-    float  Jumping()
+    float Jumping()
     {
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (m_canJump && Input.GetKeyDown(KeyCode.Space))
         {
            // Debug.Log("jump");
             return m_jumpForce;
@@ -126,5 +125,17 @@ public class PlayerControl : MonoBehaviour {
         GetComponent<PlayerCameraController>().m_cameraLocked = !_lock;
         GetComponentInChildren<Gun>().LockGun(_lock);
         GetComponentInChildren<GrabHand>().LockHand(_lock);
+    }
+
+    public void AimMode()
+    {
+        m_canRun = m_canJump = false;
+        m_moveSpeed *= 0.5f;
+    }
+
+    public void NormalMode()
+    {
+        m_canRun = m_canJump = true;
+        m_moveSpeed *= 2;
     }
 }
