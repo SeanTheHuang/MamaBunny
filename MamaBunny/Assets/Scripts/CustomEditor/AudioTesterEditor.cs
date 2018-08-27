@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
+
 [CustomEditor(typeof(AudioTester), true)]
 public class AudioTesterEditor : Editor
 {
@@ -35,3 +37,5 @@ public class AudioTesterEditor : Editor
         EditorGUI.EndDisabledGroup();
     }
 }
+
+#endif
