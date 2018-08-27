@@ -170,7 +170,7 @@ MonoBehaviour:
     minValue: 15.2
     maxValue: 20
   m_spawnRadiusOffset: 4
-  m_customersCount: 4
+  m_customersCount: 8
 --- !u!114 &23646584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,7 +253,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &41120709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,6 +265,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0393415322d165d4ea4ce2d41364fcb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_possibleOrderColours:
+  - {fileID: 11400000, guid: d33f89a861c90d747bbffef2e7dbeb87, type: 2}
+  - {fileID: 11400000, guid: e54220f47846aff459a97726e3fb130b, type: 2}
+  - {fileID: 11400000, guid: 46d74f4d5dc17c24bb1d787e729ee9e6, type: 2}
+  - {fileID: 11400000, guid: 6a79b9f5f706d0244ac9c29f37ca208a, type: 2}
+  - {fileID: 11400000, guid: 07cabd2d8056eec49b31bbe23725b9f4, type: 2}
+  - {fileID: 11400000, guid: 46f1c9d79cfd1c94589d3627e5b1dd2c, type: 2}
+  m_possibleOrderBodies:
+  - {fileID: 11400000, guid: 0e1aefd544765da4f988265de4541746, type: 2}
+  m_possibleOrderHeads:
+  - {fileID: 11400000, guid: 097127c06caddf74fb27522893d84f25, type: 2}
 --- !u!4 &41120710
 Transform:
   m_ObjectHideFlags: 0
@@ -272,13 +283,13 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 41120708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 3.19, y: 0.78, z: 4.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 101266189}
-  - {fileID: 1744227647}
-  - {fileID: 1548435734}
   - {fileID: 1605733652}
+  - {fileID: 1548435734}
+  - {fileID: 1744227647}
+  - {fileID: 101266189}
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -375,8 +386,9 @@ GameObject:
   m_Component:
   - component: {fileID: 101266189}
   - component: {fileID: 101266191}
-  m_Layer: 0
-  m_Name: OrderSlot1
+  - component: {fileID: 101266190}
+  m_Layer: 16
+  m_Name: OrderSlot4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -389,12 +401,24 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 101266188}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1.623}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 41120710}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &101266190
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 101266188}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 1, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &101266191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2756,8 +2780,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1548435734}
   - component: {fileID: 1548435735}
-  m_Layer: 0
-  m_Name: OrderSlot3
+  - component: {fileID: 1548435736}
+  m_Layer: 16
+  m_Name: OrderSlot2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2770,11 +2795,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1548435733}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.377}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 41120710}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1548435735
 MonoBehaviour:
@@ -2788,6 +2813,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_orderTime: 120
+--- !u!65 &1548435736
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1548435733}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 1, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1573665573 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: cb51fed2650dc5841bd3851c0e419732, type: 3}
@@ -2881,8 +2918,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1605733652}
   - component: {fileID: 1605733653}
-  m_Layer: 0
-  m_Name: OrderSlot4
+  - component: {fileID: 1605733654}
+  m_Layer: 16
+  m_Name: OrderSlot1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2895,11 +2933,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1605733651}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1.377}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 41120710}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1605733653
 MonoBehaviour:
@@ -2913,6 +2951,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_orderTime: 120
+--- !u!65 &1605733654
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1605733651}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 1, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1623953333
 GameObject:
   m_ObjectHideFlags: 0
@@ -3292,8 +3342,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1744227647}
   - component: {fileID: 1744227648}
-  m_Layer: 0
-  m_Name: OrderSlot2
+  - component: {fileID: 1744227649}
+  m_Layer: 16
+  m_Name: OrderSlot3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3306,11 +3357,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1744227646}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.623}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 41120710}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1744227648
 MonoBehaviour:
@@ -3324,6 +3375,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_orderTime: 120
+--- !u!65 &1744227649
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1744227646}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 1, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1748857819 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1304404134308566, guid: 0fd0c8ee9a73688409ec0c659ddd640e,

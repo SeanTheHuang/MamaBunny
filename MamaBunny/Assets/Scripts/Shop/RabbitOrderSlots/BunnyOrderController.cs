@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class BunnyOrderController : MonoBehaviour {
 
-    private List<BunnyOrderSlot> m_orderSpots;
+    private BunnyOrderSlot[] m_orderSpots;
+
+    public RabboidColour[] m_possibleOrderColours;
+    public RabboidBodyPart[] m_possibleOrderBodies;
+    public RabboidBodyPart[] m_possibleOrderHeads;
 
     private void Start()
     {
-        foreach(Transform child in transform)
-        {
-            m_orderSpots.Add(child.gameObject.GetComponent<BunnyOrderSlot>());
-        }
+        m_orderSpots = GetComponentsInChildren<BunnyOrderSlot>();
+        Debug.Log(m_orderSpots.Length);
     }
 
     public void MakeANewOrder()
     {
-        for(int i = 0; i < m_orderSpots.Count; ++i)
+        for(int i = 0; i < m_orderSpots.Length; ++i)
         {
             if (!m_orderSpots[i].GetIsActive())
             {
@@ -28,6 +30,6 @@ public class BunnyOrderController : MonoBehaviour {
 
     void StartOrder(int orderNumber)
     {
-        m_orderSpots[orderNumber].StartOrder();
+        m_orderSpots[orderNumber].GenerateOrder(m_possibleOrderColours, m_possibleOrderBodies, m_possibleOrderHeads);
     }
 }
