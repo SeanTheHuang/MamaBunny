@@ -2489,25 +2489,9 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114824760553624070, guid: b49f061c9885edb40b9ce91f0640d7b5,
-        type: 2}
-      propertyPath: m_text
-      value: 'Coins: 0'
-      objectReference: {fileID: 0}
-    - target: {fileID: 114824760553624070, guid: b49f061c9885edb40b9ce91f0640d7b5,
-        type: 2}
-      propertyPath: m_textInfo.characterCount
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 114824760553624070, guid: b49f061c9885edb40b9ce91f0640d7b5,
-        type: 2}
-      propertyPath: m_textInfo.wordCount
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114824760553624070, guid: b49f061c9885edb40b9ce91f0640d7b5,
-        type: 2}
-      propertyPath: m_textInfo.spaceCount
-      value: 1
+    - target: {fileID: 1012580196685364, guid: b49f061c9885edb40b9ce91f0640d7b5, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b49f061c9885edb40b9ce91f0640d7b5, type: 2}
