@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class BunnyOrderController : MonoBehaviour {
 
@@ -10,10 +11,11 @@ public class BunnyOrderController : MonoBehaviour {
     public RabboidBodyPart[] m_possibleOrderBodies;
     public RabboidBodyPart[] m_possibleOrderHeads;
 
+    public TextMeshProUGUI m_coinCounter;
+
     private void Start()
     {
         m_orderSpots = GetComponentsInChildren<BunnyOrderSlot>();
-        Debug.Log(m_orderSpots.Length);
     }
 
     public void MakeANewOrder(GameObject customer)
@@ -31,5 +33,10 @@ public class BunnyOrderController : MonoBehaviour {
     void StartOrder(int orderNumber, GameObject customer)
     {
         m_orderSpots[orderNumber].GenerateOrder(customer, m_possibleOrderColours, m_possibleOrderBodies, m_possibleOrderHeads);
+    }
+
+    public void UpdateCoinCounter(uint coinCount)
+    {
+        m_coinCounter.text = "Coins: " + coinCount;
     }
 }

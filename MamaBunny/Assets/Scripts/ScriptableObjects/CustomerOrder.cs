@@ -9,10 +9,11 @@ public class CustomerOrder : ScriptableObject
     public Color m_colour;
     public RabboidBodyPart m_mouthPart;
     public RabboidBodyPart m_backPart;
-    public GameObject m_customer;
     public bool m_isActive;
 
-    private void Awake()
+    public GameObject m_customer;
+
+    private void OnEnable()
     {
         ResetVariables();
     }

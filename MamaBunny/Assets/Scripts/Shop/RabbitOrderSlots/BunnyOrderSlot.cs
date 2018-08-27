@@ -112,8 +112,8 @@ public class BunnyOrderSlot : MonoBehaviour {
             RabboidResult RabboidStats = other.transform.parent.GetComponent<Rabboid>().RabboidStats;
             // Check the order
             int rabbitScore = 20; // Score is given based on how close the rabbit is to what the order wanted.
-            int negativePointModifier = 5;
-            int positivePointModifier = 10;
+            int negativePointModifier = 1;
+            int positivePointModifier = 2;
 
             // Check Size
             if (m_customerOrder.m_size == 0)
@@ -194,13 +194,13 @@ public class BunnyOrderSlot : MonoBehaviour {
             }
 
             // Add coins based on performance
-            Debug.Log("New Coin Total: " + rabbitScore);
             if (rabbitScore < 0)
                 rabbitScore = 0;
             m_playerInventory.m_money += (uint)rabbitScore;
+            m_bunnyOrderController.UpdateCoinCounter(m_playerInventory.m_money);
 
             // Tidy up
-            m_customerOrder.m_customer.GetComponent<Customer>().OrderComplete();
+            //m_customerOrder.m_customer.GetComponent<Customer>().OrderComplete();
 
             m_customerOrder.ResetVariables();
             Destroy(other.gameObject);
