@@ -29,6 +29,7 @@ public abstract class PickUp : MonoBehaviour {
         if (m_beingEaten)
             return;
 
+        SoundEffectsPlayer.Instance.PlaySound("Succ");
         m_beingEaten = true;
         Rigidbody rb = GetComponent<Rigidbody>();
         if (rb) rb.isKinematic = true;

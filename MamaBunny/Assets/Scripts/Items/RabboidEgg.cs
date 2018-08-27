@@ -71,6 +71,7 @@ public class RabboidEgg : MonoBehaviour {
         // Wait and then spawn rabboid
         yield return new WaitForSeconds(Random.Range(2.0f, 3.0f));
         m_mama.SpawnRabboid(transform.position, m_results);
+        SoundEffectsPlayer.Instance.PlaySound("SpawnBunny");
         Destroy(gameObject);
 
         yield return null;

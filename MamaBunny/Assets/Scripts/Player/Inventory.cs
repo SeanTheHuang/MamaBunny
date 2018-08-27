@@ -45,6 +45,8 @@ public class Inventory : MonoBehaviour {
 
     public void TakeFromInventory(int _index)
     {
+        SoundEffectsPlayer.Instance.PlaySound("Drop");
+
         //return the object for the player to spawn
         Transform camtr = Camera.main.transform;
 

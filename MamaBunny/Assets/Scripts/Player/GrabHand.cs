@@ -44,6 +44,7 @@ public class GrabHand : MonoBehaviour {
                 if(m_inventory.AddToInventory(pickUp))
                 {
                     //Debug.Log("sphere pickup");
+                    SoundEffectsPlayer.Instance.PlaySound("PickUp");
                     Destroy(pickUp.gameObject);
                     return;
                 }
