@@ -14,8 +14,8 @@ public class Bird : GunTarget {
     public float m_walkSpeed = 10;
     public float m_flySpeed = 20;
     public float m_targetYHeightOffset = 15;
+    float m_targetYHeight;
     public float m_distTryGetAway = 10;
-    public float m_distTooClose = 5;
 
     [Header("Time stuff")]
     [MinMaxRange(0.05f, 1f)]
@@ -42,6 +42,7 @@ public class Bird : GunTarget {
 
     private void Start()
     {
+        m_targetYHeight = m_targetYHeightOffset + transform.position.y;
         m_stateChangeTime = Time.time + Random.Range(m_pauseDuration.minValue, m_pauseDuration.maxValue);
         m_currentState = BirdState.IDLE;
     }
@@ -94,7 +95,7 @@ public class Bird : GunTarget {
             m_currentState = BirdState.WALK;
             m_moveDir = Quaternion.Euler(0, Random.Range(45, 315), 0) * transform.forward;
             m_stateChangeTime = Time.time + Random.Range(m_walkDuration.minValue, m_walkDuration.maxValue);
-            m_anim.SetBool("false", false);
+            m_anim.SetBool("Moving", true);
         }
     }
 
@@ -120,7 +121,7 @@ public class Bird : GunTarget {
         newMove.y = 0;
         newMove = Vector3.Lerp(newMove, m_moveDir * m_walkSpeed, Time.deltaTime * 15);
         // Rotation
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(newMove.normalized), 25 * Time.deltaTime);
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(newMove.normalized, transform.up), 25 * Time.deltaTime);
         newMove.y = m_currentVel.y;
 
         // Movement
@@ -129,9 +130,37 @@ public class Bird : GunTarget {
 
     void ScaredLogic()
     {
-        
+        Vector3 newMove = m_currentVel;
+        newMove.y = 0;
+        newMove = Vector3.Lerp(newMove, m_moveDir * m_walkSpeed, Time.deltaTime * 20);
+        // Rotation
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(newMove.normalized, transform.up), 20 * Time.deltaTime);
+        newMove.y = m_currentVel.y;
+
+        // Fly 
+        if (transform.position.y < m_targetYHeight)
+            newMove.y += 2 * Time.deltaTime;
+        else
+            newMove.y = 0;
+
+        // Movement
+        m_currentVel = newMove;
     }
-    
+
+
+    public void NewRunAwayTarget(Transform _target)
+    {
+        m_anim.SetBool("Moving", true);
+        m_currentState = BirdState.SCARED;
+        m_citizen = _target;
+
+        m_moveDir = transform.position - m_citizen.position;
+        m_moveDir.y = 0;
+        m_moveDir = Quaternion.Euler(new Vector3(0, Random.Range(-90, 90), 0)) * m_moveDir.normalized;
+
+        // Destroy after 10 seconds
+        Destroy(gameObject, 10);
+    }
 
     public override void TakeHit(float _damage)
     {
