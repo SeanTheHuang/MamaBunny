@@ -34,10 +34,15 @@ public class Bird : GunTarget {
 
     float m_stateChangeTime;
 
+    public List<AudioClip> m_audioClips;
+    float m_lastPlayedTime, m_timeBetweenSounds;
+    AudioSource m_audioSource;
+
     private void Awake()
     {
         m_cc = GetComponent<CharacterController>();
         m_anim = GetComponentInChildren<Animator>();
+        m_audioSource = GetComponent<AudioSource>(); 
     }
 
     private void Start()
@@ -45,6 +50,7 @@ public class Bird : GunTarget {
         m_targetYHeight = m_targetYHeightOffset + transform.position.y;
         m_stateChangeTime = Time.time + Random.Range(m_pauseDuration.minValue, m_pauseDuration.maxValue);
         m_currentState = BirdState.IDLE;
+        m_lastPlayedTime = 0; m_timeBetweenSounds = 1.0f;
     }
 
     private void Update()
@@ -79,6 +85,8 @@ public class Bird : GunTarget {
         }
 
         m_cc.Move(m_currentVel * Time.deltaTime);
+
+        RandomSounds();
     }
 
     void IdleLogic()
@@ -186,5 +194,28 @@ public class Bird : GunTarget {
     {
         Instantiate(m_spawnedItemPrefab, transform.position, transform.rotation);
         Destroy(gameObject);
+    }
+
+    void RandomSounds()
+    {
+        if(Time.time - m_lastPlayedTime > m_timeBetweenSounds)
+        {
+            //time for new sound
+            AudioClip ac = m_audioClips[Random.Range(0, m_audioClips.Count)];
+            if (ac != m_audioSource.clip)
+            {
+                m_audioSource.clip = ac;
+                m_audioSource.Play();
+
+                m_lastPlayedTime = Time.time;
+                m_timeBetweenSounds = ac.length + Random.Range(3.0f, 6.5f);
+            }
+            else
+            {
+                m_lastPlayedTime = Time.time;
+                m_timeBetweenSounds = Random.Range(0.0f, 2.9f);
+            }
+        }
+        //do nothing
     }
 }
