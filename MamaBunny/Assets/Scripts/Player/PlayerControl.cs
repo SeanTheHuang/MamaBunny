@@ -5,6 +5,14 @@ using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour {
 
+    [Header("Footstep Stuff")]
+    public float m_footstepDelay = 0.3f;
+    [MinMaxRange(0.5f, 1.5f)]
+    public RangedFloat m_pitchChange;
+    public float m_modWhenSprinting = 0.5f;
+    float m_lastStepTime;
+    AudioSource m_stepAudio;
+
     CharacterController m_chara;
     public float m_maxWalkSpeed = 5;
     public float m_maxRunSpeed = 10;
@@ -15,21 +23,44 @@ public class PlayerControl : MonoBehaviour {
     public float m_jumpForce;
     Vector3 m_currentVel, m_refVel;
 
-     bool m_playerlocked = false;
-	// Use this for initialization
-	void Start ()
+    bool m_playerlocked = false;
+    // Use this for initialization
+    void Start()
     {
         m_chara = GetComponent<CharacterController>();
+        m_stepAudio = GetComponent<AudioSource>();
         m_currentVel = Vector3.zero;
         m_yVel = 0;
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    }
+
+    // Update is called once per frame
+    void Update()
     {
         Running();
         MoveLogic();
-	}
+        SoundLogic();
+    }
+
+    void SoundLogic()
+    {
+        if (!m_chara.isGrounded)
+            return;
+
+        float vAxis = Input.GetAxisRaw("Vertical");
+        float hAxis = Input.GetAxisRaw("Horizontal");
+        bool sprinting = Input.GetKeyDown(KeyCode.LeftShift);
+
+        if (Mathf.Abs(vAxis) < 0.1f && Mathf.Abs(hAxis) < 0.1f) // Not moving
+            return;
+
+        float stepTime = sprinting ? m_footstepDelay * m_modWhenSprinting : m_footstepDelay;
+        if (Time.time - m_lastStepTime > stepTime)
+        {
+            m_lastStepTime = Time.time + stepTime;
+            m_stepAudio.pitch = Random.Range(m_pitchChange.minValue, m_pitchChange.maxValue);
+            m_stepAudio.Play();
+        }
+    }
 
     void MoveLogic()
     {

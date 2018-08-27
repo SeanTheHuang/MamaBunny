@@ -18,10 +18,12 @@ public class Gun : MonoBehaviour
     public LayerMask m_gunHitLayers;
 
     bool m_gunLocked;
+    AudioSource m_source;
 
 	void Start () {
         m_fpsCam = Camera.main;
         m_shotPart = GetComponentInChildren<ParticleSystem>();
+        m_source = GetComponent<AudioSource>();
         m_gunLocked = false;
 	}
 
@@ -46,6 +48,7 @@ public class Gun : MonoBehaviour
     void Shoot()
     {
         m_shotPart.Play();
+        m_source.PlayOneShot(m_source.clip);
         RaycastHit hit;
 
         if (Physics.Raycast(m_firePoint.position, m_fpsCam.transform.forward, out hit, m_range, m_gunHitLayers))

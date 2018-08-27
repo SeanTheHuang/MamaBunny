@@ -45,9 +45,16 @@ public class Inventory : MonoBehaviour {
 
     public void TakeFromInventory(int _index)
     {
+        SoundEffectsPlayer.Instance.PlaySound("Drop");
+
         //return the object for the player to spawn
-        Instantiate(m_pickUpList[_index].m_pickUpItemForm, transform.position + transform.forward, Quaternion.identity);
+        Transform camtr = Camera.main.transform;
+
+        Transform tgo = Instantiate(m_pickUpList[_index].m_pickUpItemForm, transform.position + transform.forward, Quaternion.identity);
+        tgo.GetComponent<Rigidbody>().AddForce(camtr.forward.normalized * 500 * Time.deltaTime, ForceMode.Impulse);
+
         m_pickUpList.RemoveAt(_index);
+
         InventoryUI.Instance.Display(false, m_pickUpList);
         InventoryUI.Instance.m_linkedInventory = transform.GetComponent<Inventory>();
         InventoryUI.Instance.Display(true, m_pickUpList);
@@ -99,7 +106,6 @@ public class Inventory : MonoBehaviour {
         {
             InventoryUI.Instance.m_linkedInventory = transform.GetComponent<Inventory>();
             InventoryUI.Instance.Display(false, null);
-
         }
         else
         {
