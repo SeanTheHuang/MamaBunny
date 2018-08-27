@@ -49,7 +49,6 @@ public class Bird : GunTarget {
 
     private void Update()
     {
-        Debug.Log(m_cc.isGrounded);
         if (m_dead)
         {
             // Only fall
