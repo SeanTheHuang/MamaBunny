@@ -253,7 +253,7 @@ public class Customer : MonoBehaviour {
     }
 
     // The customers order is complete
-    void OrderComplete()
+    public void OrderComplete()
     {
         LeaveTheShop();
     }

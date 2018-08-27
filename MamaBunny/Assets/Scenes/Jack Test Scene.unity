@@ -486,6 +486,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_orderTime: 120
   m_playerInventory: {fileID: 11400000, guid: d12a3e6992b99a74dad465200c48d34a, type: 2}
+  m_customerOrder: {fileID: 11400000, guid: 8f89ed645d0024042987a4a8c1a85563, type: 2}
 --- !u!1001 &126829376
 Prefab:
   m_ObjectHideFlags: 0
@@ -2869,6 +2870,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_orderTime: 120
   m_playerInventory: {fileID: 11400000, guid: d12a3e6992b99a74dad465200c48d34a, type: 2}
+  m_customerOrder: {fileID: 11400000, guid: 04c7c3d2df405b145906f7d8104e502a, type: 2}
 --- !u!65 &1548435736
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3050,6 +3052,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_orderTime: 120
   m_playerInventory: {fileID: 11400000, guid: d12a3e6992b99a74dad465200c48d34a, type: 2}
+  m_customerOrder: {fileID: 11400000, guid: 6b35df10c7f75724db75c3ca6034d07c, type: 2}
 --- !u!65 &1605733654
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3495,6 +3498,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_orderTime: 120
   m_playerInventory: {fileID: 11400000, guid: d12a3e6992b99a74dad465200c48d34a, type: 2}
+  m_customerOrder: {fileID: 11400000, guid: dd7f5e0ca1281dd47a67b4c14f0487c8, type: 2}
 --- !u!65 &1744227649
 BoxCollider:
   m_ObjectHideFlags: 0

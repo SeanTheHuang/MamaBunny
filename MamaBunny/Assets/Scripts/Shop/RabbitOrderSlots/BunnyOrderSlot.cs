@@ -9,25 +9,14 @@ public class BunnyOrderSlot : MonoBehaviour {
     bool m_isActive;
     //float m_startOfOrderTime;
     BunnyOrderController m_bunnyOrderController;
-    GameObject m_customer;
 
     public SaveInventory_Player m_playerInventory;
 
-    public struct RabboidOrder
-    {
-        public float m_size;
-        public Color m_colour;
-        public RabboidBodyPart m_mouthPart;
-        public RabboidBodyPart m_backPart;
-    }
-
-    RabboidOrder m_rabboidOrder = new RabboidOrder();
+    public CustomerOrder m_customerOrder;
 
     // Use this for initialization
     void Start () {
         m_bunnyOrderController = transform.GetComponentInParent<BunnyOrderController>();
-        m_rabboidOrder.m_colour = Color.white;
-
     }
 	
 	// Update is called once per frame
@@ -60,7 +49,7 @@ public class BunnyOrderSlot : MonoBehaviour {
         // Set Timer
         m_isActive = true;
         //m_startOfOrderTime = Time.time;
-        m_customer = customer;
+        m_customerOrder.m_customer = customer;
 
         // Generate a random set of ingredients for the rabbit
         int numOfIngredients = Random.Range(1, 4);
@@ -76,30 +65,30 @@ public class BunnyOrderSlot : MonoBehaviour {
                 {
                     if (Random.Range(0, 2) == 0)
                     {
-                        m_rabboidOrder.m_size = RabboidCalculator.LARGE_SIZE;
+                        m_customerOrder.m_size = RabboidCalculator.LARGE_SIZE;
                     }
                     else
                     {
-                        m_rabboidOrder.m_size = RabboidCalculator.SMALL_SIZE;
+                        m_customerOrder.m_size = RabboidCalculator.SMALL_SIZE;
                     }
                 }
                 // Chose a colour
                 else if (ingredientType == 1)
                 {
                     int randomColor = Random.Range(0, possibleColours.Length);
-                    m_rabboidOrder.m_colour = possibleColours[randomColor].m_color;
+                    m_customerOrder.m_colour = possibleColours[randomColor].m_color;
                 }
                 // Chose a mouthpart
                 else if (ingredientType == 2)
                 {
                     int randomMod = Random.Range(0, possibleHeadMods.Length);
-                    m_rabboidOrder.m_mouthPart = possibleHeadMods[randomMod];
+                    m_customerOrder.m_mouthPart = possibleHeadMods[randomMod];
                 }
                 // Chose a backpart
                 else if (ingredientType == 3)
                 {
                     int randomMod = Random.Range(0, possibleBodyMods.Length);
-                    m_rabboidOrder.m_backPart = possibleBodyMods[randomMod];
+                    m_customerOrder.m_backPart = possibleBodyMods[randomMod];
                 }
             }
             else
@@ -120,7 +109,7 @@ public class BunnyOrderSlot : MonoBehaviour {
             int positivePointModifier = 10;
 
             // Check Size
-            if (m_rabboidOrder.m_size == 0)
+            if (m_customerOrder.m_size == 0)
             {
                 if (RabboidStats.m_size <= RabboidCalculator.SMALL_SIZE || RabboidStats.m_size >= RabboidCalculator.LARGE_SIZE)
                 {
@@ -131,7 +120,7 @@ public class BunnyOrderSlot : MonoBehaviour {
                     rabbitScore += positivePointModifier;
                 }
             }
-            if(m_rabboidOrder.m_size == RabboidCalculator.SMALL_SIZE)
+            if(m_customerOrder.m_size == RabboidCalculator.SMALL_SIZE)
             {
                 if(RabboidStats.m_size <= RabboidCalculator.SMALL_SIZE)
                 {
@@ -146,7 +135,7 @@ public class BunnyOrderSlot : MonoBehaviour {
                     rabbitScore -= negativePointModifier;
                 }
             }
-            if (m_rabboidOrder.m_size == RabboidCalculator.LARGE_SIZE)
+            if (m_customerOrder.m_size == RabboidCalculator.LARGE_SIZE)
             {
                 if (RabboidStats.m_size >= RabboidCalculator.LARGE_SIZE)
                 {
@@ -166,7 +155,7 @@ public class BunnyOrderSlot : MonoBehaviour {
             Color resultsColor = Color.white;
             if (RabboidStats.m_resultColour != null)
                 resultsColor = RabboidStats.m_resultColour.m_color;
-            if(resultsColor == m_rabboidOrder.m_colour)
+            if(resultsColor == m_customerOrder.m_colour)
             {
                 rabbitScore += positivePointModifier;
             }
@@ -176,8 +165,8 @@ public class BunnyOrderSlot : MonoBehaviour {
             }
 
             // Check Body
-            if((RabboidStats.m_backPart == null && m_rabboidOrder.m_backPart == null)
-            || (RabboidStats.m_backPart != null && m_rabboidOrder.m_backPart != null))
+            if((RabboidStats.m_backPart == null && m_customerOrder.m_backPart == null)
+            || (RabboidStats.m_backPart != null && m_customerOrder.m_backPart != null))
             {
                 rabbitScore += positivePointModifier;
             }
@@ -187,8 +176,8 @@ public class BunnyOrderSlot : MonoBehaviour {
             }
 
             // Check Head
-            if((RabboidStats.m_mouthPart == null && m_rabboidOrder.m_mouthPart == null)
-            || (RabboidStats.m_mouthPart != null && m_rabboidOrder.m_mouthPart != null))
+            if((RabboidStats.m_mouthPart == null && m_customerOrder.m_mouthPart == null)
+            || (RabboidStats.m_mouthPart != null && m_customerOrder.m_mouthPart != null))
             {
                 rabbitScore += positivePointModifier;
             }
@@ -204,6 +193,9 @@ public class BunnyOrderSlot : MonoBehaviour {
             m_playerInventory.m_money += (uint)rabbitScore;
 
             // Tidy up
+            if (m_customerOrder.m_customer != null)
+                m_customerOrder.m_customer.GetComponent<Customer>().OrderComplete();
+            m_customerOrder.ResetVariables();
             Destroy(other.gameObject);
             m_isActive = false;
         }
