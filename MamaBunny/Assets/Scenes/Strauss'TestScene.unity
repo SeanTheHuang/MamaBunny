@@ -3007,6 +3007,41 @@ Prefab:
       propertyPath: m_RootOrder
       value: 31
       objectReference: {fileID: 0}
+    - target: {fileID: 198394352554411516, guid: 5043c488b6ef9c44190b56e6dba906bc,
+        type: 2}
+      propertyPath: TrailModule.lifetime.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198394352554411516, guid: 5043c488b6ef9c44190b56e6dba906bc,
+        type: 2}
+      propertyPath: TrailModule.inheritParticleColor
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198394352554411516, guid: 5043c488b6ef9c44190b56e6dba906bc,
+        type: 2}
+      propertyPath: TrailModule.colorOverLifetime.maxColor.a
+      value: 0.5803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 198394352554411516, guid: 5043c488b6ef9c44190b56e6dba906bc,
+        type: 2}
+      propertyPath: TrailModule.colorOverTrail.maxColor.r
+      value: 0.20754719
+      objectReference: {fileID: 0}
+    - target: {fileID: 198394352554411516, guid: 5043c488b6ef9c44190b56e6dba906bc,
+        type: 2}
+      propertyPath: TrailModule.colorOverTrail.maxColor.g
+      value: 0.20069422
+      objectReference: {fileID: 0}
+    - target: {fileID: 198394352554411516, guid: 5043c488b6ef9c44190b56e6dba906bc,
+        type: 2}
+      propertyPath: TrailModule.colorOverTrail.maxColor.b
+      value: 0.20069422
+      objectReference: {fileID: 0}
+    - target: {fileID: 198394352554411516, guid: 5043c488b6ef9c44190b56e6dba906bc,
+        type: 2}
+      propertyPath: TrailModule.colorOverTrail.maxColor.a
+      value: 0.1254902
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5043c488b6ef9c44190b56e6dba906bc, type: 2}
   m_IsPrefabParent: 0
