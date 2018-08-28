@@ -24,6 +24,12 @@ public class SoundEffectsPlayer : MonoBehaviour {
 
     private void Awake()
     {
+        if (Instance)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         // Shitty singleton baby
         Instance = this;
         m_source = GetComponent<AudioSource>();
