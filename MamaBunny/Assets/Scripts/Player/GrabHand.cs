@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GrabHand : MonoBehaviour {
 
+    public TextMeshProUGUI m_text;
     public float m_range = 3.0f;
     Camera m_grabCam;
     public Inventory m_inventory;
@@ -12,6 +14,7 @@ public class GrabHand : MonoBehaviour {
     public HoldHand m_holdHand;
 
     PlayerControl m_playerControl;
+    Transform m_hitTarget;
 
 	// Use this for initialization
 	void Start ()
@@ -28,65 +31,88 @@ public class GrabHand : MonoBehaviour {
             return;
         }
 
+        RaycastCheck();
+
         if(Input.GetKeyDown(KeyCode.E))
         {
             Grab();
         }
     }
 
+    void RaycastCheck()
+    {
+        RaycastHit hit;
+        Ray rayy = new Ray(transform.position, m_grabCam.transform.forward);
+
+        if (Physics.SphereCast(rayy, 0.5f, out hit, m_range, m_pickupLayer))
+        {
+            // See if hit table
+            GunTable table = m_hitTarget.GetComponent<GunTable>();
+            if (table != null)
+            {
+
+            }
+
+            // See if hit rabboid
+            Rabboid rab = m_hitTarget.transform.GetComponent<Rabboid>();
+            if (rab != null)
+            {
+            }
+                // See if hit pickup
+
+                m_hitTarget = hit.transform;
+        }
+        else
+            m_hitTarget = null;
+    }
+
     void Grab()
     {
+        if (!m_hitTarget)
+            return;
+
         if (m_holdHand.IsHolding())
         {
             m_holdHand.Drop();
             return;
         }
 
-        RaycastHit hit;
-        Ray rayy = new Ray(transform.position, m_grabCam.transform.forward);
-
-        if (Physics.SphereCast(rayy, 0.5f, out hit, m_range, m_pickupLayer)) 
+        GunTable table = m_hitTarget.GetComponent<GunTable>();
+        if (table != null)
         {
-            PickUp pickUp = hit.transform.GetComponent<PickUp>();
-            if(pickUp != null)
-            {
-                if(m_inventory.AddToInventory(pickUp))
-                {
-                    //Debug.Log("sphere pickup");
-                    SoundEffectsPlayer.Instance.PlaySound("PickUp");
-                    Destroy(pickUp.gameObject);
-                    return;
-                }
+            Debug.Log("table found");
+            if (m_playerControl.IsGunActive())
+            {//gun is active //place gun
+                m_playerControl.ActiveGun(false);
+                table.PlaceGun();
             }
+            else
+            {//gun is not active // take gun
+                m_playerControl.ActiveGun(true);
+                table.TakeGun();
+            }
+        }
 
-            Rabboid rab = hit.transform.GetComponent<Rabboid>();
-            if (rab != null) 
+        Rabboid rab = m_hitTarget.transform.GetComponent<Rabboid>();
+        if (rab != null)
+        {
+            m_holdHand.Hold(rab.transform);
+            return;
+        }
+
+        PickUp pickUp = m_hitTarget.transform.GetComponent<PickUp>();
+        if (pickUp != null)
+        {
+            if (m_inventory.AddToInventory(pickUp))
             {
-                m_holdHand.Hold(rab.transform);
+                //Debug.Log("sphere pickup");
+                SoundEffectsPlayer.Instance.PlaySound("PickUp");
+                Destroy(pickUp.gameObject);
                 return;
-            }
-
-            Debug.Log("trynagrab");
-            GunTable table = hit.transform.GetComponent<GunTable>();
-            if(table != null)
-            {
-                Debug.Log("table found");
-                if(m_playerControl.IsGunActive())
-                {//gun is active //place gun
-                    m_playerControl.ActiveGun(false);
-                    table.PlaceGun();
-                }
-                else
-                {//gun is not active // take gun
-                    m_playerControl.ActiveGun(true);
-                    table.TakeGun();
-                }
             }
         }
 
         //didnt hit anything//drop holditem
-        
-
 
         /*if (Physics.Raycast(rayy, out hit, m_range)) 
         {
