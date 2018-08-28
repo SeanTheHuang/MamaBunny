@@ -21,8 +21,9 @@ public class EventsController : MonoBehaviour {
             Destroy(gameObject);
             return;
         }
-
         // Set singleton
+        DontDestroyOnLoad(gameObject); // Ensures this does not destroy on load
+        EffectCanvas.Instance.TitleText("Press [H] for info. about game");
         Instance = this;
     }
 

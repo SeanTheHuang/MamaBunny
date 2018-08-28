@@ -40,6 +40,7 @@ public class Inventory : MonoBehaviour {
             return true;
         }
 
+        EffectCanvas.Instance.InformText("Inventory is full!");
         return false;
     }
 
