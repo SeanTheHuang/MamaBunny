@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class PickUp : MonoBehaviour {
 
+    public string m_name = "NO_NAME_INPUTTED";
     public float m_liveTime = 20;
     float m_startLiveTime;
     bool m_beingEaten = false;
