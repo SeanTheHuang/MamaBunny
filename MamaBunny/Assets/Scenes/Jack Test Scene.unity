@@ -166,6 +166,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_customer: {fileID: 1588253943932980, guid: c228d7e2d9c8df64584c03175ecb0a81, type: 2}
+  m_orderingCustomer: {fileID: 0}
+  m_customerCounter: {fileID: 0}
   m_characterModels:
   - {fileID: 1610712417920338, guid: 696551827cf9e1248881898416399e2c, type: 2}
   - {fileID: 1874271082363486, guid: b33b484d5ba20b94cab8d78f9a4f759d, type: 2}
@@ -175,7 +177,6 @@ MonoBehaviour:
     minValue: 15.2
     maxValue: 20
   m_spawnRadiusOffset: 4
-  m_customersCount: 8
 --- !u!114 &23646584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -815,6 +816,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_customer: {fileID: 1588253943932980, guid: c228d7e2d9c8df64584c03175ecb0a81, type: 2}
+  m_orderingCustomer: {fileID: 0}
+  m_customerCounter: {fileID: 0}
   m_characterModels:
   - {fileID: 1610712417920338, guid: 696551827cf9e1248881898416399e2c, type: 2}
   - {fileID: 1874271082363486, guid: b33b484d5ba20b94cab8d78f9a4f759d, type: 2}
@@ -824,7 +827,6 @@ MonoBehaviour:
     minValue: 15.305882
     maxValue: 20
   m_spawnRadiusOffset: 4
-  m_customersCount: 0
 --- !u!114 &418846188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1712,13 +1714,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 29
       objectReference: {fileID: 0}
-    - target: {fileID: 4473035734437774, guid: 2932e6159ef77334fb0d62c1136bf3fa, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 4473035734437774, guid: 2932e6159ef77334fb0d62c1136bf3fa, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
+    - target: {fileID: 33632494602117072, guid: 2932e6159ef77334fb0d62c1136bf3fa,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114176317533891760, guid: 2932e6159ef77334fb0d62c1136bf3fa,
         type: 2}
@@ -1729,11 +1728,6 @@ Prefab:
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 33632494602117072, guid: 2932e6159ef77334fb0d62c1136bf3fa,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2932e6159ef77334fb0d62c1136bf3fa, type: 2}
