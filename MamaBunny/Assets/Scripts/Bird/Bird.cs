@@ -35,6 +35,7 @@ public class Bird : GunTarget {
     float m_stateChangeTime;
 
     public List<AudioClip> m_audioClips;
+    public AudioClip m_screamClip;
     float m_lastPlayedTime, m_timeBetweenSounds;
     AudioSource m_audioSource;
 
@@ -187,6 +188,9 @@ public class Bird : GunTarget {
 
     void OnDeath()
     {
+        m_audioSource.Stop();
+        m_audioSource.clip = m_screamClip;
+        m_audioSource.Play();
         m_anim.SetBool("Moving", false);
         m_dead = true;
         m_currentVel *= 0.2f;

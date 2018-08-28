@@ -46,24 +46,40 @@ public class GrabHand : MonoBehaviour {
 
         if (Physics.SphereCast(rayy, 0.5f, out hit, m_range, m_pickupLayer))
         {
+            if (m_text)
+                m_text.text = "";
+
             // See if hit table
             GunTable table = m_hitTarget.GetComponent<GunTable>();
             if (table != null)
             {
-
+                if (m_text)
+                    m_text.text = "Interact";
             }
 
             // See if hit rabboid
             Rabboid rab = m_hitTarget.transform.GetComponent<Rabboid>();
             if (rab != null)
             {
+                if (m_text)
+                    m_text.text = "Grab";
             }
-                // See if hit pickup
 
+            // See if hit pickup
+            PickUp pickUp = m_hitTarget.transform.GetComponent<PickUp>();
+            if (pickUp != null)
+            {
+                if (m_text)
+                    m_text.text = pickUp.m_name;
+            }
                 m_hitTarget = hit.transform;
         }
         else
+        {
             m_hitTarget = null;
+            if (m_text)
+                m_text.text = "";
+        }
     }
 
     void Grab()
