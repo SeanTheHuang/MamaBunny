@@ -50,7 +50,7 @@ public class GrabHand : MonoBehaviour {
                 m_text.text = "";
 
             // See if hit table
-            GunTable table = m_hitTarget.GetComponent<GunTable>();
+            GunTable table = hit.transform.GetComponent<GunTable>();
             if (table != null)
             {
                 if (m_text)
@@ -58,7 +58,7 @@ public class GrabHand : MonoBehaviour {
             }
 
             // See if hit rabboid
-            Rabboid rab = m_hitTarget.transform.GetComponent<Rabboid>();
+            Rabboid rab = hit.transform.GetComponent<Rabboid>();
             if (rab != null)
             {
                 if (m_text)
@@ -66,7 +66,7 @@ public class GrabHand : MonoBehaviour {
             }
 
             // See if hit pickup
-            PickUp pickUp = m_hitTarget.transform.GetComponent<PickUp>();
+            PickUp pickUp = hit.transform.GetComponent<PickUp>();
             if (pickUp != null)
             {
                 if (m_text)
@@ -109,14 +109,14 @@ public class GrabHand : MonoBehaviour {
             }
         }
 
-        Rabboid rab = m_hitTarget.transform.GetComponent<Rabboid>();
+        Rabboid rab = m_hitTarget.GetComponent<Rabboid>();
         if (rab != null)
         {
             m_holdHand.Hold(rab.transform);
             return;
         }
 
-        PickUp pickUp = m_hitTarget.transform.GetComponent<PickUp>();
+        PickUp pickUp = m_hitTarget.GetComponent<PickUp>();
         if (pickUp != null)
         {
             if (m_inventory.AddToInventory(pickUp))
