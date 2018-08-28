@@ -41,10 +41,11 @@ public class CustomerSpawner : MonoBehaviour
             customer.GetComponent<Customer>().SetTravelLocations(m_travelLocations);
 
             GameObject model = Instantiate(m_characterModels[Random.Range(0, m_characterModels.Count)], customer.transform.position, customer.transform.rotation);
+            model.name = "Model";
             model.transform.parent = customer.transform;
 
             ++m_customerCounter.m_cusomterCounter;
-            if (m_customerCounter.m_cusomterCounter > 10)
+            if (m_customerCounter.m_cusomterCounter > 5)
             {
                 m_customerCounter.m_cusomterCounter = 0;
                 customer.GetComponent<Customer>().m_DemandingCustomer = true;

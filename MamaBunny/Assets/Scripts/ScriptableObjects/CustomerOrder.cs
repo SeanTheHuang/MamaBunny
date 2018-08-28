@@ -11,7 +11,10 @@ public class CustomerOrder : ScriptableObject
     public RabboidBodyPart m_backPart;
     public bool m_isActive;
 
-    public GameObject m_customer;
+
+    public ModelType m_modelType;
+
+    public List<GameObject> m_models;
 
     private void OnEnable()
     {

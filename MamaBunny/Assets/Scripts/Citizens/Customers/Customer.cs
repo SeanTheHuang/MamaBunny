@@ -12,7 +12,7 @@ public class Customer : MonoBehaviour {
     private List<Vector3> m_travelLocations = new List<Vector3>();
 
     public int m_travelDestinationIndex;
-    private bool m_travelDestinationReached, m_leavingShop, m_despawning, m_wanderinginStore;
+    private bool m_travelDestinationReached, m_leavingShop, m_despawning, m_wanderinginStore, m_waitingForOrder, m_respawnedCustomer;
 
     [MinMaxRange(0.0f, 20.0f)]
     public RangedFloat m_wanderRadius;
@@ -34,59 +34,69 @@ public class Customer : MonoBehaviour {
     BunnyOrderController m_bunnyOrderController;
 
     private GameObject m_orderWaitLocations;
-    private bool m_waitingForOrder;
     private Vector3 m_orderLocation;
 
     private void Start()
     {
         Transform model = transform.GetChild(0);
         model.transform.position = new Vector3(model.transform.position.x, model.transform.position.y - 0.5f, model.transform.position.z);
-        m_meshRenderers = model.GetComponentsInChildren<MeshRenderer>();
+        if (!m_respawnedCustomer)
+        {
+            m_meshRenderers = model.GetComponentsInChildren<MeshRenderer>();
 
-        //foreach (MeshRenderer m in m_meshRenderers)
-        //{
-        //    StartCoroutine(Lerp_MeshRenderer_Color(3, m.material, Color.white));
-        //}
+            //foreach (MeshRenderer m in m_meshRenderers)
+            //{
+            //    StartCoroutine(Lerp_MeshRenderer_Color(3, m.material, Color.white));
+            //}
 
-        m_agent = GetComponent<NavMeshAgent>();
+            m_agent = GetComponent<NavMeshAgent>();
 
-        m_travelSpeed += Random.Range(-m_travelSpeed / 4, m_travelSpeed / 4);
+            m_travelSpeed += Random.Range(-m_travelSpeed / 4, m_travelSpeed / 4);
 
-        m_orderWaitLocations = GameObject.Find("OrderWaitLocations");
-        m_bunnyPens = GameObject.Find("BunnyPens");
+            m_orderWaitLocations = GameObject.Find("OrderWaitLocations");
+            m_bunnyPens = GameObject.Find("BunnyPens");
+        }
     }
 
     private void Update()
     {
-        // Customer is walking to their desired location
-        if (!m_travelDestinationReached)
+        // The customer is a repawned customer and therefore cannot do this logic. (Bad system I know)
+        if (!m_respawnedCustomer)
         {
-            moveTowardsDestination(m_travelLocations[m_travelDestinationIndex]);
-            checkDestinationReached();
-        }
-        // Customer is inside the store
-        else if(!m_leavingShop)
-        {
-            if (m_wanderinginStore)
-                WanderInsideNavMesh();
-            else if (m_waitingForOrder)
-                MoveTowardsOrderLocation();
-            else
-                MoveTowardsBunnyPen();
-        }
-        // Customer leaving shop
-        else if(!m_despawning)
-        {
-            if (m_travelDestinationIndex == (m_travelLocations.Count - 1))
+            // Customer is walking to their desired location
+            if (!m_travelDestinationReached)
             {
-                m_agent.SetDestination(m_travelLocations[m_travelDestinationIndex]);
-            }
-            else
-            {
-                m_agent.enabled = false;
                 moveTowardsDestination(m_travelLocations[m_travelDestinationIndex]);
+                checkDestinationReached();
             }
-            checkDestinationReached();
+            // Customer is inside the store
+            else if (!m_leavingShop)
+            {
+                if (m_wanderinginStore)
+                    WanderInsideNavMesh();
+                else if (m_waitingForOrder)
+                    MoveTowardsOrderLocation();
+                else
+                    MoveTowardsBunnyPen();
+            }
+            // Customer leaving shop
+            else if (!m_despawning)
+            {
+                if (m_travelDestinationIndex == (m_travelLocations.Count - 1))
+                {
+                    m_agent.SetDestination(m_travelLocations[m_travelDestinationIndex]);
+                }
+                else
+                {
+                    m_agent.enabled = false;
+                    moveTowardsDestination(m_travelLocations[m_travelDestinationIndex]);
+                }
+                checkDestinationReached();
+            }
+        }
+        else if (!m_waitingForOrder)
+        {
+
         }
     }
 
@@ -286,5 +296,11 @@ public class Customer : MonoBehaviour {
     {
         m_waitingForOrder = false;
         LeaveTheShop();
+    }
+
+    public void SetWaitingForOrder()
+    {
+        m_respawnedCustomer = true;
+        m_waitingForOrder = true;
     }
 }
