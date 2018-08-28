@@ -71,16 +71,19 @@ public class BunnyOrderUI : MonoBehaviour {
             {
                 colorSet = true;
                 m_OrderIngredientsUI[i].sprite = m_customerOrder.m_colour.m_recipeSprite;
+                m_OrderIngredientsUI[i].preserveAspect = true;
             }
             else if(!bodySet && m_customerOrder.m_backPart != null)
             {
                 bodySet = true;
                 m_OrderIngredientsUI[i].sprite = m_customerOrder.m_backPart.m_recipeSprite;
+                m_OrderIngredientsUI[i].preserveAspect = true;
             }
             else if (!headSet && m_customerOrder.m_mouthPart != null)
             {
                 headSet = true;
                 m_OrderIngredientsUI[i].sprite = m_customerOrder.m_mouthPart.m_recipeSprite;
+                m_OrderIngredientsUI[i].preserveAspect = true;
             }
             else if (!sizeSet && m_customerOrder.m_size != 0)
             {
@@ -89,6 +92,7 @@ public class BunnyOrderUI : MonoBehaviour {
                     m_OrderIngredientsUI[i].sprite = m_normalSize;
                 else if (m_customerOrder.m_size == RabboidCalculator.LARGE_SIZE)
                     m_OrderIngredientsUI[i].sprite = m_largeSize;
+                m_OrderIngredientsUI[i].preserveAspect = true;
             }
         }
     }
