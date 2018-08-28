@@ -14,5 +14,6 @@ MonoBehaviour:
   m_pickUpItemForm: {fileID: 4608718401163136, guid: 92d9e8bd97d76e64d93d92bb21fea766,
     type: 2}
   m_itemSprite: {fileID: 21300008, guid: 291d958d7cab4674589761c90d3067cf, type: 3}
+  m_recipeSprite: {fileID: 21300006, guid: 291d958d7cab4674589761c90d3067cf, type: 3}
   m_colourName: Red
   m_color: {r: 0.9433962, g: 0.19134924, b: 0.19134924, a: 1}

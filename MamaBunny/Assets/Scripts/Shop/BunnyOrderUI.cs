@@ -13,6 +13,10 @@ public class BunnyOrderUI : MonoBehaviour {
 
     public CustomerOrder m_customerOrder;
 
+    public Sprite m_normalSize;
+    public Sprite m_largeSize;
+
+
     private void Awake()
     {
         m_BgImageUI = GetComponent<Image>();
@@ -42,6 +46,50 @@ public class BunnyOrderUI : MonoBehaviour {
             m_OrderIngredientsUI[0].enabled = false;
             m_OrderIngredientsUI[1].enabled = false;
             m_OrderIngredientsUI[2].enabled = false;
+        }
+        SetRecipeSprites();
+    }
+
+    public void ResetSprites()
+    {
+        m_BgImageUI.sprite = null;
+        m_OrderIngredientsUI[0].sprite = null;
+        m_OrderIngredientsUI[1].sprite = null;
+        m_OrderIngredientsUI[2].sprite = null;
+    }
+
+    public void SetRecipeSprites()
+    {
+        bool colorSet = false;
+        bool bodySet = false;
+        bool headSet = false;
+        bool sizeSet = false;
+
+        for (int i = 0; i < m_OrderIngredientsUI.Length; ++i)
+        {
+            if(!colorSet && m_customerOrder.m_colour != null)
+            {
+                colorSet = true;
+                m_OrderIngredientsUI[i].sprite = m_customerOrder.m_colour.m_recipeSprite;
+            }
+            else if(!bodySet && m_customerOrder.m_backPart != null)
+            {
+                bodySet = true;
+                m_OrderIngredientsUI[i].sprite = m_customerOrder.m_backPart.m_recipeSprite;
+            }
+            else if (!headSet && m_customerOrder.m_mouthPart != null)
+            {
+                headSet = true;
+                m_OrderIngredientsUI[i].sprite = m_customerOrder.m_mouthPart.m_recipeSprite;
+            }
+            else if (!sizeSet && m_customerOrder.m_size != 0)
+            {
+                sizeSet = true;
+                if (m_customerOrder.m_size == RabboidCalculator.NORMAL_SIZE)
+                    m_OrderIngredientsUI[i].sprite = m_normalSize;
+                else if (m_customerOrder.m_size == RabboidCalculator.LARGE_SIZE)
+                    m_OrderIngredientsUI[i].sprite = m_largeSize;
+            }
         }
     }
 }

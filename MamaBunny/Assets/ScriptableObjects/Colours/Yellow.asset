@@ -14,5 +14,6 @@ MonoBehaviour:
   m_pickUpItemForm: {fileID: 4781009910902908, guid: 3c48f76506b91124c950989eb4be74da,
     type: 2}
   m_itemSprite: {fileID: 21300018, guid: 291d958d7cab4674589761c90d3067cf, type: 3}
+  m_recipeSprite: {fileID: 21300016, guid: 291d958d7cab4674589761c90d3067cf, type: 3}
   m_colourName: Yellow
   m_color: {r: 0.94509804, g: 0.8657026, b: 0.19215685, a: 1}
