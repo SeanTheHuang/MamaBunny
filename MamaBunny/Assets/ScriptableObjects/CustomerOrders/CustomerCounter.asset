@@ -9,5 +9,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa5e90423fe8f9246aece6f403924bc8, type: 3}
-  m_Name: New Customer Counter
+  m_Name: CustomerCounter
   m_EditorClassIdentifier: 
+  m_cusomterCounter: 0
