@@ -36,6 +36,12 @@ public class GrabHand : MonoBehaviour {
 
     void Grab()
     {
+        if (m_holdHand.IsHolding())
+        {
+            m_holdHand.Drop();
+            return;
+        }
+
         RaycastHit hit;
         Ray rayy = new Ray(transform.position, m_grabCam.transform.forward);
 
@@ -79,10 +85,7 @@ public class GrabHand : MonoBehaviour {
         }
 
         //didnt hit anything//drop holditem
-        if(m_holdHand.IsHolding())
-        {
-            m_holdHand.Drop();
-        }
+        
 
 
         /*if (Physics.Raycast(rayy, out hit, m_range)) 
