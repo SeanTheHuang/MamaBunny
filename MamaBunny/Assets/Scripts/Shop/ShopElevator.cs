@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ShopElevator : MonoBehaviour {
 
@@ -25,6 +26,21 @@ public class ShopElevator : MonoBehaviour {
                 moveToPosition(m_topPosition);
             }
         }
+    }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        MoveLiftDown();
     }
 
     void moveToPosition(Vector3 position)
