@@ -23,12 +23,15 @@ public class PlayerControl : MonoBehaviour {
     public float m_jumpForce;
     Vector3 m_currentVel, m_refVel;
 
+    GunAimLogic GunChild;
+
     bool m_playerlocked = false, m_canRun = true, m_canJump = true;
     // Use this for initialization
     void Start()
     {
         m_chara = GetComponent<CharacterController>();
         m_stepAudio = GetComponent<AudioSource>();
+        GunChild = GetComponentInChildren<GunAimLogic>();
         m_currentVel = Vector3.zero;
         m_yVel = 0;
     }
@@ -137,5 +140,15 @@ public class PlayerControl : MonoBehaviour {
     {
         m_canRun = m_canJump = true;
         m_moveSpeed *= 2;
+    }
+
+    public void ActiveGun(bool _active)
+    {
+        GunChild.gameObject.SetActive(_active);
+    }
+
+    public bool IsGunActive()
+    {
+        return GunChild.gameObject.activeSelf;
     }
 }
