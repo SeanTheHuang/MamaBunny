@@ -51,8 +51,8 @@ public class Inventory : MonoBehaviour {
         //return the object for the player to spawn
         Transform camtr = Camera.main.transform;
 
-        Transform tgo = Instantiate(m_pickUpList[_index].m_pickUpItemForm, transform.position + transform.forward, Quaternion.identity);
-        tgo.GetComponent<Rigidbody>().AddForce(camtr.forward.normalized * 500 * Time.deltaTime, ForceMode.Impulse);
+        Transform tgo = Instantiate(m_pickUpList[_index].m_pickUpItemForm, camtr.position + camtr.forward * 0.5f, Quaternion.identity);
+        tgo.GetComponent<Rigidbody>().AddForce(camtr.forward * 10 + camtr.up * 2f, ForceMode.Impulse);
 
         m_pickUpList.RemoveAt(_index);
 
