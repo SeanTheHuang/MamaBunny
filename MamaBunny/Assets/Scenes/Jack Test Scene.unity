@@ -4307,6 +4307,15 @@ Prefab:
       propertyPath: m_text
       value: 
       objectReference: {fileID: 1419886020}
+    - target: {fileID: 4295598180904290, guid: 5043c488b6ef9c44190b56e6dba906bc, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.22199997
+      objectReference: {fileID: 0}
+    - target: {fileID: 114093977486696162, guid: 5043c488b6ef9c44190b56e6dba906bc,
+        type: 2}
+      propertyPath: m_gunHitLayers.m_Bits
+      value: 4294709243
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5043c488b6ef9c44190b56e6dba906bc, type: 2}
   m_IsPrefabParent: 0
