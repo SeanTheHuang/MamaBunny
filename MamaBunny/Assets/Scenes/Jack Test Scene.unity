@@ -135,10 +135,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3312491c9cbbaa645bbb5bdb774baeb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_boyModel: {fileID: 100000, guid: 19bb25aa9fc7c264cbfe6db95120e8af, type: 3}
-  m_girlModel: {fileID: 100000, guid: f3f4ca78f5ffb794ba3d3e3db4c87af2, type: 3}
-  m_womanModel: {fileID: 100000, guid: dbaa960b0103d914a9b4c8283729dd8a, type: 3}
-  m_manModel: {fileID: 100000, guid: 0d845f42aebe15c489d1b4d50a3c8bd8, type: 3}
+  m_boyModel: {fileID: 1610712417920338, guid: 696551827cf9e1248881898416399e2c, type: 2}
+  m_girlModel: {fileID: 1874271082363486, guid: b33b484d5ba20b94cab8d78f9a4f759d,
+    type: 2}
+  m_womanModel: {fileID: 1728329612598466, guid: b0adaa163feea074eb67880a3b85d74b,
+    type: 2}
+  m_manModel: {fileID: 1966088181567872, guid: e98fd0977a62e444096ab68552e838a2, type: 2}
 --- !u!1 &23646581
 GameObject:
   m_ObjectHideFlags: 0
