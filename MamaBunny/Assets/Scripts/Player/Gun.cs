@@ -13,6 +13,7 @@ public class Gun : MonoBehaviour
     public Transform m_bulletPrefab;
     public Transform m_firePoint;
 
+    public PlayerCameraController m_cameraController;
     public ParticleSystem m_shotPart, m_sparkPart;
     public LayerMask m_gunHitLayers;
     public GameObject impactParticle;
@@ -47,7 +48,7 @@ public class Gun : MonoBehaviour
 	
     void Shoot()
     {
-        CameraShaker.Instance.ShakeOnce(1, 6f, 0.1f, 0.4f);
+        m_cameraController.ApplyScreenShake(0.15f, 0.03f);
         m_shotPart.Play();
         m_sparkPart.Play();
         m_anim.Stop();
