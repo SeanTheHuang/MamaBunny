@@ -5,6 +5,8 @@ using UnityEngine;
 public class CustomerSpawner : MonoBehaviour
 {
     public GameObject m_customer;
+    public GameObject m_orderingCustomer;
+    public CustomerCounter m_customerCounter;
 
     public List<GameObject> m_characterModels;
 
@@ -17,8 +19,6 @@ public class CustomerSpawner : MonoBehaviour
     private float m_nextSpawnTime;
 
     List<Vector3> m_travelLocations = new List<Vector3>();
-
-    public int m_customersCount; // A count that keeps track of number of customers. Every x customer makes an order
 
     private void Start()
     {
@@ -44,10 +44,10 @@ public class CustomerSpawner : MonoBehaviour
             GameObject model = Instantiate(m_characterModels[Random.Range(0, m_characterModels.Count)], customer.transform.position, customer.transform.rotation);
             model.transform.parent = customer.transform;
 
-            ++m_customersCount;
-            if(m_customersCount > 8)
+            ++m_customerCounter.m_cusomterCounter;
+            if (m_customerCounter.m_cusomterCounter > 16)
             {
-                m_customersCount = 0;
+                m_customerCounter.m_cusomterCounter = 0;
                 customer.GetComponent<Customer>().m_DemandingCustomer = true;
             }
         }
