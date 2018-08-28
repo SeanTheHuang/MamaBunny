@@ -27,7 +27,7 @@ public class BunnyOrderSlot : MonoBehaviour {
         m_OrderIngredientsUI[1] = m_OrderUI.transform.GetChild(2).GetComponent<Image>();
         m_OrderIngredientsUI[2] = m_OrderUI.transform.GetChild(3).GetComponent<Image>();
 
-        ShowUI(false);
+        //ShowUI(false);
     }
 	
 	// Update is called once per frame
