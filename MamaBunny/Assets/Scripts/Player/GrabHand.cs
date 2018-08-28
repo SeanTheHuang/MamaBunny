@@ -84,14 +84,14 @@ public class GrabHand : MonoBehaviour {
 
     void Grab()
     {
-        if (!m_hitTarget)
-            return;
-
         if (m_holdHand.IsHolding())
         {
             m_holdHand.Drop();
             return;
         }
+
+        if (!m_hitTarget)
+            return;
 
         GunTable table = m_hitTarget.GetComponent<GunTable>();
         if (table != null)
