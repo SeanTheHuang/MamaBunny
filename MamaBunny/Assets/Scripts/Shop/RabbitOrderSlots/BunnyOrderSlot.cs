@@ -157,7 +157,7 @@ public class BunnyOrderSlot : MonoBehaviour {
                     rabbitScore += positivePointModifier;
                 }
             }
-            if (m_customerOrder.m_size == RabboidCalculator.SMALL_SIZE)
+            else if (m_customerOrder.m_size == RabboidCalculator.SMALL_SIZE)
             {
                 if(RabboidStats.m_size <= RabboidCalculator.SMALL_SIZE)
                 {
@@ -172,7 +172,7 @@ public class BunnyOrderSlot : MonoBehaviour {
                     rabbitScore -= negativePointModifier;
                 }
             }
-            if (m_customerOrder.m_size == RabboidCalculator.LARGE_SIZE)
+            else if (m_customerOrder.m_size == RabboidCalculator.LARGE_SIZE)
             {
                 if (RabboidStats.m_size >= RabboidCalculator.LARGE_SIZE)
                 {
