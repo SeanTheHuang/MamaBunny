@@ -85,4 +85,31 @@ public class Rabboid : MonoBehaviour {
         //}
     }
 
+    public void GettingShredded(Vector3 _shredderCenter)
+    {
+        gameObject.layer = 2; // Cannot interact
+        GetComponent<Rigidbody>().isKinematic = true;
+        StartCoroutine(ShredAnimation(_shredderCenter));
+    }
+
+    IEnumerator ShredAnimation(Vector3 _shredderCenter)
+    {
+        float animationTime = 4;
+        Vector3 startPos = transform.position;
+        Vector3 endPos = _shredderCenter;
+
+        float timer = 0;
+
+        while (timer < animationTime)
+        {
+            timer += Time.deltaTime;
+            transform.position = Vector3.Lerp(startPos, endPos, timer / animationTime);
+            transform.rotation = Random.rotation;
+            transform.localScale *= (1 - Time.deltaTime/animationTime);
+            yield return null;
+        }
+
+        yield return null;
+    }
+
 }
