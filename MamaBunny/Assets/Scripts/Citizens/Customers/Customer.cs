@@ -36,6 +36,8 @@ public class Customer : MonoBehaviour {
     private GameObject m_orderWaitLocations;
     private Vector3 m_orderLocation;
 
+    public ModelType m_modelType;
+
     private void Start()
     {
         Transform model = transform.GetChild(0);

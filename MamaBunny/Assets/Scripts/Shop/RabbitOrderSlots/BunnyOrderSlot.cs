@@ -85,6 +85,7 @@ public class BunnyOrderSlot : MonoBehaviour {
     {
         // Set Timer
         m_customerOrder.m_isActive = true;
+        m_customerOrder.m_modelType = customer.GetComponent<Customer>().m_modelType;
         //m_startOfOrderTime = Time.time;
         //m_customerOrder.m_customerModel = customer.transform.Find("Model").gameObject;
         m_Customer = customer.GetComponent<Customer>();
