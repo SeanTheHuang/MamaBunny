@@ -6,7 +6,7 @@ using UnityEngine;
 public class CustomerOrder : ScriptableObject
 {
     public float m_size;
-    public Color m_colour;
+    public RabboidColour m_colour;
     public RabboidBodyPart m_mouthPart;
     public RabboidBodyPart m_backPart;
     public bool m_isActive;
@@ -21,7 +21,7 @@ public class CustomerOrder : ScriptableObject
     public void ResetVariables()
     {
         m_size = 0;
-        m_colour = Color.white;
+        m_colour = null;
         m_mouthPart = null;
         m_backPart = null;
         m_isActive = false;

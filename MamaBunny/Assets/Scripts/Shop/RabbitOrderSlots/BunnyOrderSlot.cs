@@ -13,20 +13,21 @@ public class BunnyOrderSlot : MonoBehaviour {
 
     public CustomerOrder m_customerOrder;
 
-    public Image m_OrderUI;
+    public Image m_OrderImageUI;
+    private BunnyOrderUI m_OrderUI;
     private TextMeshProUGUI m_OrderTextUI;
     private Image[] m_OrderIngredientsUI = new Image[3];
 
     // Use this for initialization
     void Start () {
         m_bunnyOrderController = transform.GetComponentInParent<BunnyOrderController>();
+        m_OrderUI = m_OrderImageUI.GetComponent<BunnyOrderUI>();
 
-        m_OrderTextUI = m_OrderUI.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        m_OrderTextUI = m_OrderImageUI.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
 
-        m_OrderIngredientsUI[0] = m_OrderUI.transform.GetChild(1).GetComponent<Image>();
-        m_OrderIngredientsUI[1] = m_OrderUI.transform.GetChild(2).GetComponent<Image>();
-        m_OrderIngredientsUI[2] = m_OrderUI.transform.GetChild(3).GetComponent<Image>();
-
+        m_OrderIngredientsUI[0] = m_OrderImageUI.transform.GetChild(1).GetComponent<Image>();
+        m_OrderIngredientsUI[1] = m_OrderImageUI.transform.GetChild(2).GetComponent<Image>();
+        m_OrderIngredientsUI[2] = m_OrderImageUI.transform.GetChild(3).GetComponent<Image>();
         //ShowUI(false);
     }
 	
@@ -57,11 +58,15 @@ public class BunnyOrderSlot : MonoBehaviour {
 
     void ShowUI(bool isEnabled)
     {
-        m_OrderUI.enabled = isEnabled;
+        m_OrderImageUI.enabled = isEnabled;
         m_OrderTextUI.enabled = isEnabled;
         m_OrderIngredientsUI[0].enabled = isEnabled;
         m_OrderIngredientsUI[1].enabled = isEnabled;
         m_OrderIngredientsUI[2].enabled = isEnabled;
+        if(!isEnabled)
+        {
+            m_OrderUI.ResetSprites();
+        }
     }
 
     public bool GetIsActive()
@@ -73,7 +78,6 @@ public class BunnyOrderSlot : MonoBehaviour {
     {
         // Set Timer
         m_customerOrder.m_isActive = true;
-        ShowUI(true);
         //m_startOfOrderTime = Time.time;
         m_customerOrder.m_customer = customer;
 
@@ -102,7 +106,7 @@ public class BunnyOrderSlot : MonoBehaviour {
                 else if (ingredientType == 1)
                 {
                     int randomColor = Random.Range(0, possibleColours.Length);
-                    m_customerOrder.m_colour = possibleColours[randomColor].m_color;
+                    m_customerOrder.m_colour = possibleColours[randomColor];
                 }
                 // Chose a mouthpart
                 else if (ingredientType == 2)
@@ -122,6 +126,9 @@ public class BunnyOrderSlot : MonoBehaviour {
                 --i;
             }
         }
+
+        ShowUI(true);
+        m_OrderUI.SetRecipeSprites();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -135,9 +142,13 @@ public class BunnyOrderSlot : MonoBehaviour {
             int positivePointModifier = 2;
 
             // Check Size
-            if (m_customerOrder.m_size == 0)
+            if (m_customerOrder.m_size == RabboidCalculator.NORMAL_SIZE)
             {
-                if (RabboidStats.m_size <= RabboidCalculator.SMALL_SIZE || RabboidStats.m_size >= RabboidCalculator.LARGE_SIZE)
+                if (RabboidStats.m_size <= RabboidCalculator.SMALL_SIZE)
+                {
+                    rabbitScore -= negativePointModifier;
+                }
+                else if (RabboidStats.m_size >= RabboidCalculator.LARGE_SIZE)
                 {
                     rabbitScore -= negativePointModifier;
                 }
@@ -146,7 +157,7 @@ public class BunnyOrderSlot : MonoBehaviour {
                     rabbitScore += positivePointModifier;
                 }
             }
-            if(m_customerOrder.m_size == RabboidCalculator.SMALL_SIZE)
+            if (m_customerOrder.m_size == RabboidCalculator.SMALL_SIZE)
             {
                 if(RabboidStats.m_size <= RabboidCalculator.SMALL_SIZE)
                 {
@@ -181,7 +192,10 @@ public class BunnyOrderSlot : MonoBehaviour {
             Color resultsColor = Color.white;
             if (RabboidStats.m_resultColour != null)
                 resultsColor = RabboidStats.m_resultColour.m_color;
-            if(resultsColor == m_customerOrder.m_colour)
+            Color customerColor = Color.white;
+            if(m_customerOrder.m_colour != null)
+                customerColor = m_customerOrder.m_colour.m_color;
+            if (resultsColor == customerColor)
             {
                 rabbitScore += positivePointModifier;
             }

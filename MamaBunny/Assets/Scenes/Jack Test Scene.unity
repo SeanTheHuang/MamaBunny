@@ -481,7 +481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_playerInventory: {fileID: 11400000, guid: d12a3e6992b99a74dad465200c48d34a, type: 2}
   m_customerOrder: {fileID: 11400000, guid: 8f89ed645d0024042987a4a8c1a85563, type: 2}
-  m_OrderUI: {fileID: 50242734}
+  m_OrderImageUI: {fileID: 50242734}
 --- !u!1001 &126829376
 Prefab:
   m_ObjectHideFlags: 0
@@ -2766,6 +2766,69 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114290477935366574, guid: b49f061c9885edb40b9ce91f0640d7b5,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114608692007198838, guid: b49f061c9885edb40b9ce91f0640d7b5,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114206871325554224, guid: b49f061c9885edb40b9ce91f0640d7b5,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114744155580239396, guid: b49f061c9885edb40b9ce91f0640d7b5,
+        type: 2}
+      propertyPath: m_normalSize
+      value: 
+      objectReference: {fileID: 21300010, guid: 291d958d7cab4674589761c90d3067cf,
+        type: 3}
+    - target: {fileID: 114669571869175874, guid: b49f061c9885edb40b9ce91f0640d7b5,
+        type: 2}
+      propertyPath: m_normalSize
+      value: 
+      objectReference: {fileID: 21300010, guid: 291d958d7cab4674589761c90d3067cf,
+        type: 3}
+    - target: {fileID: 114167581847616010, guid: b49f061c9885edb40b9ce91f0640d7b5,
+        type: 2}
+      propertyPath: m_normalSize
+      value: 
+      objectReference: {fileID: 21300010, guid: 291d958d7cab4674589761c90d3067cf,
+        type: 3}
+    - target: {fileID: 114347061466831700, guid: b49f061c9885edb40b9ce91f0640d7b5,
+        type: 2}
+      propertyPath: m_normalSize
+      value: 
+      objectReference: {fileID: 21300010, guid: 291d958d7cab4674589761c90d3067cf,
+        type: 3}
+    - target: {fileID: 114744155580239396, guid: b49f061c9885edb40b9ce91f0640d7b5,
+        type: 2}
+      propertyPath: m_largeSize
+      value: 
+      objectReference: {fileID: 21300002, guid: fba30dce8691ca547af7a28663b69e41,
+        type: 3}
+    - target: {fileID: 114669571869175874, guid: b49f061c9885edb40b9ce91f0640d7b5,
+        type: 2}
+      propertyPath: m_largeSize
+      value: 
+      objectReference: {fileID: 21300002, guid: fba30dce8691ca547af7a28663b69e41,
+        type: 3}
+    - target: {fileID: 114167581847616010, guid: b49f061c9885edb40b9ce91f0640d7b5,
+        type: 2}
+      propertyPath: m_largeSize
+      value: 
+      objectReference: {fileID: 21300002, guid: fba30dce8691ca547af7a28663b69e41,
+        type: 3}
+    - target: {fileID: 114347061466831700, guid: b49f061c9885edb40b9ce91f0640d7b5,
+        type: 2}
+      propertyPath: m_largeSize
+      value: 
+      objectReference: {fileID: 21300002, guid: fba30dce8691ca547af7a28663b69e41,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b49f061c9885edb40b9ce91f0640d7b5, type: 2}
   m_IsPrefabParent: 0
@@ -3170,7 +3233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_playerInventory: {fileID: 11400000, guid: d12a3e6992b99a74dad465200c48d34a, type: 2}
   m_customerOrder: {fileID: 11400000, guid: 04c7c3d2df405b145906f7d8104e502a, type: 2}
-  m_OrderUI: {fileID: 1177771416}
+  m_OrderImageUI: {fileID: 1177771416}
 --- !u!65 &1548435736
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3356,7 +3419,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_playerInventory: {fileID: 11400000, guid: d12a3e6992b99a74dad465200c48d34a, type: 2}
   m_customerOrder: {fileID: 11400000, guid: 6b35df10c7f75724db75c3ca6034d07c, type: 2}
-  m_OrderUI: {fileID: 228549881}
+  m_OrderImageUI: {fileID: 228549881}
 --- !u!65 &1605733654
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3824,7 +3887,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_playerInventory: {fileID: 11400000, guid: d12a3e6992b99a74dad465200c48d34a, type: 2}
   m_customerOrder: {fileID: 11400000, guid: dd7f5e0ca1281dd47a67b4c14f0487c8, type: 2}
-  m_OrderUI: {fileID: 1022132693}
+  m_OrderImageUI: {fileID: 1022132693}
 --- !u!65 &1744227649
 BoxCollider:
   m_ObjectHideFlags: 0
