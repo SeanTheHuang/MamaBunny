@@ -1,0 +1,407 @@
+fileFormatVersion: 2
+guid: 0709c4dc9c489e24ea447b37a374b492
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Base HumanHead
+    100002: Base HumanLCalf
+    100004: Base HumanLCollarbone
+    100006: Base HumanLDigit11
+    100008: Base HumanLDigit11 1
+    100010: Base HumanLDigit12
+    100012: Base HumanLDigit13
+    100014: Base HumanLDigit21
+    100016: Base HumanLDigit22
+    100018: Base HumanLDigit23
+    100020: Base HumanLFoot
+    100022: Base HumanLForearm
+    100024: Base HumanLPalm
+    100026: Base HumanLPlatform
+    100028: Base HumanLThigh
+    100030: Base HumanLUpperarm
+    100032: Base HumanNeck1
+    100034: Base HumanNeck2
+    100036: Base HumanPelvis
+    100038: Base HumanRCalf
+    100040: Base HumanRCollarbone
+    100042: Base HumanRDigit11
+    100044: Base HumanRDigit11 1
+    100046: Base HumanRDigit12
+    100048: Base HumanRDigit13
+    100050: Base HumanRDigit21
+    100052: Base HumanRDigit22
+    100054: Base HumanRDigit23
+    100056: Base HumanRFoot
+    100058: Base HumanRForearm
+    100060: Base HumanRibcage
+    100062: Base HumanRPalm
+    100064: Base HumanRPlatform
+    100066: Base HumanRThigh
+    100068: Base HumanRUpperarm
+    100070: Base HumanSpine1
+    100072: Base HumanSpine2
+    100074: Base HumanSpine3
+    100076: Base HumanSpine4
+    100078: //RootNode
+    100080: GrownUp
+    100082: Hair_Bone
+    100084: L_Skrit
+    100086: R_Skirt
+    100088: Woman
+    100090: Woman_Body
+    100092: Woman_Face
+    100094: Woman_Hair
+    400000: Base HumanHead
+    400002: Base HumanLCalf
+    400004: Base HumanLCollarbone
+    400006: Base HumanLDigit11
+    400008: Base HumanLDigit11 1
+    400010: Base HumanLDigit12
+    400012: Base HumanLDigit13
+    400014: Base HumanLDigit21
+    400016: Base HumanLDigit22
+    400018: Base HumanLDigit23
+    400020: Base HumanLFoot
+    400022: Base HumanLForearm
+    400024: Base HumanLPalm
+    400026: Base HumanLPlatform
+    400028: Base HumanLThigh
+    400030: Base HumanLUpperarm
+    400032: Base HumanNeck1
+    400034: Base HumanNeck2
+    400036: Base HumanPelvis
+    400038: Base HumanRCalf
+    400040: Base HumanRCollarbone
+    400042: Base HumanRDigit11
+    400044: Base HumanRDigit11 1
+    400046: Base HumanRDigit12
+    400048: Base HumanRDigit13
+    400050: Base HumanRDigit21
+    400052: Base HumanRDigit22
+    400054: Base HumanRDigit23
+    400056: Base HumanRFoot
+    400058: Base HumanRForearm
+    400060: Base HumanRibcage
+    400062: Base HumanRPalm
+    400064: Base HumanRPlatform
+    400066: Base HumanRThigh
+    400068: Base HumanRUpperarm
+    400070: Base HumanSpine1
+    400072: Base HumanSpine2
+    400074: Base HumanSpine3
+    400076: Base HumanSpine4
+    400078: //RootNode
+    400080: GrownUp
+    400082: Hair_Bone
+    400084: L_Skrit
+    400086: R_Skirt
+    400088: Woman
+    400090: Woman_Body
+    400092: Woman_Face
+    400094: Woman_Hair
+    2100000: M_Hair
+    2100002: M_Bodies
+    2100004: M_Faces
+    4300000: Woman_Hair
+    4300002: Woman_Body
+    4300004: Woman_Face
+    7400000: Big_normal
+    7400002: Big_Angry
+    7400004: Big_Sad
+    7400006: Big_Happy
+    7400008: Big_Walk
+    7400010: Big_Surprise
+    9500000: //RootNode
+    13700000: Woman_Body
+    13700002: Woman_Face
+    13700004: Woman_Hair
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: "Avatar Rig Configuration mis-match. Inbetween bone rotation
+      in configuration does not match rotation in animation file:\n\t'Base HumanSpine1'
+      : rotation error = 0.496777 deg\n\t'Base HumanSpine3' : rotation error = 3.538587
+      deg\n"
+    animationImportErrors: 
+    animationImportWarnings: "\nClip 'Big_normal' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar to
+      improve retargeting quality.\n\t'Base HumanNeck1' is inbetween humanoid transforms
+      and has rotation animation that will be discarded.\n\t'Base HumanNeck2' is inbetween
+      humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'Big_Angry' has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Base
+      HumanNeck1' is inbetween humanoid transforms and has rotation animation that
+      will be discarded.\n\t'Base HumanNeck2' is inbetween humanoid transforms and
+      has rotation animation that will be discarded.\n\nClip 'Big_Sad' has import
+      animation warnings that might lower retargeting quality:\nNote: Activate translation
+      DOF on avatar to improve retargeting quality.\n\t'Base HumanSpine1' is inbetween
+      humanoid transforms and has rotation animation that will be discarded.\n\t'Base
+      HumanSpine3' is inbetween humanoid transforms and has rotation animation that
+      will be discarded.\n\t'Base HumanNeck1' is inbetween humanoid transforms and
+      has rotation animation that will be discarded.\n\nClip 'Big_Happy' has import
+      animation warnings that might lower retargeting quality:\nNote: Activate translation
+      DOF on avatar to improve retargeting quality.\n\t'Base HumanSpine1' is inbetween
+      humanoid transforms and has rotation animation that will be discarded.\n\t'Base
+      HumanSpine3' is inbetween humanoid transforms and has rotation animation that
+      will be discarded.\n\t'Base HumanNeck1' is inbetween humanoid transforms and
+      has rotation animation that will be discarded.\n\t'Base HumanNeck2' is inbetween
+      humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'Big_Walk' has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Base
+      HumanSpine1' is inbetween humanoid transforms and has rotation animation that
+      will be discarded.\n\t'Base HumanSpine3' is inbetween humanoid transforms and
+      has rotation animation that will be discarded.\n\t'Base HumanNeck1' is inbetween
+      humanoid transforms and has rotation animation that will be discarded.\n\t'Base
+      HumanNeck2' is inbetween humanoid transforms and has rotation animation that
+      will be discarded.\n\nClip 'Big_Surprise' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar to
+      improve retargeting quality.\n\t'Base HumanSpine1' is inbetween humanoid transforms
+      and has rotation animation that will be discarded.\n\t'Base HumanSpine3' is
+      inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Base
+      HumanNeck1' is inbetween humanoid transforms and has rotation animation that
+      will be discarded.\n\t'Base HumanNeck2' is inbetween humanoid transforms and
+      has rotation animation that will be discarded.\n"
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Big_normal
+      takeName: Big_normal
+      firstFrame: 270
+      lastFrame: 320
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Big_Angry
+      takeName: Big_Angry
+      firstFrame: 211
+      lastFrame: 261
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Big_Sad
+      takeName: Big_Sad
+      firstFrame: 390
+      lastFrame: 440
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Big_Happy
+      takeName: Big_Happy
+      firstFrame: 362
+      lastFrame: 377
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Big_Walk
+      takeName: Big_Walk
+      firstFrame: 454
+      lastFrame: 487
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Big_Surprise
+      takeName: Big_Surprise
+      firstFrame: 337
+      lastFrame: 352
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
