@@ -23,11 +23,13 @@ public class EventsController : MonoBehaviour {
         }
         // Set singleton
         DontDestroyOnLoad(gameObject); // Ensures this does not destroy on load
-        EffectCanvas.Instance.TitleText("Press [H] for info. about game");
         Instance = this;
     }
 
-
+    private void Start()
+    {
+        EffectCanvas.Instance.TitleText("Press [H] for info. about game");
+    }
 
     public void TriggerPlayerLifeChange()
     {

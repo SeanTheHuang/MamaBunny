@@ -13,18 +13,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_inventory:
   - {fileID: 11400000, guid: 7512f8a68b993714dabbed256bcf77e4, type: 2}
-  - {fileID: 11400000, guid: 097127c06caddf74fb27522893d84f25, type: 2}
+  - {fileID: 11400000, guid: 7512f8a68b993714dabbed256bcf77e4, type: 2}
+  - {fileID: 11400000, guid: 7512f8a68b993714dabbed256bcf77e4, type: 2}
+  - {fileID: 11400000, guid: 7512f8a68b993714dabbed256bcf77e4, type: 2}
+  - {fileID: 11400000, guid: 7512f8a68b993714dabbed256bcf77e4, type: 2}
+  - {fileID: 11400000, guid: 7512f8a68b993714dabbed256bcf77e4, type: 2}
+  - {fileID: 11400000, guid: 7512f8a68b993714dabbed256bcf77e4, type: 2}
+  - {fileID: 11400000, guid: 7512f8a68b993714dabbed256bcf77e4, type: 2}
+  - {fileID: 11400000, guid: 7512f8a68b993714dabbed256bcf77e4, type: 2}
+  - {fileID: 11400000, guid: 7512f8a68b993714dabbed256bcf77e4, type: 2}
+  - {fileID: 11400000, guid: 7512f8a68b993714dabbed256bcf77e4, type: 2}
+  - {fileID: 11400000, guid: 7512f8a68b993714dabbed256bcf77e4, type: 2}
+  - {fileID: 11400000, guid: 7512f8a68b993714dabbed256bcf77e4, type: 2}
+  - {fileID: 11400000, guid: 7512f8a68b993714dabbed256bcf77e4, type: 2}
+  - {fileID: 11400000, guid: 7512f8a68b993714dabbed256bcf77e4, type: 2}
   - {fileID: 11400000, guid: 0e1aefd544765da4f988265de4541746, type: 2}
-  - {fileID: 11400000, guid: 6a79b9f5f706d0244ac9c29f37ca208a, type: 2}
-  - {fileID: 11400000, guid: 46f1c9d79cfd1c94589d3627e5b1dd2c, type: 2}
-  - {fileID: 11400000, guid: 46f1c9d79cfd1c94589d3627e5b1dd2c, type: 2}
-  - {fileID: 11400000, guid: 46f1c9d79cfd1c94589d3627e5b1dd2c, type: 2}
-  - {fileID: 11400000, guid: 46f1c9d79cfd1c94589d3627e5b1dd2c, type: 2}
-  - {fileID: 11400000, guid: 7512f8a68b993714dabbed256bcf77e4, type: 2}
-  - {fileID: 11400000, guid: 7512f8a68b993714dabbed256bcf77e4, type: 2}
-  - {fileID: 11400000, guid: 7512f8a68b993714dabbed256bcf77e4, type: 2}
-  - {fileID: 11400000, guid: d33f89a861c90d747bbffef2e7dbeb87, type: 2}
-  - {fileID: 11400000, guid: 46f1c9d79cfd1c94589d3627e5b1dd2c, type: 2}
-  - {fileID: 11400000, guid: 46f1c9d79cfd1c94589d3627e5b1dd2c, type: 2}
+  - {fileID: 11400000, guid: 0e1aefd544765da4f988265de4541746, type: 2}
   m_capacity: 20
-  m_money: 0
+  m_money: 19
