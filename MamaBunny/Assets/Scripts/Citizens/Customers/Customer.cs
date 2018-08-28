@@ -33,6 +33,10 @@ public class Customer : MonoBehaviour {
     public bool m_DemandingCustomer;
     BunnyOrderController m_bunnyOrderController;
 
+    private GameObject m_orderWaitLocations;
+    private bool m_waitingForOrder;
+    private Vector3 m_orderLocation;
+
     private void Start()
     {
         Transform model = transform.GetChild(0);
@@ -47,6 +51,8 @@ public class Customer : MonoBehaviour {
         m_agent = GetComponent<NavMeshAgent>();
 
         m_travelSpeed += Random.Range(-m_travelSpeed / 4, m_travelSpeed / 4);
+
+        m_orderWaitLocations = GameObject.Find("OrderWaitLocations");
         m_bunnyPens = GameObject.Find("BunnyPens");
     }
 
@@ -58,11 +64,13 @@ public class Customer : MonoBehaviour {
             moveTowardsDestination(m_travelLocations[m_travelDestinationIndex]);
             checkDestinationReached();
         }
-        // Customer is insdie the store
+        // Customer is inside the store
         else if(!m_leavingShop)
         {
             if (m_wanderinginStore)
                 WanderInsideNavMesh();
+            else if (m_waitingForOrder)
+                MoveTowardsOrderLocation();
             else
                 MoveTowardsBunnyPen();
         }
@@ -80,6 +88,11 @@ public class Customer : MonoBehaviour {
             }
             checkDestinationReached();
         }
+    }
+
+    void MoveTowardsOrderLocation()
+    {
+        m_agent.SetDestination(m_orderLocation);
     }
 
     void MoveTowardsBunnyPen()
@@ -211,11 +224,14 @@ public class Customer : MonoBehaviour {
     public void EnteredShop()
     {
         Debug.Log(m_travelDestinationIndex);
-        Invoke("LeaveTheShop", Random.Range(m_timeInShop.minValue, m_timeInShop.maxValue));
         m_travelDestinationReached = true;
         MoveTowardsPen();
         m_agent.enabled = true;
-        if (m_DemandingCustomer)
+        if (!m_DemandingCustomer)
+        {
+            Invoke("LeaveTheShop", Random.Range(m_timeInShop.minValue, m_timeInShop.maxValue));
+        }
+        else
         {
             MakeACustomerDemand();
         }
@@ -251,12 +267,24 @@ public class Customer : MonoBehaviour {
     void MakeACustomerDemand()
     {
         m_bunnyOrderController = GameObject.Find("BunnyOrderController").GetComponent<BunnyOrderController>();
-        m_bunnyOrderController.MakeANewOrder(this.gameObject);
+        m_bunnyOrderController.MakeANewOrder(gameObject);
     }
 
     // The customers order is complete
     public void OrderComplete()
     {
+        LeaveTheShop();
+    }
+
+    public void SetOrderDestination(int orderIndex)
+    {
+        m_waitingForOrder = true;
+        m_orderLocation = m_orderWaitLocations.transform.GetChild(orderIndex).position;
+    }
+
+    public void RecievedOrder()
+    {
+        m_waitingForOrder = false;
         LeaveTheShop();
     }
 }

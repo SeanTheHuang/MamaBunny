@@ -5,7 +5,6 @@ using UnityEngine;
 public class CustomerSpawner : MonoBehaviour
 {
     public GameObject m_customer;
-    public GameObject m_orderingCustomer;
     public CustomerCounter m_customerCounter;
 
     public List<GameObject> m_characterModels;
@@ -45,7 +44,7 @@ public class CustomerSpawner : MonoBehaviour
             model.transform.parent = customer.transform;
 
             ++m_customerCounter.m_cusomterCounter;
-            if (m_customerCounter.m_cusomterCounter > 16)
+            if (m_customerCounter.m_cusomterCounter > 10)
             {
                 m_customerCounter.m_cusomterCounter = 0;
                 customer.GetComponent<Customer>().m_DemandingCustomer = true;

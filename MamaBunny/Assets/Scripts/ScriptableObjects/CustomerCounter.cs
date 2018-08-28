@@ -9,6 +9,6 @@ public class CustomerCounter : ScriptableObject
 
     private void OnEnable()
     {
-        m_cusomterCounter = 0;
+        m_cusomterCounter = 9;
     }
 }
