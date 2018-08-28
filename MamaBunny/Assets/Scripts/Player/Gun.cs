@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using EZCameraShake;
 public class Gun : MonoBehaviour
 {
     Camera m_fpsCam;
@@ -13,6 +13,7 @@ public class Gun : MonoBehaviour
     public Transform m_bulletPrefab;
     public Transform m_firePoint;
 
+    public PlayerCameraController m_cameraController;
     public ParticleSystem m_shotPart, m_sparkPart;
     public LayerMask m_gunHitLayers;
     public GameObject impactParticle;
@@ -47,6 +48,7 @@ public class Gun : MonoBehaviour
 	
     void Shoot()
     {
+        m_cameraController.ApplyScreenShake(0.15f, 0.03f);
         m_shotPart.Play();
         m_sparkPart.Play();
         m_anim.Stop();
@@ -56,13 +58,13 @@ public class Gun : MonoBehaviour
         bullet.GetComponent<Bullet>().Initialize(transform.forward);
 
         RaycastHit hit;
-
-        if (Physics.Raycast(m_firePoint.position, m_fpsCam.transform.forward, out hit, m_range, m_gunHitLayers))
+        if (Physics.Raycast(m_firePoint.position, m_firePoint.forward, out hit, m_range, m_gunHitLayers))
         {
             GameObject go = Instantiate(impactParticle, hit.point, Quaternion.LookRotation(hit.normal));
             Destroy(go, 1.0f);
 
             GunTarget gt = hit.transform.GetComponent<GunTarget>();
+            Debug.Log("hit: " + hit.transform.name);
             if (gt != null)
             {
                 gt.TakeHit(m_damage);
