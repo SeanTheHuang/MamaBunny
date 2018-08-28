@@ -11,9 +11,12 @@ public class GrabHand : MonoBehaviour {
     public LayerMask m_pickupLayer;
     public HoldHand m_holdHand;
 
+    PlayerControl m_playerControl;
+
 	// Use this for initialization
 	void Start ()
     {
+        m_playerControl = GetComponentInParent<PlayerControl>();
         m_grabCam = Camera.main;
        // m_inventory = GetComponent<Inventory>();
 	}
@@ -33,6 +36,12 @@ public class GrabHand : MonoBehaviour {
 
     void Grab()
     {
+        if (m_holdHand.IsHolding())
+        {
+            m_holdHand.Drop();
+            return;
+        }
+
         RaycastHit hit;
         Ray rayy = new Ray(transform.position, m_grabCam.transform.forward);
 
@@ -55,14 +64,28 @@ public class GrabHand : MonoBehaviour {
             {
                 m_holdHand.Hold(rab.transform);
                 return;
-            }    
+            }
+
+            Debug.Log("trynagrab");
+            GunTable table = hit.transform.GetComponent<GunTable>();
+            if(table != null)
+            {
+                Debug.Log("table found");
+                if(m_playerControl.IsGunActive())
+                {//gun is active //place gun
+                    m_playerControl.ActiveGun(false);
+                    table.PlaceGun();
+                }
+                else
+                {//gun is not active // take gun
+                    m_playerControl.ActiveGun(true);
+                    table.TakeGun();
+                }
+            }
         }
 
         //didnt hit anything//drop holditem
-        if(m_holdHand.IsHolding())
-        {
-            m_holdHand.Drop();
-        }
+        
 
 
         /*if (Physics.Raycast(rayy, out hit, m_range)) 

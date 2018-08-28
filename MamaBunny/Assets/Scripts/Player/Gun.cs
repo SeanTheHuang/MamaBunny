@@ -13,8 +13,6 @@ public class Gun : MonoBehaviour
     public Transform m_bulletPrefab;
     public Transform m_firePoint;
 
-    //public float m_damage = 10.0f;
-
     public ParticleSystem m_shotPart, m_sparkPart;
     public LayerMask m_gunHitLayers;
     public GameObject impactParticle;
@@ -49,7 +47,7 @@ public class Gun : MonoBehaviour
 	
     void Shoot()
     {
-        //m_shotPart.Play();
+        m_shotPart.Play();
         m_sparkPart.Play();
         m_anim.Stop();
         m_anim.Play();

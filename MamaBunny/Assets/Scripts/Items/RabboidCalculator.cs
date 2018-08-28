@@ -16,8 +16,9 @@ public class RabboidCalculator : MonoBehaviour {
     public static RabboidCalculator Instance
     { get; private set; }
 
-    public static float LARGE_SIZE = 1.3f;
-    public static float SMALL_SIZE = 0.7f;
+    public static float LARGE_SIZE = 1.30f;
+    public static float NORMAL_SIZE = 1.15f;
+    public static float SMALL_SIZE = 1.0f;
 
     public RabboidColour[] m_possibleColours;
 
