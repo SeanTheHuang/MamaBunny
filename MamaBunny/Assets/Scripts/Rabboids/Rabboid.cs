@@ -15,7 +15,14 @@ public class Rabboid : MonoBehaviour {
     public Transform m_defaultMouth;
 
     public MeshRenderer[] m_mainBodyRenderers;
+    public Transform m_deathParticles;
 
+    AudioSource m_audioSource;
+
+    private void Awake()
+    {
+        m_audioSource = GetComponent<AudioSource>();
+    }
     public RabboidResult RabboidStats
     {
         get; private set;
@@ -94,12 +101,16 @@ public class Rabboid : MonoBehaviour {
 
     IEnumerator ShredAnimation(Vector3 _shredderCenter)
     {
+        if (m_audioSource.isPlaying == false)
+        {
+            m_audioSource.Play();
+        }
         float animationTime = 4;
         Vector3 startPos = transform.position;
         Vector3 endPos = _shredderCenter;
 
         float timer = 0;
-
+        Instantiate(m_deathParticles, transform.position, transform.rotation, transform);
         while (timer < animationTime)
         {
             timer += Time.deltaTime;
@@ -109,6 +120,7 @@ public class Rabboid : MonoBehaviour {
             yield return null;
         }
 
+        //m_audioSource.Stop();
         yield return null;
     }
 

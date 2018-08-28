@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
@@ -12,6 +13,10 @@ public class BunnyOrderSlot : MonoBehaviour {
     public SaveInventory_Player m_playerInventory;
 
     public CustomerOrder m_customerOrder;
+    public GameObject m_customerWaitLocation;
+    public GameObject m_CustomerPrefab;
+
+    private Customer m_Customer;
 
     public Image m_OrderImageUI;
     private BunnyOrderUI m_OrderUI;
@@ -29,6 +34,8 @@ public class BunnyOrderSlot : MonoBehaviour {
         m_OrderIngredientsUI[1] = m_OrderImageUI.transform.GetChild(2).GetComponent<Image>();
         m_OrderIngredientsUI[2] = m_OrderImageUI.transform.GetChild(3).GetComponent<Image>();
         //ShowUI(false);
+        // Set the customer prefab as if it were waiting for an order
+        m_CustomerPrefab.GetComponent<Customer>().SetWaitingForOrder();
     }
 	
 	// Update is called once per frame
@@ -79,7 +86,8 @@ public class BunnyOrderSlot : MonoBehaviour {
         // Set Timer
         m_customerOrder.m_isActive = true;
         //m_startOfOrderTime = Time.time;
-        m_customerOrder.m_customer = customer;
+        //m_customerOrder.m_customerModel = customer.transform.Find("Model").gameObject;
+        m_Customer = customer.GetComponent<Customer>();
 
         // Generate a random set of ingredients for the rabbit
         int numOfIngredients = Random.Range(1, 4);
@@ -238,6 +246,28 @@ public class BunnyOrderSlot : MonoBehaviour {
             m_customerOrder.m_isActive = false;
             m_customerOrder.ResetVariables();
             Destroy(other.gameObject);
+            m_Customer.OrderComplete();
+        }
+    }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (m_customerOrder.m_isActive)
+        {
+            GameObject model = Instantiate(CustomerCalculator.Instance.CalculateCustomerModel(m_customerOrder.m_modelType), m_customerWaitLocation.transform.position, transform.rotation);
+            GameObject newCustomer = Instantiate(m_CustomerPrefab, m_customerWaitLocation.transform.position, transform.rotation);
+            model.transform.parent = newCustomer.transform;
+            newCustomer.GetComponent<Customer>().SetWaitingForOrder();
         }
     }
 }

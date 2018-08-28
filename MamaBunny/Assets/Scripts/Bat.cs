@@ -7,6 +7,7 @@ public class Bat : GunTarget {
     bool m_dead = false;
     Rigidbody m_rgbd;
 
+    public Transform m_puffParticles;
     public AudioClip m_screamClip;
     AudioSource m_audioSource;
 	void Start ()
@@ -52,6 +53,7 @@ public class Bat : GunTarget {
     void SpawnItemsAndDestroy()
     {
         Instantiate(m_spawnedItemPrefab, transform.position + Vector3.up, transform.rotation);
+        Instantiate(m_puffParticles, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 

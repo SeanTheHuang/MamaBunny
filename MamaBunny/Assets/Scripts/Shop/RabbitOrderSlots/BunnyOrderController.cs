@@ -25,6 +25,7 @@ public class BunnyOrderController : MonoBehaviour {
             if (!m_orderSpots[i].GetIsActive())
             {
                 StartOrder(i, customer);
+                customer.GetComponent<Customer>().SetOrderDestination(i);
                 break;
             }
         }
