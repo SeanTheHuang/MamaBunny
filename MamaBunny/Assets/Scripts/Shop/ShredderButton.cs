@@ -23,6 +23,7 @@ public class ShredderButton : GunTarget {
     {
         if (Time.time < m_timeTillCanHit)
             return;
+        SoundEffectsPlayer.Instance.PlaySound("ButtonPhysical");
 
         m_timeTillCanHit = Time.time + m_anim.clip.length;
         m_anim.Play();

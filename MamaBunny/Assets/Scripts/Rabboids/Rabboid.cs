@@ -15,6 +15,7 @@ public class Rabboid : MonoBehaviour {
     public Transform m_defaultMouth;
 
     public MeshRenderer[] m_mainBodyRenderers;
+    public Transform m_deathParticles;
 
     AudioSource m_audioSource;
 
@@ -109,7 +110,7 @@ public class Rabboid : MonoBehaviour {
         Vector3 endPos = _shredderCenter;
 
         float timer = 0;
-
+        Instantiate(m_deathParticles, transform.position, transform.rotation, transform);
         while (timer < animationTime)
         {
             timer += Time.deltaTime;

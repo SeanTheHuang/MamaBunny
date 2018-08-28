@@ -21,6 +21,7 @@ public class ActivationButton : GunTarget {
         if (!m_ready)
             return;
 
+        SoundEffectsPlayer.Instance.PlaySound("ButtonPhysical");
         // Just press button when hit
         m_timeForWhenReady = Time.time + m_cooldown;
         m_ready = false;

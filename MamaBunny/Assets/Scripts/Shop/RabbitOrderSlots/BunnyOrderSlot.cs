@@ -13,6 +13,8 @@ public class BunnyOrderSlot : MonoBehaviour {
 
     public CustomerOrder m_customerOrder;
 
+    private Customer m_Customer;
+
     public Image m_OrderImageUI;
     private BunnyOrderUI m_OrderUI;
     private TextMeshProUGUI m_OrderTextUI;
@@ -80,6 +82,7 @@ public class BunnyOrderSlot : MonoBehaviour {
         m_customerOrder.m_isActive = true;
         //m_startOfOrderTime = Time.time;
         m_customerOrder.m_customer = customer;
+        m_Customer = customer.GetComponent<Customer>();
 
         // Generate a random set of ingredients for the rabbit
         int numOfIngredients = Random.Range(1, 4);
@@ -238,6 +241,7 @@ public class BunnyOrderSlot : MonoBehaviour {
             m_customerOrder.m_isActive = false;
             m_customerOrder.ResetVariables();
             Destroy(other.gameObject);
+            m_Customer.OrderComplete();
         }
     }
 }
