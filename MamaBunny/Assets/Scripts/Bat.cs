@@ -8,6 +8,7 @@ public class Bat : GunTarget {
     Rigidbody m_rgbd;
 	// Use this for initialization
 	void Start () {
+        transform.rotation = Quaternion.Euler(new Vector3(0, Random.Range(0, 360.0f), 0)) * transform.rotation;
         m_rgbd = GetComponent<Rigidbody>();
         m_startPos = transform.position;
 	}
