@@ -8685,18 +8685,6 @@ Prefab:
       propertyPath: m_Name
       value: LarryVine (10)
       objectReference: {fileID: 0}
-    - target: {fileID: 4451668345094096, guid: 8545de9694378bf4d90a95add3cb8a52, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -22.655
-      objectReference: {fileID: 0}
-    - target: {fileID: 4451668345094096, guid: 8545de9694378bf4d90a95add3cb8a52, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.010000002
-      objectReference: {fileID: 0}
-    - target: {fileID: 4451668345094096, guid: 8545de9694378bf4d90a95add3cb8a52, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.010000002
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8545de9694378bf4d90a95add3cb8a52, type: 2}
   m_IsPrefabParent: 0

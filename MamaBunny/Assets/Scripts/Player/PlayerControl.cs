@@ -10,6 +10,7 @@ public class PlayerControl : MonoBehaviour {
     [MinMaxRange(0.5f, 1.5f)]
     public RangedFloat m_pitchChange;
     public float m_modWhenSprinting = 0.5f;
+    public float m_baseJumpGrace = 0.17f;
     float m_lastStepTime;
     AudioSource m_stepAudio;
 
@@ -20,6 +21,7 @@ public class PlayerControl : MonoBehaviour {
     float m_smoothMoveTime = 0.1f;
     float m_moveSpeed;
     float m_yVel;
+    float m_jumpGracePeriod;
     public float m_jumpForce;
     Vector3 m_currentVel, m_refVel;
 
@@ -39,6 +41,11 @@ public class PlayerControl : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        if (m_chara.isGrounded)
+            m_jumpGracePeriod = m_baseJumpGrace;
+        else
+            m_jumpGracePeriod -= Time.deltaTime;
+
         Running();
         MoveLogic();
         SoundLogic();
@@ -114,9 +121,9 @@ public class PlayerControl : MonoBehaviour {
 
     float Jumping()
     {
-        if (m_canJump && Input.GetKeyDown(KeyCode.Space))
+        if ((m_canJump || m_jumpGracePeriod > 0) && Input.GetKey(KeyCode.Space))
         {
-           // Debug.Log("jump");
+            m_jumpGracePeriod = 0;
             return m_jumpForce;
         }
         return 0.0f;
