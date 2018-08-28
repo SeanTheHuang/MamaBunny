@@ -34,6 +34,7 @@ public class Bird : GunTarget {
 
     float m_stateChangeTime;
 
+    public Transform m_puffParticles;
     public List<AudioClip> m_audioClips;
     public AudioClip m_screamClip;
     float m_lastPlayedTime, m_timeBetweenSounds;
@@ -199,6 +200,7 @@ public class Bird : GunTarget {
 
     void SpawnItemsAndDestroy()
     {
+        Instantiate(m_puffParticles, transform.position, Quaternion.identity);
         Instantiate(m_spawnedItemPrefab, transform.position, transform.rotation);
         Destroy(gameObject);
     }
