@@ -31,12 +31,17 @@ public class HoldHand : MonoBehaviour {
         {
             Drop();
         }
+
+        Rabboid rab = _tr.GetComponent<Rabboid>();
+
         m_holdItem = _tr;
         m_holdItem.transform.position = transform.position;
+        if (rab)
+            m_holdItem.position += transform.forward * rab.RabboidStats.m_size * 0.3f;
         m_holdItem.GetComponent<Rigidbody>().isKinematic = true;
         m_holdItem.parent = transform;
         m_holdItem.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
-        if (m_holdItem.GetComponent<Rabboid>())
+        if (rab)
         {
             m_gotRabboid = true;
             m_holdItem.GetComponentInChildren<MeshCollider>().enabled = false;
@@ -55,7 +60,7 @@ public class HoldHand : MonoBehaviour {
         m_holdItem.position = transform.position + transform.forward;
         m_holdItem.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
         Transform camtr = Camera.main.transform;
-        m_holdItem.GetComponent<Rigidbody>().AddForce(camtr.forward.normalized * 500 * Time.deltaTime, ForceMode.Impulse);
+        m_holdItem.GetComponent<Rigidbody>().AddForce(camtr.forward.normalized * 5, ForceMode.Impulse);
         m_holdItem = null;
     }
 }
