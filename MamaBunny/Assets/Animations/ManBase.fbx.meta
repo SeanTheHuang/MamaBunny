@@ -103,12 +103,12 @@ ModelImporter:
     4300000: Man_Body
     4300002: Man_Face
     4300004: Man_Hair
-    7400000: FNormalIdle
-    7400002: FSurprised
-    7400004: FWalking
-    7400006: FHappy
-    7400008: FSad
-    7400010: FAngry
+    7400000: ManBaseIdle
+    7400002: ManBaseSad
+    7400004: ManBaseAngry
+    7400006: ManBaseHappy
+    7400008: ManBaseSurprised
+    7400010: ManBaseWalk
     9500000: //RootNode
     13700000: Man_Body
     13700002: Man_Face
@@ -129,35 +129,35 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'FNormalIdle' has import animation warnings that
+    animationImportWarnings: "\nClip 'ManBaseIdle' has import animation warnings that
       might lower retargeting quality:\nNote: Activate translation DOF on avatar to
       improve retargeting quality.\n\t'Base HumanNeck2' is inbetween humanoid transforms
-      and has rotation animation that will be discarded.\n\nClip 'FSurprised' has
+      and has rotation animation that will be discarded.\n\nClip 'ManBaseSad' has
+      import animation warnings that might lower retargeting quality:\nNote: Activate
+      translation DOF on avatar to improve retargeting quality.\n\t'Base HumanSpine3'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Base
+      HumanRibcage' is inbetween humanoid transforms and has rotation animation that
+      will be discarded.\n\nClip 'ManBaseAngry' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar to
+      improve retargeting quality.\n\t'Base HumanNeck2' is inbetween humanoid transforms
+      and has rotation animation that will be discarded.\n\nClip 'ManBaseHappy' has
       import animation warnings that might lower retargeting quality:\nNote: Activate
       translation DOF on avatar to improve retargeting quality.\n\t'Base HumanSpine3'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Base
       HumanRibcage' is inbetween humanoid transforms and has rotation animation that
       will be discarded.\n\t'Base HumanNeck2' is inbetween humanoid transforms and
-      has rotation animation that will be discarded.\n\nClip 'FWalking' has import
+      has rotation animation that will be discarded.\n\nClip 'ManBaseSurprised' has
+      import animation warnings that might lower retargeting quality:\nNote: Activate
+      translation DOF on avatar to improve retargeting quality.\n\t'Base HumanSpine3'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Base
+      HumanRibcage' is inbetween humanoid transforms and has rotation animation that
+      will be discarded.\n\t'Base HumanNeck2' is inbetween humanoid transforms and
+      has rotation animation that will be discarded.\n\nClip 'ManBaseWalk' has import
       animation warnings that might lower retargeting quality:\nNote: Activate translation
       DOF on avatar to improve retargeting quality.\n\t'Base HumanSpine3' is inbetween
       humanoid transforms and has rotation animation that will be discarded.\n\t'Base
       HumanRibcage' is inbetween humanoid transforms and has rotation animation that
       will be discarded.\n\t'Base HumanNeck2' is inbetween humanoid transforms and
-      has rotation animation that will be discarded.\n\nClip 'FHappy' has import animation
-      warnings that might lower retargeting quality:\nNote: Activate translation DOF
-      on avatar to improve retargeting quality.\n\t'Base HumanSpine3' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n\t'Base
-      HumanRibcage' is inbetween humanoid transforms and has rotation animation that
-      will be discarded.\n\t'Base HumanNeck2' is inbetween humanoid transforms and
-      has rotation animation that will be discarded.\n\nClip 'FSad' has import animation
-      warnings that might lower retargeting quality:\nNote: Activate translation DOF
-      on avatar to improve retargeting quality.\n\t'Base HumanSpine3' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n\t'Base
-      HumanRibcage' is inbetween humanoid transforms and has rotation animation that
-      will be discarded.\n\nClip 'FAngry' has import animation warnings that might
-      lower retargeting quality:\nNote: Activate translation DOF on avatar to improve
-      retargeting quality.\n\t'Base HumanNeck2' is inbetween humanoid transforms and
       has rotation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
@@ -172,8 +172,8 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: FNormalIdle
-      takeName: FNormalIdle
+      name: ManBaseIdle
+      takeName: ManBaseIdle
       firstFrame: 258
       lastFrame: 308
       wrapMode: 0
@@ -200,92 +200,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: FSurprised
-      takeName: FSurprised
-      firstFrame: 213
-      lastFrame: 253
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: FWalking
-      takeName: FWalking
-      firstFrame: 453
-      lastFrame: 486
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: FHappy
-      takeName: FHappy
-      firstFrame: 316
-      lastFrame: 331
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: FSad
-      takeName: FSad
+      name: ManBaseSad
+      takeName: ManBaseSad
       firstFrame: 339
       lastFrame: 389
       wrapMode: 0
@@ -312,8 +228,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: FAngry
-      takeName: FAngry
+      name: ManBaseAngry
+      takeName: ManBaseAngry
       firstFrame: 395
       lastFrame: 445
       wrapMode: 0
@@ -323,6 +239,90 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: ManBaseHappy
+      takeName: ManBaseHappy
+      firstFrame: 316
+      lastFrame: 331
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: ManBaseSurprised
+      takeName: ManBaseSurprised
+      firstFrame: 213
+      lastFrame: 253
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: ManBaseWalk
+      takeName: ManBaseWalk
+      firstFrame: 453
+      lastFrame: 486
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -687,7 +687,7 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
     - name: Base HumanPelvis
       parentName: ManBase(Clone)
-      position: {x: -0.0022281874, y: 0.33647472, z: -0.0140958}
+      position: {x: -0.0022281874, y: 0.33647475, z: -0.0140958}
       rotation: {x: 0.4927964, y: -0.4673312, z: -0.5283133, w: 0.50954723}
       scale: {x: 1.0000002, y: 0.99999994, z: 0.9999999}
     - name: L_Skrit
@@ -719,7 +719,7 @@ ModelImporter:
       scale: {x: 0.9999999, y: 1.0000004, z: 1.0000004}
     - name: Base HumanRDigit11
       parentName: Base HumanRFoot
-      position: {x: -0.09847726, y: 0.0014001112, z: 0}
+      position: {x: -0.09847727, y: 0.0014001112, z: 0}
       rotation: {x: -0.000000010710207, y: -0.00000007124616, z: -0.11187186, w: 0.9937226}
       scale: {x: 1.0000001, y: 1.0000001, z: 0.99999994}
     - name: Base HumanSpine1
@@ -809,7 +809,7 @@ ModelImporter:
       scale: {x: 1.0000116, y: 0.99999547, z: 0.99999714}
     - name: Base HumanRDigit13
       parentName: Base HumanRDigit12
-      position: {x: -0.036935065, y: 0, z: 0}
+      position: {x: -0.036935057, y: 0, z: 0}
       rotation: {x: 0.010039278, y: 0.114111595, z: -0.020280505, w: 0.99321026}
       scale: {x: 1.0000021, y: 0.9999967, z: 1.0000088}
     - name: Base HumanLCollarbone
@@ -834,32 +834,32 @@ ModelImporter:
       scale: {x: 0.9999994, y: 0.9999979, z: 1.0000068}
     - name: Base HumanLDigit21
       parentName: Base HumanLPalm
-      position: {x: -0.09833967, y: 0, z: -0.000000019073486}
+      position: {x: -0.09833945, y: 0.000000019073486, z: 0}
       rotation: {x: 0.0045931255, y: -0.03244489, z: 0.00992458, w: 0.9994137}
       scale: {x: 0.999994, y: 1.0000001, z: 1.0000099}
     - name: Base HumanLDigit22
       parentName: Base HumanLDigit21
-      position: {x: -0.04377122, y: 0, z: 0}
+      position: {x: -0.04377118, y: 0, z: 0.000000019073486}
       rotation: {x: -0.00000045519684, y: -0.00000020699645, z: 0.028983252, w: 0.9995799}
       scale: {x: 0.99999326, y: 0.99999917, z: 1.00001}
     - name: Base HumanLDigit23
       parentName: Base HumanLDigit22
-      position: {x: -0.04260002, y: -0.000000019073486, z: 0}
+      position: {x: -0.04260001, y: 0, z: 0}
       rotation: {x: 0.0000003833837, y: -0.00000004760963, z: 0.28664535, w: 0.9580368}
       scale: {x: 0.9999901, y: 1.0000035, z: 1.0000099}
     - name: Base HumanLDigit11 1
       parentName: Base HumanLPalm
-      position: {x: -0.06077242, y: -0.0030358124, z: 0.032591973}
-      rotation: {x: 0.25539643, y: 0.06404038, z: 0.005065735, w: 0.9646999}
+      position: {x: -0.060772285, y: -0.0030358315, z: 0.032591704}
+      rotation: {x: 0.2553958, y: 0.06404022, z: 0.0050662714, w: 0.9647001}
       scale: {x: 1.0000048, y: 0.99999166, z: 1.0000081}
     - name: Base HumanLDigit12
       parentName: Base HumanLDigit11 1
       position: {x: -0.03231819, y: 0, z: 0.000000009536743}
-      rotation: {x: -0.028856227, y: -0.035228703, z: 0.013982211, w: 0.9988647}
+      rotation: {x: -0.028856164, y: -0.035227172, z: 0.013981634, w: 0.9988648}
       scale: {x: 1.000001, y: 0.9999939, z: 1.0000081}
     - name: Base HumanLDigit13
       parentName: Base HumanLDigit12
-      position: {x: -0.03693508, y: 0, z: 0}
+      position: {x: -0.036935072, y: 0.000000038146972, z: -0.000000038146972}
       rotation: {x: -0.010039159, y: -0.1141115, z: -0.020280516, w: 0.9932102}
       scale: {x: 0.99999994, y: 0.9999945, z: 1.0000094}
     - name: Base HumanLThigh
@@ -879,7 +879,7 @@ ModelImporter:
       scale: {x: 1.0000004, y: 1, z: 0.99999994}
     - name: Base HumanLDigit11
       parentName: Base HumanLFoot
-      position: {x: -0.09847726, y: 0.0014001112, z: 0.000000009536743}
+      position: {x: -0.09847727, y: 0.0014001112, z: 0.000000009536743}
       rotation: {x: -0.000027287515, y: 0.00024256538, z: -0.1118734, w: 0.9937225}
       scale: {x: 1.0000001, y: 1, z: 0.9999999}
     armTwist: 0.5
