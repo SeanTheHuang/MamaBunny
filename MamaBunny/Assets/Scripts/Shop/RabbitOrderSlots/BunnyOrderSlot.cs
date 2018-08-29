@@ -34,8 +34,6 @@ public class BunnyOrderSlot : MonoBehaviour {
         m_OrderIngredientsUI[1] = m_OrderImageUI.transform.GetChild(2).GetComponent<Image>();
         m_OrderIngredientsUI[2] = m_OrderImageUI.transform.GetChild(3).GetComponent<Image>();
         //ShowUI(false);
-        // Set the customer prefab as if it were waiting for an order
-        m_CustomerPrefab.GetComponent<Customer>().SetWaitingForOrder();
     }
 	
 	// Update is called once per frame
