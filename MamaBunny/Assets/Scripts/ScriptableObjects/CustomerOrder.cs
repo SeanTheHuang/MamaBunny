@@ -18,7 +18,7 @@ public class CustomerOrder : ScriptableObject
 
     private void OnEnable()
     {
-        ResetVariables();
+       ResetVariables();
     }
 
     public void ResetVariables()

@@ -51,6 +51,7 @@ public class BunnyPen : MonoBehaviour {
             m_penData.m_bunnySize = RabboidStats.m_size;
             m_penData.m_bunnyMouthPart = RabboidStats.m_mouthPart;
             m_penData.m_bunnyBackPart = RabboidStats.m_backPart;
+            m_penData.ForceSerialization();
             Close();
         }
     }

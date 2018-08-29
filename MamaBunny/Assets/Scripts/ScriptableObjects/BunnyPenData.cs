@@ -17,6 +17,13 @@ public class BunnyPenData : ScriptableObject
 
     }
 
+    public void ForceSerialization()
+    {
+        #if UNITY_EDITOR
+        UnityEditor.EditorUtility.SetDirty(this);
+        #endif
+    }
+
     public void ResetVariables()
     {
         m_bunnyInside = false;
