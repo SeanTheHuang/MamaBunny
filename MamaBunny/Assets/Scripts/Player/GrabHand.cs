@@ -21,6 +21,7 @@ public class GrabHand : MonoBehaviour {
     {
         m_playerControl = GetComponentInParent<PlayerControl>();
         m_grabCam = Camera.main;
+        m_text.text = "";
        // m_inventory = GetComponent<Inventory>();
 	}
 
