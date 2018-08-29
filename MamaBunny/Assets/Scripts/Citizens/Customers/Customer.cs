@@ -267,8 +267,14 @@ public class Customer : MonoBehaviour {
         if (!m_leavingShop)
         {
             m_leavingShop = true;
+            if(m_DemandingCustomer)
+            {
+                m_waitingForOrder = false;
+                transform.parent = null;
+            }
             if (m_respawnedCustomer)
             {
+                Debug.Log("here");
                 m_travelDestinationIndex = 0;
                 m_travelLocations.Clear();
                 m_travelLocations.Add(new Vector3(0.0f, 0.5f, 26.0f));
@@ -295,8 +301,6 @@ public class Customer : MonoBehaviour {
     // The customers order is complete
     public void OrderComplete()
     {
-        m_waitingForOrder = false;
-        transform.parent = null;
         Invoke("LeaveTheShop", 3);
     }
 
