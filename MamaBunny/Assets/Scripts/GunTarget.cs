@@ -27,6 +27,7 @@ public class GunTarget : MonoBehaviour
 
     public virtual void TakeHit(float _damage)
     {
+        SoundEffectsPlayer.Instance.PlaySound("HitVeganFood");
         m_health -= _damage;
 
         m_shakeStartTime = Time.time;
