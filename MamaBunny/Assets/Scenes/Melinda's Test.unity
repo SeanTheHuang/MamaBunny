@@ -5951,7 +5951,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4902487336001596, guid: e3dfac6c544e67d488f37eadb98f1385, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114891816693519726, guid: e3dfac6c544e67d488f37eadb98f1385,
         type: 2}
@@ -7114,6 +7114,12 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: b575cea2690968646988b175f8efef5d, type: 3}
   m_PrefabInternal: {fileID: 1238033207}
+--- !u!114 &1283132046 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114891816693519726, guid: e3dfac6c544e67d488f37eadb98f1385,
+    type: 2}
+  m_PrefabInternal: {fileID: 559094033}
+  m_Script: {fileID: 11500000, guid: fa7076880444eed47b9b175ab828dccc, type: 3}
 --- !u!1 &1298905086
 GameObject:
   m_ObjectHideFlags: 0
@@ -8096,7 +8102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfd14b8fd23a26b4c839865cb6950e43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_shredTargetPos: {fileID: 0}
+  m_shredTargetPos: {fileID: 278782537}
 --- !u!65 &1851900685
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8253,6 +8259,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114736821475734064, guid: 1172d2415730db74087ca0209063734b,
+        type: 2}
+      propertyPath: m_spawnEggPath
+      value: 
+      objectReference: {fileID: 1283132046}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1172d2415730db74087ca0209063734b, type: 2}
   m_IsPrefabParent: 0
