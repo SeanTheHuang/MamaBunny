@@ -34,7 +34,10 @@ public class InventoryBlock : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     }
     public void OnPointerUp(PointerEventData eventData)
     {
-        m_invUI.BlockClicked(m_listIndex);
+        if (m_listIndex >= 0)
+        {
+            m_invUI.BlockClicked(m_listIndex);
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
