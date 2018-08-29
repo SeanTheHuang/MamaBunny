@@ -22,6 +22,7 @@ public class BunnyOrderSlot : MonoBehaviour {
     private BunnyOrderUI m_OrderUI;
     private TextMeshProUGUI m_OrderTextUI;
     private Image[] m_OrderIngredientsUI = new Image[3];
+    private Transform m_bunny;
 
     // Use this for initialization
     void Start () {
@@ -244,9 +245,19 @@ public class BunnyOrderSlot : MonoBehaviour {
             ShowUI(false);
             m_customerOrder.m_isActive = false;
             m_customerOrder.ResetVariables();
-            Destroy(other.gameObject);
             m_Customer.OrderComplete();
+            m_bunny = other.transform;
+            DestroyBunny();
         }
+    }
+
+    void DestroyBunny()
+    {
+        foreach (Transform child in m_bunny)
+        {
+            Destroy(child.gameObject);
+        }
+        Destroy(m_bunny.gameObject);
     }
 
     void OnEnable()
