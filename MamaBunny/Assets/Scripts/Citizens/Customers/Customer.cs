@@ -98,7 +98,8 @@ public class Customer : MonoBehaviour {
         }
         else if (!m_waitingForOrder)
         {
-
+            moveTowardsDestination(m_travelLocations[m_travelDestinationIndex]);
+            checkDestinationReached();
         }
     }
 
@@ -266,7 +267,16 @@ public class Customer : MonoBehaviour {
         if (!m_leavingShop)
         {
             m_leavingShop = true;
-            --m_travelDestinationIndex;
+            if (m_respawnedCustomer)
+            {
+                m_travelDestinationIndex = 0;
+                m_travelLocations.Clear();
+                m_travelLocations.Add(new Vector3(0.0f, 0.5f, 26.0f));
+            }
+            else
+            {
+                --m_travelDestinationIndex;
+            }
         }
     }
 
@@ -285,7 +295,9 @@ public class Customer : MonoBehaviour {
     // The customers order is complete
     public void OrderComplete()
     {
-        LeaveTheShop();
+        m_waitingForOrder = false;
+        transform.parent = null;
+        Invoke("LeaveTheShop", 3);
     }
 
     public void SetOrderDestination(int orderIndex)
@@ -294,14 +306,9 @@ public class Customer : MonoBehaviour {
         m_orderLocation = m_orderWaitLocations.transform.GetChild(orderIndex).position;
     }
 
-    public void RecievedOrder()
-    {
-        m_waitingForOrder = false;
-        LeaveTheShop();
-    }
-
     public void SetWaitingForOrder()
     {
+        m_DemandingCustomer = true;
         m_respawnedCustomer = true;
         m_waitingForOrder = true;
     }

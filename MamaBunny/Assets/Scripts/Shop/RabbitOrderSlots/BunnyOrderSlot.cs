@@ -268,7 +268,8 @@ public class BunnyOrderSlot : MonoBehaviour {
             GameObject model = Instantiate(CustomerCalculator.Instance.CalculateCustomerModel(m_customerOrder.m_modelType), m_customerWaitLocation.transform.position, transform.rotation);
             GameObject newCustomer = Instantiate(m_CustomerPrefab, m_customerWaitLocation.transform.position, transform.rotation);
             model.transform.parent = newCustomer.transform;
-            newCustomer.GetComponent<Customer>().SetWaitingForOrder();
+            m_Customer = newCustomer.GetComponent<Customer>();
+            m_Customer.SetWaitingForOrder();
         }
     }
 }
