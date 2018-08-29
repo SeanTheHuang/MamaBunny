@@ -24,6 +24,7 @@ public class Bat : GunTarget {
         if (m_dead)
             return;
 
+        SoundEffectsPlayer.Instance.PlaySound("Ding");
         m_health -= _damage;
 
         m_shakeStartTime = Time.time;
@@ -44,8 +45,7 @@ public class Bat : GunTarget {
         m_audioSource.Stop();
         m_audioSource.playOnAwake = false;
         m_audioSource.loop = false;
-        m_audioSource.clip = m_screamClip;
-        m_audioSource.Play();
+        SoundEffectsPlayer.Instance.PlaySound("BatDie");
         m_dead = true;
         m_rgbd.useGravity = true;
     }

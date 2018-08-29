@@ -180,6 +180,7 @@ public class Bird : GunTarget {
 
     public override void TakeHit(float _damage)
     {
+        SoundEffectsPlayer.Instance.PlaySound("Ding");
         m_health -= _damage;
         if (m_health < 1)
             OnDeath();
@@ -190,8 +191,7 @@ public class Bird : GunTarget {
     void OnDeath()
     {
         m_audioSource.Stop();
-        m_audioSource.clip = m_screamClip;
-        m_audioSource.Play();
+        SoundEffectsPlayer.Instance.PlaySound("WackoonDie");
         m_anim.SetBool("Moving", false);
         m_dead = true;
         m_currentVel *= 0.2f;

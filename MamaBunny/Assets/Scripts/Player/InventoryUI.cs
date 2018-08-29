@@ -33,6 +33,8 @@ public class InventoryUI : MonoBehaviour{
         //m_capacityList = new List<Image> { };
         //m_Background = GetComponent<Image>();
         //m_blockColor = m_block.color;
+
+        
         m_rmb = new List<RabboidModBase> { };
         Display(false, null);
 	}
@@ -132,6 +134,7 @@ public class InventoryUI : MonoBehaviour{
         for (int i = 0; i < m_capacityList.Count; i++)
         {//stop them from appearing bad when they pop up straight away
             m_capacityList[i].GetComponent<InventoryBlock>().ResetColor();
+            m_capacityList[i].GetComponent<InventoryBlock>().m_listIndex = -1;
         }
     }
 
