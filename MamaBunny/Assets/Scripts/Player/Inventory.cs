@@ -62,10 +62,7 @@ public class Inventory : MonoBehaviour {
 
     }
 
-    private void OnGUI()
-    {
-        GUI.Box(new Rect(0, 0, 50, 50), m_pickUpList.Count.ToString());
-    }
+   
 
     RabboidModBase PickUptoBase(PickUp _pickUp)
     {
