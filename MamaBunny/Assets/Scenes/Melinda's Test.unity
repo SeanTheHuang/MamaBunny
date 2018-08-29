@@ -469,7 +469,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 270d436f10bddb24dba089256b4f4f44, type: 2}
     - target: {fileID: 100000, guid: 8101d392765c12744b2f711f74259f70, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8101d392765c12744b2f711f74259f70, type: 3}
@@ -7364,7 +7364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sharedProfile: {fileID: 11400000, guid: 291a8a999e7c4a34b8589f8279812eeb, type: 2}
   isGlobal: 0
-  blendDistance: 0
+  blendDistance: 1
   weight: 1
   priority: 1
 --- !u!65 &921786113
@@ -9741,7 +9741,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 270d436f10bddb24dba089256b4f4f44, type: 2}
     - target: {fileID: 100000, guid: 1078555444340c54d810637990928292, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1078555444340c54d810637990928292, type: 3}
@@ -10005,7 +10005,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sharedProfile: {fileID: 11400000, guid: 140dc012d478e02428475afeef525d39, type: 2}
   isGlobal: 0
-  blendDistance: 0
+  blendDistance: 1
   weight: 1
   priority: 1
 --- !u!65 &1940989891
