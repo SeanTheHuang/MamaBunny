@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8af10c330e45d254d84e1719dc5a7974, type: 3}
   m_Name: 0_BatferatuFang
   m_EditorClassIdentifier: 
-  m_pickUpItemForm: {fileID: 4067948799487036, guid: 0640b7797fcf5724cbc4942be25951a2,
+  m_pickUpItemForm: {fileID: 4558646045095736, guid: bc2ae468e0e08494095fe02d2e1fc60f,
     type: 2}
   m_itemSprite: {fileID: 21300030, guid: 291d958d7cab4674589761c90d3067cf, type: 3}
   m_recipeSprite: {fileID: 21300028, guid: 291d958d7cab4674589761c90d3067cf, type: 3}
