@@ -67,6 +67,7 @@ public class BunnyOrderUI : MonoBehaviour {
 
         for (int i = 0; i < m_OrderIngredientsUI.Length; ++i)
         {
+            m_OrderIngredientsUI[i].color = Color.white;
             if(!colorSet && m_customerOrder.m_colour != null)
             {
                 colorSet = true;
@@ -93,6 +94,11 @@ public class BunnyOrderUI : MonoBehaviour {
                 else if (m_customerOrder.m_size == RabboidCalculator.LARGE_SIZE)
                     m_OrderIngredientsUI[i].sprite = m_largeSize;
                 m_OrderIngredientsUI[i].preserveAspect = true;
+            }
+            else
+            {
+                //nothing
+                m_OrderIngredientsUI[i].color = Color.clear;
             }
         }
     }
