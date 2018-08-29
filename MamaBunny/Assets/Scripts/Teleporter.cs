@@ -25,6 +25,7 @@ public class Teleporter : MonoBehaviour {
 
     void ChangeScene()
     {
+        SoundEffectsPlayer.Instance.PlaySound("Teleport");
         m_teleporting = true;
         SceneManager.LoadScene(m_sceneIndexToGo);
     }
