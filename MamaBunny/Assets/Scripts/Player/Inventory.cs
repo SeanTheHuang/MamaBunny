@@ -9,10 +9,11 @@ public class Inventory : MonoBehaviour {
     public uint m_capacity = 10;
     public bool m_displaying = false;
 
-	void Start ()
+	void Awake ()
     {
         m_pickUpList = m_inve.m_inventory;
         m_capacity = m_inve.m_capacity;
+        
         //m_pickUpList = new List<RabboidModBase>();
         //m_capacity = (uint)InventoryUI.Instance.m_capacityList.Count;
 	}

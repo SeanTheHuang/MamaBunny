@@ -29,7 +29,7 @@ public class PlayerControl : MonoBehaviour {
 
     bool m_playerlocked = false, m_canRun = true, m_canJump = true;
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         m_chara = GetComponent<CharacterController>();
         m_stepAudio = GetComponent<AudioSource>();
