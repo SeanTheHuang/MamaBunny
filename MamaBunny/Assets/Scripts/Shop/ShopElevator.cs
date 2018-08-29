@@ -10,8 +10,15 @@ public class ShopElevator : MonoBehaviour {
     bool m_platformTriggered;
     bool m_movingDown;
 
-    Vector3 m_topPosition = new Vector3(-0.36f, 0, 4.1f);
-    Vector3 m_bottomPosition = new Vector3(-0.36f, -4.0f, 4.1f);
+    Vector3 m_topPosition;
+    Vector3 m_bottomPosition;
+
+    private void Start()
+    {
+        m_topPosition = transform.position;
+        m_bottomPosition = m_topPosition;
+        m_bottomPosition.y -= 4.0f;
+    }
 
     private void Update()
     {
