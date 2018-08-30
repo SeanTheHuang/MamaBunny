@@ -11,23 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bec2515ada9700d43a2b34a556489c19, type: 3}
   m_Name: PlayerInventory
   m_EditorClassIdentifier: 
-  m_inventory:
-  - {fileID: 11400000, guid: 7512f8a68b993714dabbed256bcf77e4, type: 2}
-  - {fileID: 11400000, guid: 7512f8a68b993714dabbed256bcf77e4, type: 2}
-  - {fileID: 11400000, guid: 7512f8a68b993714dabbed256bcf77e4, type: 2}
-  - {fileID: 11400000, guid: 7512f8a68b993714dabbed256bcf77e4, type: 2}
-  - {fileID: 11400000, guid: 7512f8a68b993714dabbed256bcf77e4, type: 2}
-  - {fileID: 11400000, guid: 7512f8a68b993714dabbed256bcf77e4, type: 2}
-  - {fileID: 11400000, guid: 7512f8a68b993714dabbed256bcf77e4, type: 2}
-  - {fileID: 11400000, guid: 7512f8a68b993714dabbed256bcf77e4, type: 2}
-  - {fileID: 11400000, guid: 7512f8a68b993714dabbed256bcf77e4, type: 2}
-  - {fileID: 11400000, guid: 7512f8a68b993714dabbed256bcf77e4, type: 2}
-  - {fileID: 11400000, guid: 7512f8a68b993714dabbed256bcf77e4, type: 2}
-  - {fileID: 11400000, guid: 7512f8a68b993714dabbed256bcf77e4, type: 2}
-  - {fileID: 11400000, guid: 7512f8a68b993714dabbed256bcf77e4, type: 2}
-  - {fileID: 11400000, guid: 7512f8a68b993714dabbed256bcf77e4, type: 2}
-  - {fileID: 11400000, guid: 7512f8a68b993714dabbed256bcf77e4, type: 2}
-  - {fileID: 11400000, guid: 0e1aefd544765da4f988265de4541746, type: 2}
-  - {fileID: 11400000, guid: 0e1aefd544765da4f988265de4541746, type: 2}
+  m_inventory: []
   m_capacity: 20
-  m_money: 19
+  m_money: 0
