@@ -133,8 +133,13 @@ public class PlayerControl : MonoBehaviour {
     {
         m_playerlocked = _lock;
         GetComponent<PlayerCameraController>().m_cameraLocked = !_lock;
-        GetComponentInChildren<Gun>().LockGun(_lock);
-        GetComponentInChildren<GrabHand>().LockHand(_lock);
+        Gun gun = GetComponentInChildren<Gun>();
+        if (gun)
+            gun.LockGun(_lock);
+
+        GrabHand hand = GetComponentInChildren<GrabHand>();
+        if (hand)
+            hand.LockHand(_lock);
     }
 
     public void AimMode()
