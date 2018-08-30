@@ -26,6 +26,8 @@ public class BunnyOrderSlot : MonoBehaviour {
     private Image[] m_OrderIngredientsUI = new Image[3];
     private Transform m_bunny;
 
+    private SpriteRenderer m_spriteRenderer;
+
     // Use this for initialization
     void Start () {
         m_bunnyOrderController = transform.GetComponentInParent<BunnyOrderController>();
@@ -38,6 +40,7 @@ public class BunnyOrderSlot : MonoBehaviour {
         m_OrderIngredientsUI[2] = m_OrderImageUI.transform.GetChild(3).GetComponent<Image>();
         m_bunnyOrderController.UpdateCoinCounter(m_playerInventory.m_money);
         //ShowUI(false);
+        m_spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
     }
 
     void ShowUI(bool isEnabled)
@@ -85,7 +88,7 @@ public class BunnyOrderSlot : MonoBehaviour {
                     }
                     else
                     {
-                        m_customerOrder.m_size = RabboidCalculator.SMALL_SIZE;
+                        m_customerOrder.m_size = RabboidCalculator.NORMAL_SIZE;
                     }
                 }
                 // Chose a colour
@@ -114,7 +117,9 @@ public class BunnyOrderSlot : MonoBehaviour {
         }
 
         ShowUI(true);
+        m_spriteRenderer.enabled = true;
         m_OrderUI.SetRecipeSprites();
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -129,8 +134,8 @@ public class BunnyOrderSlot : MonoBehaviour {
                 {
                     RabboidResult RabboidStats = other.transform.parent.GetComponent<Rabboid>().RabboidStats;
                     // Check the order
-                    int rabbitScore = 20; // Score is given based on how close the rabbit is to what the order wanted.
-                    int negativePointModifier = 1;
+                    int rabbitScore = 10; // Score is given based on how close the rabbit is to what the order wanted.
+                    int negativePointModifier = 2;
                     int positivePointModifier = 2;
 
                     // Check Size
@@ -233,6 +238,7 @@ public class BunnyOrderSlot : MonoBehaviour {
                     m_Customer.OrderComplete();
                     m_bunny = other.transform;
                     DestroyBunny();
+                    m_spriteRenderer.enabled = false;
                 }
             }
         }
