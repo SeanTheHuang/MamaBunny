@@ -20,7 +20,7 @@ public class CheckForGun : MonoBehaviour {
             // Make everyone run
             if(control.IsGunActive())
             {
-                
+                m_citzenSpawner.MakeCitizensRunInFear();
             }
         }
     }

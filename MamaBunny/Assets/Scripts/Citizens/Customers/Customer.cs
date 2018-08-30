@@ -42,6 +42,7 @@ public class Customer : MonoBehaviour {
     private void Start()
     {
         m_anima = GetComponentInChildren<Animator>();
+        m_anima.SetBool("isMoving", true);
         Transform model = transform.GetChild(0);
         model.transform.position = new Vector3(model.transform.position.x, model.transform.position.y - 0.5f, model.transform.position.z);
         if (!m_respawnedCustomer)
@@ -332,5 +333,10 @@ public class Customer : MonoBehaviour {
         m_DemandingCustomer = true;
         m_respawnedCustomer = true;
         m_waitingForOrder = true;
+    }
+
+    public void RunInPanic()
+    {
+
     }
 }
