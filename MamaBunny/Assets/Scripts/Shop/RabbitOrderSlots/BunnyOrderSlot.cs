@@ -16,6 +16,8 @@ public class BunnyOrderSlot : MonoBehaviour {
     public GameObject m_customerWaitLocation;
     public GameObject m_CustomerPrefab;
 
+    public string m_interactText;
+
     private Customer m_Customer;
 
     public Image m_OrderImageUI;
@@ -35,31 +37,6 @@ public class BunnyOrderSlot : MonoBehaviour {
         m_OrderIngredientsUI[1] = m_OrderImageUI.transform.GetChild(2).GetComponent<Image>();
         m_OrderIngredientsUI[2] = m_OrderImageUI.transform.GetChild(3).GetComponent<Image>();
         //ShowUI(false);
-    }
-	
-	// Update is called once per frame
-	void Update () {
-        //if (m_isActive)
-        //    UpdateOrder();
-    }
-
-    //private void UpdateOrder()
-    //{
-    //    // Check the player has not run out of time on the order
-    //    if(m_startOfOrderTime < Time.time)
-    //    {
-    //        EndOrder();
-    //    }
-    //}
-
-    private void Awake()
-    {
-        //if(m_customerOrder.m_isActive)
-        //{
-        //    GameObject customer = Instantiate(m_customerOrder.m_customer, transform.position, transform.rotation);
-        //    customer.GetComponent<Customer>().EnteredShop();
-        //    customer.GetComponent<Customer>().m_travelDestinationIndex = 3;
-        //}
     }
 
     void ShowUI(bool isEnabled)
@@ -141,113 +118,121 @@ public class BunnyOrderSlot : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (m_customerOrder.m_isActive)
+        Transform parent = other.transform.parent;
+        if (parent != null)
         {
-            RabboidResult RabboidStats = other.transform.parent.GetComponent<Rabboid>().RabboidStats;
-            // Check the order
-            int rabbitScore = 20; // Score is given based on how close the rabbit is to what the order wanted.
-            int negativePointModifier = 1;
-            int positivePointModifier = 2;
+            Rabboid rabboid = other.transform.parent.GetComponent<Rabboid>();
+            if (rabboid != null)
+            {
+                if (m_customerOrder.m_isActive)
+                {
+                    RabboidResult RabboidStats = other.transform.parent.GetComponent<Rabboid>().RabboidStats;
+                    // Check the order
+                    int rabbitScore = 20; // Score is given based on how close the rabbit is to what the order wanted.
+                    int negativePointModifier = 1;
+                    int positivePointModifier = 2;
 
-            // Check Size
-            if (m_customerOrder.m_size == RabboidCalculator.NORMAL_SIZE)
-            {
-                if (RabboidStats.m_size <= RabboidCalculator.SMALL_SIZE)
-                {
-                    rabbitScore -= negativePointModifier;
-                }
-                else if (RabboidStats.m_size >= RabboidCalculator.LARGE_SIZE)
-                {
-                    rabbitScore -= negativePointModifier;
-                }
-                else
-                {
-                    rabbitScore += positivePointModifier;
-                }
-            }
-            else if (m_customerOrder.m_size == RabboidCalculator.SMALL_SIZE)
-            {
-                if(RabboidStats.m_size <= RabboidCalculator.SMALL_SIZE)
-                {
-                    rabbitScore += positivePointModifier;
-                }
-                else if (RabboidStats.m_size >= RabboidCalculator.LARGE_SIZE)
-                {
-                    rabbitScore -= negativePointModifier * 2;
-                }
-                else
-                {
-                    rabbitScore -= negativePointModifier;
-                }
-            }
-            else if (m_customerOrder.m_size == RabboidCalculator.LARGE_SIZE)
-            {
-                if (RabboidStats.m_size >= RabboidCalculator.LARGE_SIZE)
-                {
-                    rabbitScore += positivePointModifier;
-                }
-                else if (RabboidStats.m_size <= RabboidCalculator.SMALL_SIZE)
-                {
-                    rabbitScore -= negativePointModifier * 2;
-                }
-                else
-                {
-                    rabbitScore -= negativePointModifier;
-                }
-            }
+                    // Check Size
+                    if (m_customerOrder.m_size == RabboidCalculator.NORMAL_SIZE)
+                    {
+                        if (RabboidStats.m_size <= RabboidCalculator.SMALL_SIZE)
+                        {
+                            rabbitScore -= negativePointModifier;
+                        }
+                        else if (RabboidStats.m_size >= RabboidCalculator.LARGE_SIZE)
+                        {
+                            rabbitScore -= negativePointModifier;
+                        }
+                        else
+                        {
+                            rabbitScore += positivePointModifier;
+                        }
+                    }
+                    else if (m_customerOrder.m_size == RabboidCalculator.SMALL_SIZE)
+                    {
+                        if (RabboidStats.m_size <= RabboidCalculator.SMALL_SIZE)
+                        {
+                            rabbitScore += positivePointModifier;
+                        }
+                        else if (RabboidStats.m_size >= RabboidCalculator.LARGE_SIZE)
+                        {
+                            rabbitScore -= negativePointModifier * 2;
+                        }
+                        else
+                        {
+                            rabbitScore -= negativePointModifier;
+                        }
+                    }
+                    else if (m_customerOrder.m_size == RabboidCalculator.LARGE_SIZE)
+                    {
+                        if (RabboidStats.m_size >= RabboidCalculator.LARGE_SIZE)
+                        {
+                            rabbitScore += positivePointModifier;
+                        }
+                        else if (RabboidStats.m_size <= RabboidCalculator.SMALL_SIZE)
+                        {
+                            rabbitScore -= negativePointModifier * 2;
+                        }
+                        else
+                        {
+                            rabbitScore -= negativePointModifier;
+                        }
+                    }
 
-            // Check Color
-            Color resultsColor = Color.white;
-            if (RabboidStats.m_resultColour != null)
-                resultsColor = RabboidStats.m_resultColour.m_color;
-            Color customerColor = Color.white;
-            if(m_customerOrder.m_colour != null)
-                customerColor = m_customerOrder.m_colour.m_color;
-            if (resultsColor == customerColor)
-            {
-                rabbitScore += positivePointModifier;
-            }
-            else
-            {
-                rabbitScore -= negativePointModifier;
-            }
+                    // Check Color
+                    Color resultsColor = Color.white;
+                    if (RabboidStats.m_resultColour != null)
+                        resultsColor = RabboidStats.m_resultColour.m_color;
+                    Color customerColor = Color.white;
+                    if (m_customerOrder.m_colour != null)
+                        customerColor = m_customerOrder.m_colour.m_color;
+                    if (resultsColor == customerColor)
+                    {
+                        rabbitScore += positivePointModifier;
+                    }
+                    else
+                    {
+                        rabbitScore -= negativePointModifier;
+                    }
 
-            // Check Body
-            if((RabboidStats.m_backPart == null && m_customerOrder.m_backPart == null)
-            || (RabboidStats.m_backPart != null && m_customerOrder.m_backPart != null))
-            {
-                rabbitScore += positivePointModifier;
-            }
-            else
-            {
-                rabbitScore -= negativePointModifier;
-            }
+                    // Check Body
+                    if ((RabboidStats.m_backPart == null && m_customerOrder.m_backPart == null)
+                    || (RabboidStats.m_backPart != null && m_customerOrder.m_backPart != null))
+                    {
+                        rabbitScore += positivePointModifier;
+                    }
+                    else
+                    {
+                        rabbitScore -= negativePointModifier;
+                    }
 
-            // Check Head
-            if((RabboidStats.m_mouthPart == null && m_customerOrder.m_mouthPart == null)
-            || (RabboidStats.m_mouthPart != null && m_customerOrder.m_mouthPart != null))
-            {
-                rabbitScore += positivePointModifier;
-            }
-            else
-            {
-                rabbitScore -= negativePointModifier;
-            }
+                    // Check Head
+                    if ((RabboidStats.m_mouthPart == null && m_customerOrder.m_mouthPart == null)
+                    || (RabboidStats.m_mouthPart != null && m_customerOrder.m_mouthPart != null))
+                    {
+                        rabbitScore += positivePointModifier;
+                    }
+                    else
+                    {
+                        rabbitScore -= negativePointModifier;
+                    }
 
-            // Add coins based on performance
-            if (rabbitScore < 0)
-                rabbitScore = 0;
-            m_playerInventory.m_money += (uint)rabbitScore;
-            m_bunnyOrderController.UpdateCoinCounter(m_playerInventory.m_money);
+                    // Add coins based on performance
+                    if (rabbitScore < 0)
+                        rabbitScore = 0;
+                    m_playerInventory.m_money += (uint)rabbitScore;
+                    m_bunnyOrderController.UpdateCoinCounter(m_playerInventory.m_money);
 
-            // Tidy up
-            //m_customerOrder.m_customer.GetComponent<Customer>().OrderComplete();
-            ShowUI(false);
-            m_customerOrder.m_isActive = false;
-            m_customerOrder.ResetVariables();
-            m_Customer.OrderComplete();
-            m_bunny = other.transform;
-            DestroyBunny();
+                    // Tidy up
+                    //m_customerOrder.m_customer.GetComponent<Customer>().OrderComplete();
+                    ShowUI(false);
+                    m_customerOrder.m_isActive = false;
+                    m_customerOrder.ResetVariables();
+                    m_Customer.OrderComplete();
+                    m_bunny = other.transform;
+                    DestroyBunny();
+                }
+            }
         }
     }
 

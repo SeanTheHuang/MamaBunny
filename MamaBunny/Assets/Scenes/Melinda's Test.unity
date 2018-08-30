@@ -8809,7 +8809,7 @@ GameObject:
   - component: {fileID: 1271736781}
   - component: {fileID: 1271736783}
   - component: {fileID: 1271736782}
-  m_Layer: 16
+  m_Layer: 10
   m_Name: OrderSlot1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8857,6 +8857,7 @@ MonoBehaviour:
   m_customerWaitLocation: {fileID: 17916702}
   m_CustomerPrefab: {fileID: 1588253943932980, guid: c228d7e2d9c8df64584c03175ecb0a81,
     type: 2}
+  m_interactText: Order 1
   m_OrderImageUI: {fileID: 1161585227}
 --- !u!114 &1283132046 stripped
 MonoBehaviour:
@@ -9595,7 +9596,7 @@ GameObject:
   - component: {fileID: 1680891761}
   - component: {fileID: 1680891763}
   - component: {fileID: 1680891762}
-  m_Layer: 16
+  m_Layer: 10
   m_Name: OrderSlot4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9643,6 +9644,7 @@ MonoBehaviour:
   m_customerWaitLocation: {fileID: 1946536534}
   m_CustomerPrefab: {fileID: 1588253943932980, guid: c228d7e2d9c8df64584c03175ecb0a81,
     type: 2}
+  m_interactText: Order 4
   m_OrderImageUI: {fileID: 1797053686}
 --- !u!4 &1689732026 stripped
 Transform:
@@ -10657,7 +10659,7 @@ GameObject:
   - component: {fileID: 1914180930}
   - component: {fileID: 1914180932}
   - component: {fileID: 1914180931}
-  m_Layer: 16
+  m_Layer: 10
   m_Name: OrderSlot2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10705,6 +10707,7 @@ MonoBehaviour:
   m_customerWaitLocation: {fileID: 877993037}
   m_CustomerPrefab: {fileID: 1588253943932980, guid: c228d7e2d9c8df64584c03175ecb0a81,
     type: 2}
+  m_interactText: Order 2
   m_OrderImageUI: {fileID: 1237046345}
 --- !u!1 &1919501965 stripped
 GameObject:
@@ -15651,7 +15654,7 @@ GameObject:
   - component: {fileID: 2015068368}
   - component: {fileID: 2015068370}
   - component: {fileID: 2015068369}
-  m_Layer: 16
+  m_Layer: 10
   m_Name: OrderSlot3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15699,6 +15702,7 @@ MonoBehaviour:
   m_customerWaitLocation: {fileID: 1708873994}
   m_CustomerPrefab: {fileID: 1588253943932980, guid: c228d7e2d9c8df64584c03175ecb0a81,
     type: 2}
+  m_interactText: Order 3
   m_OrderImageUI: {fileID: 87510109}
 --- !u!1001 &2022925744
 Prefab:
