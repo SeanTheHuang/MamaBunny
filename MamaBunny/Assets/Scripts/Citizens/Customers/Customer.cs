@@ -322,6 +322,26 @@ public class Customer : MonoBehaviour {
     // The customers order is complete
     public void OrderComplete(int _score)
     {//4 bad     //20 + good
+        if(_score < 5)
+        {
+            if (Random.Range(0, 2) == 0)
+            {
+                m_face.SetFaceMaterial(CustomerFace.FACEEMOTION.SAD);
+                m_anima.SetTrigger("beSad");
+            }
+            else
+            {
+                m_face.SetFaceMaterial(CustomerFace.FACEEMOTION.ANGRY);
+                m_anima.SetTrigger("beAngry");
+            }
+        }
+        else if(_score > 19)
+        {
+            m_face.SetFaceMaterial(CustomerFace.FACEEMOTION.HAPPY);
+            m_anima.SetTrigger("beHappy");
+        }
+
+        //stop them from moving for a while
         EventsController.Instance.SummonMoney(transform.position);
         Invoke("LeaveTheShop", 3);
     }
