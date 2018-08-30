@@ -9783,9 +9783,9 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114292460209781850, guid: 8aa89d0b68c7d894990e5fbb47ec16a2,
         type: 2}
-      propertyPath: m_startGamePosition
+      propertyPath: m_gunTable
       value: 
-      objectReference: {fileID: 248268335}
+      objectReference: {fileID: 230245866}
     - target: {fileID: 114292460209781850, guid: 8aa89d0b68c7d894990e5fbb47ec16a2,
         type: 2}
       propertyPath: m_player
@@ -9793,33 +9793,9 @@ Prefab:
       objectReference: {fileID: 932825241}
     - target: {fileID: 114292460209781850, guid: 8aa89d0b68c7d894990e5fbb47ec16a2,
         type: 2}
-      propertyPath: m_gunTable
+      propertyPath: m_startGamePosition
       value: 
-      objectReference: {fileID: 230245866}
-    - target: {fileID: 114426353123782696, guid: 8aa89d0b68c7d894990e5fbb47ec16a2,
-        type: 2}
-      propertyPath: m_boyModel
-      value: 
-      objectReference: {fileID: 1387612238446318, guid: a8791102f131cdb4da83d2319a565ae2,
-        type: 2}
-    - target: {fileID: 114426353123782696, guid: 8aa89d0b68c7d894990e5fbb47ec16a2,
-        type: 2}
-      propertyPath: m_girlModel
-      value: 
-      objectReference: {fileID: 1269403010290686, guid: 1e7581f2278c91944b4e3f6daaa42c9f,
-        type: 2}
-    - target: {fileID: 114426353123782696, guid: 8aa89d0b68c7d894990e5fbb47ec16a2,
-        type: 2}
-      propertyPath: m_manModel
-      value: 
-      objectReference: {fileID: 1321347987748256, guid: 577e7e5d4d03a1140b58bc61d1de83ab,
-        type: 2}
-    - target: {fileID: 114426353123782696, guid: 8aa89d0b68c7d894990e5fbb47ec16a2,
-        type: 2}
-      propertyPath: m_womanModel
-      value: 
-      objectReference: {fileID: 1732450362216472, guid: 8bf55a18995fdc14fbda8bbf809da16f,
-        type: 2}
+      objectReference: {fileID: 248268335}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8aa89d0b68c7d894990e5fbb47ec16a2, type: 2}
   m_IsPrefabParent: 0
