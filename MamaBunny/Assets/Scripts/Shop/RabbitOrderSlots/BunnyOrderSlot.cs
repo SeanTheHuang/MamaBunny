@@ -133,8 +133,8 @@ public class BunnyOrderSlot : MonoBehaviour {
                 {
                     RabboidResult RabboidStats = other.transform.parent.GetComponent<Rabboid>().RabboidStats;
                     // Check the order
-                    int rabbitScore = 20; // Score is given based on how close the rabbit is to what the order wanted.
-                    int negativePointModifier = 1;
+                    int rabbitScore = 10; // Score is given based on how close the rabbit is to what the order wanted.
+                    int negativePointModifier = 2;
                     int positivePointModifier = 2;
 
                     // Check Size

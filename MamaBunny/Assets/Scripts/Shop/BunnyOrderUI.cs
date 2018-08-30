@@ -89,6 +89,8 @@ public class BunnyOrderUI : MonoBehaviour {
             else if (!sizeSet && m_customerOrder.m_size != 0)
             {
                 sizeSet = true;
+                if (m_customerOrder.m_size == RabboidCalculator.SMALL_SIZE)
+                    m_OrderIngredientsUI[i].sprite = null;
                 if (m_customerOrder.m_size == RabboidCalculator.NORMAL_SIZE)
                     m_OrderIngredientsUI[i].sprite = m_normalSize;
                 else if (m_customerOrder.m_size == RabboidCalculator.LARGE_SIZE)
