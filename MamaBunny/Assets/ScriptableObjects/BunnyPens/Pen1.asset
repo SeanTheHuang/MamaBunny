@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 087249fba6aa9cf46b50eec637ecc93f, type: 3}
   m_Name: Pen1
   m_EditorClassIdentifier: 
-  m_bunnyInside: 1
-  m_bunnySize: 1
+  m_bunnyInside: 0
+  m_bunnySize: 0
   m_bunnyColour: {fileID: 0}
   m_bunnyMouthPart: {fileID: 0}
   m_bunnyBackPart: {fileID: 0}
