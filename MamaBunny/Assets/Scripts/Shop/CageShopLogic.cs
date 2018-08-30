@@ -69,6 +69,7 @@ public class CageShopLogic : MonoBehaviour {
         pen.ResetVariables();
         SoundEffectsPlayer.Instance.PlaySound("kaching");
         uint sellAmount = (uint)Mathf.RoundToInt(Random.Range(m_sellAmount.minValue, m_sellAmount.maxValue));
+        EffectCanvas.Instance.HelperText("A bunny in a pen has been sold for $" + sellAmount.ToString());
         m_inventory.m_money += sellAmount;
         m_moneyText.text = "Coins: " + m_inventory.m_money;
     }
