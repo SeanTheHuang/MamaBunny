@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Passerby : MonoBehaviour
 {
-
+    Animator m_anima;
     public float speed;
 
     private Vector3 m_TravelLocation;
@@ -14,6 +14,8 @@ public class Passerby : MonoBehaviour
 
     private void Start()
     {
+        m_anima = GetComponentInChildren<Animator>();
+        m_anima.SetBool("isMoving", true);
         Transform model = transform.GetChild(0);
         model.transform.position = new Vector3(model.transform.position.x, model.transform.position.y - 0.5f, model.transform.position.z);
         m_meshRenderers = model.GetComponentsInChildren<MeshRenderer>();

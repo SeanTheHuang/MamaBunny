@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class Customer : MonoBehaviour {
 
+    Animator m_anima;
     public float m_travelSpeed;
     public float m_wanderSpeed;
 
@@ -40,6 +41,7 @@ public class Customer : MonoBehaviour {
 
     private void Start()
     {
+        m_anima = GetComponentInChildren<Animator>();
         Transform model = transform.GetChild(0);
         model.transform.position = new Vector3(model.transform.position.x, model.transform.position.y - 0.5f, model.transform.position.z);
         if (!m_respawnedCustomer)
