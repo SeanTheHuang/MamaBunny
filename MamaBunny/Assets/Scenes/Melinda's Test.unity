@@ -8809,7 +8809,7 @@ GameObject:
   - component: {fileID: 1271736781}
   - component: {fileID: 1271736783}
   - component: {fileID: 1271736782}
-  m_Layer: 16
+  m_Layer: 10
   m_Name: OrderSlot1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8857,6 +8857,7 @@ MonoBehaviour:
   m_customerWaitLocation: {fileID: 17916702}
   m_CustomerPrefab: {fileID: 1588253943932980, guid: c228d7e2d9c8df64584c03175ecb0a81,
     type: 2}
+  m_interactText: Order 1
   m_OrderImageUI: {fileID: 1161585227}
 --- !u!114 &1283132046 stripped
 MonoBehaviour:
@@ -9595,7 +9596,7 @@ GameObject:
   - component: {fileID: 1680891761}
   - component: {fileID: 1680891763}
   - component: {fileID: 1680891762}
-  m_Layer: 16
+  m_Layer: 10
   m_Name: OrderSlot4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9643,6 +9644,7 @@ MonoBehaviour:
   m_customerWaitLocation: {fileID: 1946536534}
   m_CustomerPrefab: {fileID: 1588253943932980, guid: c228d7e2d9c8df64584c03175ecb0a81,
     type: 2}
+  m_interactText: Order 4
   m_OrderImageUI: {fileID: 1797053686}
 --- !u!4 &1689732026 stripped
 Transform:
@@ -10657,7 +10659,7 @@ GameObject:
   - component: {fileID: 1914180930}
   - component: {fileID: 1914180932}
   - component: {fileID: 1914180931}
-  m_Layer: 16
+  m_Layer: 10
   m_Name: OrderSlot2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10705,6 +10707,7 @@ MonoBehaviour:
   m_customerWaitLocation: {fileID: 877993037}
   m_CustomerPrefab: {fileID: 1588253943932980, guid: c228d7e2d9c8df64584c03175ecb0a81,
     type: 2}
+  m_interactText: Order 2
   m_OrderImageUI: {fileID: 1237046345}
 --- !u!1 &1919501965 stripped
 GameObject:
@@ -11054,7 +11057,7 @@ ParticleSystem:
   simulationSpeed: 1
   stopAction: 0
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
@@ -11121,9 +11124,9 @@ ParticleSystem:
     enabled: 1
     startLifetime:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0.9
-      minScalar: 5
+      minMaxState: 3
+      scalar: 4.5
+      minScalar: 3.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -11174,9 +11177,9 @@ ParticleSystem:
         m_RotationOrder: 4
     startSpeed:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 4.42
-      minScalar: 5
+      minMaxState: 3
+      scalar: 1
+      minScalar: 0.2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -11229,7 +11232,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 1, b: 1, a: 1}
+      maxColor: {r: 0, g: 1, b: 1, a: 0.32941177}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -11290,9 +11293,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     startSize:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0.23
-      minScalar: 1
+      minMaxState: 3
+      scalar: 0.2
+      minScalar: 0.1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -11343,7 +11346,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -11396,7 +11399,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -11813,9 +11816,9 @@ ParticleSystem:
     serializedVersion: 4
     rateOverTime:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 10
-      minScalar: 10
+      minMaxState: 3
+      scalar: 5
+      minScalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -12244,7 +12247,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   ColorModule:
-    enabled: 0
+    enabled: 1
     gradient:
       serializedVersion: 2
       minMaxState: 1
@@ -12252,9 +12255,9 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0, g: 1, b: 1, a: 1}
-        key1: {r: 0.034243107, g: 0, b: 1, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
+        key0: {r: 1, g: 1, b: 1, a: 0}
+        key1: {r: 1, g: 1, b: 1, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 1}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
@@ -12269,16 +12272,16 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
+        atime1: 12529
+        atime2: 55319
+        atime3: 65535
         atime4: 0
         atime5: 0
         atime6: 0
         atime7: 0
         m_Mode: 0
         m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
+        m_NumAlphaKeys: 4
       minGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -13509,11 +13512,11 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
   NoiseModule:
-    enabled: 0
+    enabled: 1
     strength:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -15581,7 +15584,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1993168272}
   m_LocalRotation: {x: -0.6978887, y: -0, z: -0, w: 0.7162064}
-  m_LocalPosition: {x: 5.62, y: -4.131, z: 12.489}
+  m_LocalPosition: {x: 5.62, y: -4.131, z: 12.168}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -15651,7 +15654,7 @@ GameObject:
   - component: {fileID: 2015068368}
   - component: {fileID: 2015068370}
   - component: {fileID: 2015068369}
-  m_Layer: 16
+  m_Layer: 10
   m_Name: OrderSlot3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15699,6 +15702,7 @@ MonoBehaviour:
   m_customerWaitLocation: {fileID: 1708873994}
   m_CustomerPrefab: {fileID: 1588253943932980, guid: c228d7e2d9c8df64584c03175ecb0a81,
     type: 2}
+  m_interactText: Order 3
   m_OrderImageUI: {fileID: 87510109}
 --- !u!1001 &2022925744
 Prefab:
