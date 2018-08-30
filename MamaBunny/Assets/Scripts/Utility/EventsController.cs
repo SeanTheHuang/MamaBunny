@@ -14,6 +14,11 @@ public class EventsController : MonoBehaviour {
     public event PlayerLifeChange OnPlayerLifeChange;
     public event BoatPieceObtained OnBoatPieceObtained;
 
+    [Header("Start game stuff")]
+    public GunTable m_gunTable;
+    public PlayerControl m_player;
+    public Transform m_startGamePosition;
+
     private void Awake()
     {
         if (Instance != null)
@@ -29,6 +34,14 @@ public class EventsController : MonoBehaviour {
     private void Start()
     {
         EffectCanvas.Instance.TitleText("Press [H] for info. about game");
+        
+        // Set position start of game
+        m_player.transform.position = m_startGamePosition.position;
+        m_player.transform.rotation = m_startGamePosition.rotation;
+
+        // Set gun start of game
+        m_player.ActiveGun(false);
+        m_gunTable.PlaceGun();
     }
 
     public void TriggerPlayerLifeChange()
