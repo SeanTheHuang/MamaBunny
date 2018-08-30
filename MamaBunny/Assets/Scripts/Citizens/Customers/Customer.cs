@@ -110,6 +110,8 @@ public class Customer : MonoBehaviour {
         if (m_agent == null
             || m_anima == null)
             return;
+        if (!m_agent.enabled)
+            return;
 
         if (m_agent.velocity == Vector3.zero)
         {//not moving
@@ -302,6 +304,7 @@ public class Customer : MonoBehaviour {
                 m_travelDestinationIndex = 0;
                 m_travelLocations.Clear();
                 m_travelLocations.Add(new Vector3(5.3f, 0.5f, 26.0f));
+                m_anima.SetBool("isMoving", true);
             }
             else
             {
@@ -325,8 +328,8 @@ public class Customer : MonoBehaviour {
     // The customers order is complete
     public void OrderComplete(int _score)
     {//4 bad     //20 + good
-        Debug.Log("SCORE: " + _score);
-        if(_score < 5)
+        SoundEffectsPlayer.Instance.PlaySound("kaching");
+        if(_score < 8)
         {
             if (Random.Range(0, 2) == 0)
             {
@@ -339,7 +342,7 @@ public class Customer : MonoBehaviour {
                 m_anima.SetTrigger("beAngry");
             }
         }
-        else if(_score > 19)
+        else if(_score >= 8)
         {
             m_face.SetFaceMaterial(CustomerFace.FACEEMOTION.HAPPY);
             m_anima.SetTrigger("beHappy");
