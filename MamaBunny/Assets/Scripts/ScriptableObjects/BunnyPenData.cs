@@ -14,7 +14,7 @@ public class BunnyPenData : ScriptableObject
 
     private void OnEnable()
     {
-
+        //ResetVariables();
     }
 
     public void ForceSerialization()
