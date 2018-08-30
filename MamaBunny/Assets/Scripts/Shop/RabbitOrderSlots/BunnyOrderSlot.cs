@@ -36,6 +36,7 @@ public class BunnyOrderSlot : MonoBehaviour {
         m_OrderIngredientsUI[0] = m_OrderImageUI.transform.GetChild(1).GetComponent<Image>();
         m_OrderIngredientsUI[1] = m_OrderImageUI.transform.GetChild(2).GetComponent<Image>();
         m_OrderIngredientsUI[2] = m_OrderImageUI.transform.GetChild(3).GetComponent<Image>();
+        m_bunnyOrderController.UpdateCoinCounter(m_playerInventory.m_money);
         //ShowUI(false);
     }
 
@@ -220,8 +221,9 @@ public class BunnyOrderSlot : MonoBehaviour {
                     // Add coins based on performance
                     if (rabbitScore < 0)
                         rabbitScore = 0;
+
                     m_playerInventory.m_money += (uint)rabbitScore;
-                    m_bunnyOrderController.UpdateCoinCounter(m_playerInventory.m_money);
+                    StartCoroutine(UpdateCoinCounter((uint)rabbitScore));
 
                     // Tidy up
                     //m_customerOrder.m_customer.GetComponent<Customer>().OrderComplete();
@@ -233,6 +235,16 @@ public class BunnyOrderSlot : MonoBehaviour {
                     DestroyBunny();
                 }
             }
+        }
+    }
+
+    IEnumerator UpdateCoinCounter(uint _amount)
+    {
+        while (_amount > 0)
+        {
+            m_bunnyOrderController.UpdateCoinCounter(m_playerInventory.m_money - _amount);
+            _amount--;
+            yield return null;
         }
     }
 
