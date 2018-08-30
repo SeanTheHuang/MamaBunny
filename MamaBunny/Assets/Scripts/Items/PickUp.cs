@@ -40,7 +40,7 @@ public abstract class PickUp : MonoBehaviour {
 
     IEnumerator FollowPipePath(Transform[] _pathToFollow)
     {
-        float moveSpeed = 3.5f;
+        float moveSpeed = 7f;
         Vector3 rotateAxis = new Vector3(1, 0.6f, 0.3f);
         float rotateSpeed = 45f;
 
