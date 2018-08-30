@@ -329,7 +329,7 @@ public class Customer : MonoBehaviour {
     public void OrderComplete(int _score)
     {//4 bad     //20 + good
         Debug.Log("SCORE: " + _score);
-        if(_score < 5)
+        if(_score < 8)
         {
             if (Random.Range(0, 2) == 0)
             {
@@ -342,7 +342,7 @@ public class Customer : MonoBehaviour {
                 m_anima.SetTrigger("beAngry");
             }
         }
-        else if(_score > 19)
+        else if(_score >= 8)
         {
             m_face.SetFaceMaterial(CustomerFace.FACEEMOTION.HAPPY);
             m_anima.SetTrigger("beHappy");
