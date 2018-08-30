@@ -7,6 +7,8 @@ public class LiftButton : MonoBehaviour {
     public GameObject m_elevator;
     private ShopElevator m_elevatorScript;
 
+    public bool m_topButton;
+
     private void Start()
     {
         m_elevatorScript = m_elevator.GetComponent<ShopElevator>();
@@ -14,6 +16,13 @@ public class LiftButton : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        m_elevatorScript.MoveLiftDown();
+        if (m_topButton)
+        {
+            m_elevatorScript.MoveLiftUp();
+        }
+        else
+        {
+            m_elevatorScript.MoveLiftDown();
+        }
     }
 }
