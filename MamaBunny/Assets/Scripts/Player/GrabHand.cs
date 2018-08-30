@@ -59,7 +59,7 @@ public class GrabHand : MonoBehaviour {
                 {
                     if(pen.m_penData.m_bunnyInside)
                         m_text.text = "Open";
-                    else
+                    else if(m_holdHand.IsHoldingBunny())
                         m_text.text = "Close";
                 }
                 return;
@@ -161,7 +161,9 @@ public class GrabHand : MonoBehaviour {
             else
             {
                 // Pick up the caged rabbit
+                Transform bunny = pen.GetRabboid();
                 pen.PlayerInteract(false, rabboidResult);
+                m_holdHand.Hold(bunny.transform);
             }
         }
 
