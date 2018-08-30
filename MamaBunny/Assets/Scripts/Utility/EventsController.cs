@@ -64,7 +64,7 @@ public class EventsController : MonoBehaviour {
         Instantiate(m_moneyParticles, _position, Quaternion.identity);
     }
 
-    public void SummonAngry(Vector3 _position)
+    public void SummonAngryMoney(Vector3 _position)
     {
         Instantiate(m_angryMoneyParticles, _position, Quaternion.identity);
     }
