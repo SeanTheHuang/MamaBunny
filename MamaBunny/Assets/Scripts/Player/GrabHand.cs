@@ -50,6 +50,21 @@ public class GrabHand : MonoBehaviour {
             if (m_text)
                 m_text.text = "";
 
+            // See if hit bunnycage
+            BunnyPen pen = hit.transform.GetComponent<BunnyPen>();
+            if (pen != null)
+            {
+                m_hitTarget = hit.transform;
+                if (m_text)
+                {
+                    if(pen.m_penData.m_bunnyInside)
+                        m_text.text = "Open";
+                    else
+                        m_text.text = "Close";
+                }
+                return;
+            }
+
             // See if hit table
             GunTable table = hit.transform.GetComponent<GunTable>();
             if (table != null)
@@ -85,7 +100,19 @@ public class GrabHand : MonoBehaviour {
 
     void Grab()
     {
-        if (m_holdHand.IsHolding())
+        bool tryingToPutRabbitinCage = false;
+        if (m_hitTarget)
+        {
+            BunnyPen bpen = m_hitTarget.GetComponent<BunnyPen>();
+            if (m_holdHand.IsHolding() && bpen == null)
+            {
+                m_holdHand.Drop();
+                return;
+            }
+            tryingToPutRabbitinCage = true;
+        }
+
+        if (!tryingToPutRabbitinCage && m_holdHand.IsHolding())
         {
             m_holdHand.Drop();
             return;
@@ -107,6 +134,34 @@ public class GrabHand : MonoBehaviour {
             {//gun is not active // take gun
                 m_playerControl.ActiveGun(true);
                 table.TakeGun();
+            }
+        }
+
+        BunnyPen pen = m_hitTarget.GetComponent<BunnyPen>();
+        if (pen != null)
+        {
+            RabboidResult rabboidResult = new RabboidResult();
+
+            if(pen.m_penData.m_bunnyInside && m_holdHand.IsHolding())
+            {
+                return;
+            }
+            else if(!pen.m_penData.m_bunnyInside && !m_holdHand.IsHolding())
+            {
+                return;
+            }
+
+            if (m_holdHand.IsHoldingBunny())
+            {
+                // Put the rabbit in the cage in the players hand
+                rabboidResult = m_holdHand.GetBunnyData();
+                pen.PlayerInteract(true, rabboidResult);
+                m_holdHand.DestroyItem();
+            }
+            else
+            {
+                // Pick up the caged rabbit
+                pen.PlayerInteract(false, rabboidResult);
             }
         }
 

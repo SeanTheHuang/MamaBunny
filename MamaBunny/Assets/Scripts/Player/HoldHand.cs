@@ -25,6 +25,18 @@ public class HoldHand : MonoBehaviour {
         }
     }
 
+    public bool IsHoldingBunny()
+    {
+        if (!m_gotRabboid)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
     public void Hold(Transform _tr)
     {
         if (m_holdItem != null) 
@@ -62,5 +74,25 @@ public class HoldHand : MonoBehaviour {
         Transform camtr = Camera.main.transform;
         m_holdItem.GetComponent<Rigidbody>().AddForce(camtr.forward.normalized * 5, ForceMode.Impulse);
         m_holdItem = null;
+    }
+
+    public void DestroyItem()
+    {
+        m_gotRabboid = false;
+        foreach (Transform child in m_holdItem)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+        Destroy(m_holdItem.gameObject);
+    }
+
+    public RabboidResult GetBunnyData()
+    {
+        RabboidResult rabboidResult = new RabboidResult();
+        if (m_gotRabboid == true)
+        {
+            rabboidResult = m_holdItem.GetComponent<Rabboid>().RabboidStats;
+        }
+        return rabboidResult;
     }
 }
