@@ -325,7 +325,7 @@ public class Customer : MonoBehaviour {
     // The customers order is complete
     public void OrderComplete(int _score)
     {//4 bad     //20 + good
-        Debug.Log("SCORE: " + _score);
+        SoundEffectsPlayer.Instance.PlaySound("kaching");
         if(_score < 8)
         {
             if (Random.Range(0, 2) == 0)
