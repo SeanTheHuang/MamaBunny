@@ -46,29 +46,71 @@ public class Customer : MonoBehaviour {
     {
         m_face = GetComponentInChildren<CustomerFace>();
         m_anima = GetComponentInChildren<Animator>();
-        m_anima.SetBool("isMoving", true);
         Transform model = transform.GetChild(0);
         model.transform.position = new Vector3(model.transform.position.x, model.transform.position.y - 0.5f, model.transform.position.z);
+        m_agent = GetComponent<NavMeshAgent>();
+
         if (!m_respawnedCustomer)
         {
+            m_anima.SetBool("isMoving", true);
             m_meshRenderers = model.GetComponentsInChildren<MeshRenderer>();
-
-            //foreach (MeshRenderer m in m_meshRenderers)
-            //{
-            //    StartCoroutine(Lerp_MeshRenderer_Color(3, m.material, Color.white));
-            //}
-
-            m_agent = GetComponent<NavMeshAgent>();
-
             m_travelSpeed += Random.Range(-m_travelSpeed / 4, m_travelSpeed / 4);
 
             m_orderWaitLocations = GameObject.Find("OrderWaitLocations");
             m_bunnyPens = GameObject.Find("BunnyPens");
         }
+        else
+        {
+            m_agent.enabled = true;
+        }
     }
 
     private void Update()
     {
+        // The customer is a repawned customer and therefore cannot do this logic. (Bad system I know)
+        if (!m_respawnedCustomer)
+        {
+            // Customer is walking to their desired location
+            if (!m_travelDestinationReached)
+            {
+                moveTowardsDestination(m_travelLocations[m_travelDestinationIndex]);
+                checkDestinationReached();
+            }
+            // Customer is inside the store
+            else if (!m_leavingShop)
+            {
+                if (m_wanderinginStore)
+                    WanderInsideNavMesh();
+                else if (m_waitingForOrder)
+                    MoveTowardsOrderLocation();
+                else
+                    MoveTowardsBunnyPen();
+            }
+            // Customer leaving shop
+            else if (!m_despawning)
+            {
+                if (m_travelDestinationIndex == (m_travelLocations.Count - 1))
+                {
+                    m_agent.SetDestination(m_travelLocations[m_travelDestinationIndex]);
+                }
+                else
+                {
+                    m_agent.enabled = false;
+                    moveTowardsDestination(m_travelLocations[m_travelDestinationIndex]);
+                }
+                checkDestinationReached();
+            }
+        }
+        else if (!m_waitingForOrder)
+        {
+            moveTowardsDestination(m_travelLocations[m_travelDestinationIndex]);
+            checkDestinationReached();
+        }
+
+        if (m_agent == null
+            || m_anima == null)
+            return;
+
         if (m_agent.velocity == Vector3.zero)
         {//not moving
             if (m_anima.GetBool("isMoving") != false)
@@ -78,50 +120,11 @@ public class Customer : MonoBehaviour {
         }
         else
         {//moving
-            if(m_anima.GetBool("isMoving") != true)
+            if (m_anima.GetBool("isMoving") != true)
             {
                 m_anima.SetBool("isMoving", true);
             }
         }
-            // The customer is a repawned customer and therefore cannot do this logic. (Bad system I know)
-            if (!m_respawnedCustomer)
-            {
-                // Customer is walking to their desired location
-                if (!m_travelDestinationReached)
-                {
-                    moveTowardsDestination(m_travelLocations[m_travelDestinationIndex]);
-                    checkDestinationReached();
-                }
-                // Customer is inside the store
-                else if (!m_leavingShop)
-                {
-                    if (m_wanderinginStore)
-                        WanderInsideNavMesh();
-                    else if (m_waitingForOrder)
-                        MoveTowardsOrderLocation();
-                    else
-                        MoveTowardsBunnyPen();
-                }
-                // Customer leaving shop
-                else if (!m_despawning)
-                {
-                    if (m_travelDestinationIndex == (m_travelLocations.Count - 1))
-                    {
-                        m_agent.SetDestination(m_travelLocations[m_travelDestinationIndex]);
-                    }
-                    else
-                    {
-                        m_agent.enabled = false;
-                        moveTowardsDestination(m_travelLocations[m_travelDestinationIndex]);
-                    }
-                    checkDestinationReached();
-                }
-            }
-            else if (!m_waitingForOrder)
-            {
-                moveTowardsDestination(m_travelLocations[m_travelDestinationIndex]);
-                checkDestinationReached();
-            }
     }
 
     void MoveTowardsOrderLocation()
@@ -295,10 +298,10 @@ public class Customer : MonoBehaviour {
             }
             if (m_respawnedCustomer)
             {
-                Debug.Log("here");
+                m_agent.enabled = false;
                 m_travelDestinationIndex = 0;
                 m_travelLocations.Clear();
-                m_travelLocations.Add(new Vector3(0.0f, 0.5f, 26.0f));
+                m_travelLocations.Add(new Vector3(5.3f, 0.5f, 26.0f));
             }
             else
             {
@@ -322,6 +325,7 @@ public class Customer : MonoBehaviour {
     // The customers order is complete
     public void OrderComplete(int _score)
     {//4 bad     //20 + good
+        Debug.Log("SCORE: " + _score);
         if(_score < 5)
         {
             if (Random.Range(0, 2) == 0)

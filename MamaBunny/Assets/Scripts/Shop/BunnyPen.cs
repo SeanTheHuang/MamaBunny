@@ -51,10 +51,6 @@ public class BunnyPen : MonoBehaviour {
         RabboidStats.m_backPart = m_penData.m_bunnyBackPart;
         newRabboid.GetComponent<Rabboid>().Initialize(RabboidStats);
 
-        foreach (Transform child in rabboid.transform)
-        {
-            Destroy(child.gameObject);
-        }
         Destroy(rabboid);
         return newRabboid.transform;
     }
