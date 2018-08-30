@@ -10,6 +10,8 @@ public class BunnyPen : MonoBehaviour {
     public BunnyPenData m_penData;
     public GameObject m_baseRabboidPrefab;
 
+    GameObject rabboid;
+
     void Start() {
         Debug.Log(gameObject.name);
         m_openAni = GetComponent<Animation>();
@@ -27,7 +29,7 @@ public class BunnyPen : MonoBehaviour {
 
     void SetRabboid()
     {
-        GameObject rabboid = Instantiate(m_baseRabboidPrefab, transform.position, transform.rotation);
+        rabboid = Instantiate(m_baseRabboidPrefab, transform.position, transform.rotation);
         RabboidResult RabboidStats = new RabboidResult();
         RabboidStats.m_resultColour = m_penData.m_bunnyColour;
         RabboidStats.m_size = m_penData.m_bunnySize;
@@ -37,6 +39,24 @@ public class BunnyPen : MonoBehaviour {
         rabboid.GetComponent<Rabboid>().m_insidePen = true;
         m_penData.m_bunnyInside = true;
 
+    }
+
+    public Transform GetRabboid()
+    {
+        GameObject newRabboid = Instantiate(m_baseRabboidPrefab, transform.position, transform.rotation);
+        RabboidResult RabboidStats = new RabboidResult();
+        RabboidStats.m_resultColour = m_penData.m_bunnyColour;
+        RabboidStats.m_size = m_penData.m_bunnySize;
+        RabboidStats.m_mouthPart = m_penData.m_bunnyMouthPart;
+        RabboidStats.m_backPart = m_penData.m_bunnyBackPart;
+        newRabboid.GetComponent<Rabboid>().Initialize(RabboidStats);
+
+        foreach (Transform child in rabboid.transform)
+        {
+            Destroy(child.gameObject);
+        }
+        Destroy(rabboid);
+        return newRabboid.transform;
     }
 
     void Open()
