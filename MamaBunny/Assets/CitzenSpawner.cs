@@ -13,4 +13,9 @@ public class CitzenSpawner : MonoBehaviour {
             customer.RunInPanic();
         }
     }
+
+    public void RemoveCustomer(Customer customer)
+    {
+        m_customerList.Remove(customer);
+    }
 }

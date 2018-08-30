@@ -48,6 +48,7 @@ public class CustomerSpawner : MonoBehaviour
             GameObject model = Instantiate(m_characterModels[modelType], customer.transform.position, customer.transform.rotation);
             model.name = "Model";
             model.transform.parent = customer.transform;
+            customer.GetComponent<Customer>().m_citzenSpawner = m_citizenSpawner;
             m_citizenSpawner.m_customerList.Add(customer.GetComponent<Customer>());
             ++m_customerCounter.m_cusomterCounter;
             if (m_customerCounter.m_cusomterCounter > 5)

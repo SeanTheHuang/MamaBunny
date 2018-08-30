@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class Customer : MonoBehaviour {
 
     Animator m_anima;
+    CustomerFace m_face;
     public float m_travelSpeed;
     public float m_wanderSpeed;
 
@@ -39,8 +40,11 @@ public class Customer : MonoBehaviour {
 
     public ModelType m_modelType;
 
+    public CitzenSpawner m_citzenSpawner;
+
     private void Start()
     {
+        m_face = GetComponentInChildren<CustomerFace>();
         m_anima = GetComponentInChildren<Animator>();
         m_anima.SetBool("isMoving", true);
         Transform model = transform.GetChild(0);
@@ -316,8 +320,28 @@ public class Customer : MonoBehaviour {
     }
 
     // The customers order is complete
-    public void OrderComplete()
-    {
+    public void OrderComplete(int _score)
+    {//4 bad     //20 + good
+        if(_score < 5)
+        {
+            if (Random.Range(0, 2) == 0)
+            {
+                m_face.SetFaceMaterial(CustomerFace.FACEEMOTION.SAD);
+                m_anima.SetTrigger("beSad");
+            }
+            else
+            {
+                m_face.SetFaceMaterial(CustomerFace.FACEEMOTION.ANGRY);
+                m_anima.SetTrigger("beAngry");
+            }
+        }
+        else if(_score > 19)
+        {
+            m_face.SetFaceMaterial(CustomerFace.FACEEMOTION.HAPPY);
+            m_anima.SetTrigger("beHappy");
+        }
+
+        //stop them from moving for a while
         EventsController.Instance.SummonMoney(transform.position);
         Invoke("LeaveTheShop", 3);
     }
