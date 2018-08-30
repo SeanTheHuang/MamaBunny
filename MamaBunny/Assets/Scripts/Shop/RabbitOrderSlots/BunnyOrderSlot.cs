@@ -256,11 +256,7 @@ public class BunnyOrderSlot : MonoBehaviour {
 
     void DestroyBunny()
     {
-        foreach (Transform child in m_bunny)
-        {
-            Destroy(child.gameObject);
-        }
-        Destroy(m_bunny.gameObject);
+        Destroy(m_bunny.parent.gameObject);
     }
 
     void OnEnable()
