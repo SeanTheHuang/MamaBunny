@@ -75,7 +75,7 @@ public class GrabHand : MonoBehaviour {
 
             // See if hit rabboid
             Rabboid rab = hit.transform.GetComponent<Rabboid>();
-            if (rab != null)
+            if (rab != null && !rab.m_insidePen)
             {
                 if (m_text)
                     m_text.text = "Grab";
@@ -166,7 +166,7 @@ public class GrabHand : MonoBehaviour {
         }
 
         Rabboid rab = m_hitTarget.GetComponent<Rabboid>();
-        if (rab != null)
+        if (rab != null && !rab.m_insidePen)
         {
             m_holdHand.Hold(rab.transform);
             return;

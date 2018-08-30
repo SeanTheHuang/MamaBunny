@@ -19,6 +19,8 @@ public class Rabboid : MonoBehaviour {
 
     AudioSource m_audioSource;
 
+    public bool m_insidePen;
+
     private void Awake()
     {
         m_audioSource = GetComponent<AudioSource>();

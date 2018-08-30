@@ -34,7 +34,9 @@ public class BunnyPen : MonoBehaviour {
         RabboidStats.m_mouthPart = m_penData.m_bunnyMouthPart;
         RabboidStats.m_backPart = m_penData.m_bunnyBackPart;
         rabboid.GetComponent<Rabboid>().Initialize(RabboidStats);
+        rabboid.GetComponent<Rabboid>().m_insidePen = true;
         m_penData.m_bunnyInside = true;
+
     }
 
     void Open()
