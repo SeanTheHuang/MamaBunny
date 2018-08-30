@@ -7,13 +7,13 @@ public class RabboidColour : RabboidModBase
 {
     public string m_colourName;
     public Color m_color = Color.white;
+    public Color m_checkColor = Color.white;
 
     public float ColourDifference(Color _compareColor)
     {
-        float result = Mathf.Abs(m_color.r - _compareColor.r) +
-                        Mathf.Abs(m_color.g - _compareColor.g) +
-                        Mathf.Abs(m_color.b - _compareColor.b);
+        float m_colorValue = m_checkColor.r + m_checkColor.g * 100 + m_checkColor.b * 10000;
+        float m_compareValue = _compareColor.r + _compareColor.g * 100 + _compareColor.b * 10000;
 
-        return result;
+        return Mathf.Abs(m_compareValue - m_colorValue);
     }
 }

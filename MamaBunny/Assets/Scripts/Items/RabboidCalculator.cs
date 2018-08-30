@@ -88,28 +88,81 @@ public class RabboidCalculator : MonoBehaviour {
         if (_colourList.Count < 1)
             return null;
 
-        // Calculate current color
-        Color currentCol = Color.black;
+        // Create dictionary to count colour freq
+        Dictionary<RabboidColour, int> colorDict = new Dictionary<RabboidColour, int>();
+        foreach (RabboidColour rc in m_possibleColours)
+            colorDict.Add(rc, 0);
+
+        // Now add colour list to dict counter
         foreach (RabboidColour rc in _colourList)
-            currentCol += rc.m_color;
+            colorDict[rc] = colorDict[rc] + 1;
 
-        // Average things out
-        currentCol /= _colourList.Count;
-
-        float closestDiff = _colourList[0].ColourDifference(currentCol);
-        RabboidColour currentColour = _colourList[0];
-
-        for (int i = 1; i < _colourList.Count; i++)
+        int highestFreq = 0;
+        // Iterate through dictionary, get highest freq
+        foreach (RabboidColour rc in m_possibleColours)
         {
-            float newDiff = _colourList[i].ColourDifference(currentCol);
-            if (newDiff < closestDiff) // Found a colour closer to target!
+            if (colorDict[rc] > highestFreq)
+                highestFreq = colorDict[rc];
+        }
+
+        // Collect all colours with the highest freq
+        List<RabboidColour> highFreqList = new List<RabboidColour>();
+        foreach (RabboidColour rc in m_possibleColours)
+        {
+            if (colorDict[rc] == highestFreq)
+                highFreqList.Add(rc);
+        }
+
+        // Now check
+        if (highFreqList.Count < 2)
+            return highFreqList[0]; // Just one colour with highest freq
+        else if (highFreqList.Count > 2)
+            return null; // Just white, mix of all colours
+        else
+        {
+            // Two colours, therefore find a mix
+            if (highFreqList[0].m_colourName == "Red")
             {
-                closestDiff = newDiff;
-                currentColour = _colourList[i];
+                if (highFreqList[1].m_colourName == "Yellow")
+                    return m_possibleColours[2];
+                else // "Blue"
+                    return m_possibleColours[3];
+            }
+            else if (highFreqList[0].m_colourName == "Yellow")
+            {
+                if (highFreqList[1].m_colourName == "Red")
+                    return m_possibleColours[2];
+                else // "Blue"
+                    return m_possibleColours[1];
+            }
+            else // Name is "Blue"
+            {
+                if (highFreqList[1].m_colourName == "Red")
+                    return m_possibleColours[3];
+                else // "Yellow"
+                    return m_possibleColours[1];
             }
         }
 
-        return currentColour;
+        //// Average things out
+        //currentCol /= _colourList.Count;
+
+        //Debug.Log("Average color:" + currentCol);
+
+        //float closestDiff = m_possibleColours[0].ColourDifference(currentCol);
+        //RabboidColour currentColour = m_possibleColours[0];
+
+        //for (int i = 1; i < m_possibleColours.Length; i++)
+        //{
+        //    float newDiff = m_possibleColours[i].ColourDifference(currentCol);
+        //    Debug.Log("Color: " + m_possibleColours[i].m_colourName + " | Diff: " + newDiff);
+        //    if (newDiff < closestDiff) // Found a colour closer to target!
+        //    {
+        //        closestDiff = newDiff;
+        //        currentColour = m_possibleColours[i];
+        //    }
+        //}
+        return m_possibleColours[0];
     }
 
     RabboidBodyPart MostFrequentBodyPart(List<RabboidBodyPart> _bodyPartList)

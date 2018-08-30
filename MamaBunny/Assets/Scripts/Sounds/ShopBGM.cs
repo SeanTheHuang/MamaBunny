@@ -52,13 +52,11 @@ public class ShopBGM : MonoBehaviour {
 
     public void ToHappyMusic()
     {
-        Debug.Log("TO happy music!");
         m_transitioning = m_toHappy = true;    
     }
 
     public void ToSpoopyMusic()
     {
-        Debug.Log("TO [[[SPOOPY]]] music!");
         m_transitioning = true;
         m_toHappy = false;
     }
