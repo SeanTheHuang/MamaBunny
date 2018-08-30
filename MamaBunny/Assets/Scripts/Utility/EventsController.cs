@@ -37,8 +37,11 @@ public class EventsController : MonoBehaviour {
     private void Start()
     {
         EffectCanvas.Instance.TitleText("Press [H] for info. about game");
-        
+
         // Set position start of game
+        if (!m_startGamePosition)
+            return;
+
         m_player.transform.position = m_startGamePosition.position;
         m_player.transform.rotation = m_startGamePosition.rotation;
 
