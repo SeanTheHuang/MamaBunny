@@ -19,8 +19,12 @@ public class CustomerSpawner : MonoBehaviour
 
     List<Vector3> m_travelLocations = new List<Vector3>();
 
+    private CitzenSpawner m_citizenSpawner;
+
     private void Start()
     {
+        m_citizenSpawner = transform.parent.GetComponent<CitzenSpawner>();
+
         m_nextSpawnTime = Time.time + Random.Range(m_spawnTime.minValue, m_spawnTime.maxValue);
 
         // First travel location is infront of the shop
@@ -44,7 +48,7 @@ public class CustomerSpawner : MonoBehaviour
             GameObject model = Instantiate(m_characterModels[modelType], customer.transform.position, customer.transform.rotation);
             model.name = "Model";
             model.transform.parent = customer.transform;
-
+            m_citizenSpawner.m_customerList.Add(customer.GetComponent<Customer>());
             ++m_customerCounter.m_cusomterCounter;
             if (m_customerCounter.m_cusomterCounter > 5)
             {
