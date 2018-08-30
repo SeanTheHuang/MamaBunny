@@ -15,6 +15,7 @@ public class EventsController : MonoBehaviour {
     public event BoatPieceObtained OnBoatPieceObtained;
 
     public Transform m_moneyParticles;
+    public Transform m_angryMoneyParticles;
 
     [Header("Start game stuff")]
     public GunTable m_gunTable;
@@ -36,8 +37,11 @@ public class EventsController : MonoBehaviour {
     private void Start()
     {
         EffectCanvas.Instance.TitleText("Press [H] for info. about game");
-        
+
         // Set position start of game
+        if (!m_startGamePosition)
+            return;
+
         m_player.transform.position = m_startGamePosition.position;
         m_player.transform.rotation = m_startGamePosition.rotation;
 
@@ -61,5 +65,10 @@ public class EventsController : MonoBehaviour {
     public void SummonMoney(Vector3 _position)
     {
         Instantiate(m_moneyParticles, _position, Quaternion.identity);
+    }
+
+    public void SummonAngryMoney(Vector3 _position)
+    {
+        Instantiate(m_angryMoneyParticles, _position, Quaternion.identity);
     }
 }
