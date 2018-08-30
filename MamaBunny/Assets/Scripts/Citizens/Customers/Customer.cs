@@ -110,6 +110,8 @@ public class Customer : MonoBehaviour {
         if (m_agent == null
             || m_anima == null)
             return;
+        if (!m_agent.enabled)
+            return;
 
         if (m_agent.velocity == Vector3.zero)
         {//not moving
@@ -302,6 +304,7 @@ public class Customer : MonoBehaviour {
                 m_travelDestinationIndex = 0;
                 m_travelLocations.Clear();
                 m_travelLocations.Add(new Vector3(5.3f, 0.5f, 26.0f));
+                m_anima.SetBool("isMoving", true);
             }
             else
             {
