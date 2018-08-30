@@ -89,6 +89,13 @@ public class GrabHand : MonoBehaviour {
                     m_text.text = pickUp.m_name;
             }
                 m_hitTarget = hit.transform;
+
+            BunnyOrderSlot bunnyOrder = hit.transform.GetComponent<BunnyOrderSlot>();
+            if(bunnyOrder != null)
+            {
+                if (m_text && bunnyOrder.GetIsActive())
+                    m_text.text = bunnyOrder.m_interactText;
+            }
         }
         else
         {
