@@ -237,7 +237,7 @@ public class BunnyOrderSlot : MonoBehaviour {
 
                     // Tidy up
                     //m_customerOrder.m_customer.GetComponent<Customer>().OrderComplete();
-                    CancelOrder();
+                    CancelOrder(false);
                     m_Customer.OrderComplete(rabbitScore);
                     m_bunny = other.transform;
                     DestroyBunny();
@@ -283,11 +283,12 @@ public class BunnyOrderSlot : MonoBehaviour {
         }
     }
 
-    public void CancelOrder()
+    public void CancelOrder(bool _run = true)
     {
         ShowUI(false);
         m_customerOrder.ResetVariables();
         m_spriteRenderer.enabled = false;
-        m_Customer.RunInPanic();
+        if (_run)
+            m_Customer.RunInPanic();
     }
 }
