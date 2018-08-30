@@ -40,4 +40,15 @@ public class BunnyOrderController : MonoBehaviour {
     {
         m_coinCounter.text = "Coins: " + coinCount;
     }
+
+    public void CancelAllOrders()
+    {
+        foreach(BunnyOrderSlot slot in m_orderSpots)
+        {
+            if(slot.m_customerOrder.m_isActive)
+            {
+                slot.CancelOrder();
+            }
+        }
+    }
 }

@@ -1147,6 +1147,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 27
       objectReference: {fileID: 0}
+    - target: {fileID: 114255142858471826, guid: e04cd45986a1ca54794a9e84580d0e4e,
+        type: 2}
+      propertyPath: m_spawnRadiusOffset
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114988539362172018, guid: e04cd45986a1ca54794a9e84580d0e4e,
+        type: 2}
+      propertyPath: m_spawnRadiusOffset
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e04cd45986a1ca54794a9e84580d0e4e, type: 2}
   m_IsPrefabParent: 0
@@ -6920,6 +6930,7 @@ GameObject:
   m_Component:
   - component: {fileID: 660137028}
   - component: {fileID: 660137027}
+  - component: {fileID: 660137029}
   m_Layer: 15
   m_Name: CheckForGun
   m_TagString: Untagged
@@ -6937,8 +6948,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 16.276518, y: 3.0815096, z: 22.259727}
+  m_Center: {x: 0.19168663, y: 0.5407548, z: 2.118349}
 --- !u!4 &660137028
 Transform:
   m_ObjectHideFlags: 0
@@ -6946,12 +6957,25 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 660137026}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.002, y: 0, z: 4.063}
+  m_LocalPosition: {x: 5.002, y: 1.077, z: 4.063}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &660137029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 660137026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4836322cb985098478399c46e0af2dd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_spawner: {fileID: 747814876}
+  m_BunnyOrders: {fileID: 1153401774}
 --- !u!1001 &667450600
 Prefab:
   m_ObjectHideFlags: 0
@@ -8578,6 +8602,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fd0c8ee9a73688409ec0c659ddd640e, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1153401774 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1123915834475370, guid: e3b41a6ee3c82a04aadb9fc6ccd22a89,
+    type: 2}
+  m_PrefabInternal: {fileID: 225867341}
 --- !u!114 &1161585227 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114456693607882876, guid: b49f061c9885edb40b9ce91f0640d7b5,

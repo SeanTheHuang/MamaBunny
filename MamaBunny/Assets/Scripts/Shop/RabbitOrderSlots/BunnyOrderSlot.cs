@@ -237,13 +237,10 @@ public class BunnyOrderSlot : MonoBehaviour {
 
                     // Tidy up
                     //m_customerOrder.m_customer.GetComponent<Customer>().OrderComplete();
-                    ShowUI(false);
-                    m_customerOrder.m_isActive = false;
-                    m_customerOrder.ResetVariables();
+                    CancelOrder();
                     m_Customer.OrderComplete(rabbitScore);
                     m_bunny = other.transform;
                     DestroyBunny();
-                    m_spriteRenderer.enabled = false;
                 }
             }
         }
@@ -284,5 +281,13 @@ public class BunnyOrderSlot : MonoBehaviour {
             m_Customer = newCustomer.GetComponent<Customer>();
             m_Customer.SetWaitingForOrder();
         }
+    }
+
+    public void CancelOrder()
+    {
+        ShowUI(false);
+        m_customerOrder.ResetVariables();
+        m_spriteRenderer.enabled = false;
+        m_Customer.RunInPanic();
     }
 }

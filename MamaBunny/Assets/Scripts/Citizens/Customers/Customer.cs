@@ -368,6 +368,9 @@ public class Customer : MonoBehaviour {
 
     public void RunInPanic()
     {
-
+        m_travelSpeed = 4;
+        if (m_agent != null && m_agent.enabled)
+            m_agent.speed = 4;
+        LeaveTheShop();
     }
 }

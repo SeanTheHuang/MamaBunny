@@ -21,6 +21,8 @@ public class CustomerSpawner : MonoBehaviour
 
     private CitzenSpawner m_citizenSpawner;
 
+    public bool m_spawning;
+
     private void Start()
     {
         m_citizenSpawner = transform.parent.GetComponent<CitzenSpawner>();
@@ -31,11 +33,15 @@ public class CustomerSpawner : MonoBehaviour
         m_travelLocations.Add(transform.parent.position);
         // Second location is at the counter
         m_travelLocations.Add(transform.parent.Find("ShopEntryPoint").position);
+        m_spawning = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!m_spawning)
+            return;
+
         if (Time.time > m_nextSpawnTime)
         {
             m_nextSpawnTime = Time.time + Random.Range(m_spawnTime.minValue, m_spawnTime.maxValue);
