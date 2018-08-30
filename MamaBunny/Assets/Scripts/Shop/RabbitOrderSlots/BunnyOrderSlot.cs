@@ -26,6 +26,8 @@ public class BunnyOrderSlot : MonoBehaviour {
     private Image[] m_OrderIngredientsUI = new Image[3];
     private Transform m_bunny;
 
+    private SpriteRenderer m_spriteRenderer;
+
     // Use this for initialization
     void Start () {
         m_bunnyOrderController = transform.GetComponentInParent<BunnyOrderController>();
@@ -37,6 +39,7 @@ public class BunnyOrderSlot : MonoBehaviour {
         m_OrderIngredientsUI[1] = m_OrderImageUI.transform.GetChild(2).GetComponent<Image>();
         m_OrderIngredientsUI[2] = m_OrderImageUI.transform.GetChild(3).GetComponent<Image>();
         //ShowUI(false);
+        m_spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
     }
 
     void ShowUI(bool isEnabled)
@@ -113,7 +116,9 @@ public class BunnyOrderSlot : MonoBehaviour {
         }
 
         ShowUI(true);
+        m_spriteRenderer.enabled = true;
         m_OrderUI.SetRecipeSprites();
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -231,6 +236,7 @@ public class BunnyOrderSlot : MonoBehaviour {
                     m_Customer.OrderComplete();
                     m_bunny = other.transform;
                     DestroyBunny();
+                    m_spriteRenderer.enabled = false;
                 }
             }
         }
