@@ -235,7 +235,7 @@ public class BunnyOrderSlot : MonoBehaviour {
                     ShowUI(false);
                     m_customerOrder.m_isActive = false;
                     m_customerOrder.ResetVariables();
-                    m_Customer.OrderComplete();
+                    m_Customer.OrderComplete(rabbitScore);
                     m_bunny = other.transform;
                     DestroyBunny();
                     m_spriteRenderer.enabled = false;

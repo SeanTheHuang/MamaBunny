@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class Customer : MonoBehaviour {
 
     Animator m_anima;
+    CustomerFace m_face;
     public float m_travelSpeed;
     public float m_wanderSpeed;
 
@@ -41,6 +42,7 @@ public class Customer : MonoBehaviour {
 
     private void Start()
     {
+        m_face = GetComponentInChildren<CustomerFace>();
         m_anima = GetComponentInChildren<Animator>();
         Transform model = transform.GetChild(0);
         model.transform.position = new Vector3(model.transform.position.x, model.transform.position.y - 0.5f, model.transform.position.z);
@@ -315,8 +317,8 @@ public class Customer : MonoBehaviour {
     }
 
     // The customers order is complete
-    public void OrderComplete()
-    {
+    public void OrderComplete(int _score)
+    {//4 bad     //20 + good
         EventsController.Instance.SummonMoney(transform.position);
         Invoke("LeaveTheShop", 3);
     }
