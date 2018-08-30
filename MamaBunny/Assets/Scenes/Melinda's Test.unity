@@ -7105,6 +7105,23 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: cb51fed2650dc5841bd3851c0e419732, type: 3}
+--- !u!1 &747814876 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1546114689670460, guid: e04cd45986a1ca54794a9e84580d0e4e,
+    type: 2}
+  m_PrefabInternal: {fileID: 275381854}
+--- !u!114 &747814878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 747814876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd4ce87cf813d8d4eb0b21dde99d20ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_customerList: []
 --- !u!1 &791653212
 GameObject:
   m_ObjectHideFlags: 0
