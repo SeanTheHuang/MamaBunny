@@ -317,6 +317,7 @@ public class Customer : MonoBehaviour {
     // The customers order is complete
     public void OrderComplete()
     {
+        EventsController.Instance.SummonMoney(transform.position);
         Invoke("LeaveTheShop", 3);
     }
 
