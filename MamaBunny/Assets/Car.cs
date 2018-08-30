@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Car : MonoBehaviour {
 
+    public float m_movespeed = 2.0f;
 	// Use this for initialization
 	void Start () {
 
@@ -14,11 +15,14 @@ public class Car : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        transform.position += transform.forward * Time.deltatime * 2.0f;
+        transform.position += transform.right * Time.deltaTime * m_movespeed;
 	}
 
     void OnTriggerEnter(Collider coll)
     {
-        if(coll.transform.compareTag)
+        if(coll.transform.CompareTag("CarTurn"))
+        {
+            transform.eulerAngles += (Vector3.up * 180);
+        }
     }
 }
