@@ -15,6 +15,7 @@ public class EventsController : MonoBehaviour {
     public event BoatPieceObtained OnBoatPieceObtained;
 
     public Transform m_moneyParticles;
+    public Transform m_angryMoneyParticles;
 
     [Header("Start game stuff")]
     public GunTable m_gunTable;
@@ -61,5 +62,10 @@ public class EventsController : MonoBehaviour {
     public void SummonMoney(Vector3 _position)
     {
         Instantiate(m_moneyParticles, _position, Quaternion.identity);
+    }
+
+    public void SummonAngryMoney(Vector3 _position)
+    {
+        Instantiate(m_angryMoneyParticles, _position, Quaternion.identity);
     }
 }

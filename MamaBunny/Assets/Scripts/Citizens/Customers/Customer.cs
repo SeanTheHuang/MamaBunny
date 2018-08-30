@@ -341,15 +341,18 @@ public class Customer : MonoBehaviour {
                 m_face.SetFaceMaterial(CustomerFace.FACEEMOTION.ANGRY);
                 m_anima.SetTrigger("beAngry");
             }
+            //play angry one here
+            EventsController.Instance.SummonAngryMoney(transform.position);
         }
-        else if(_score >= 8)
+        else 
         {
             m_face.SetFaceMaterial(CustomerFace.FACEEMOTION.HAPPY);
             m_anima.SetTrigger("beHappy");
+            
+            EventsController.Instance.SummonMoney(transform.position);
         }
 
         //stop them from moving for a while
-        EventsController.Instance.SummonMoney(transform.position);
         Invoke("LeaveTheShop", 3);
     }
 
