@@ -3245,7 +3245,7 @@ GameObject:
   - component: {fileID: 454288818}
   - component: {fileID: 454288820}
   m_Layer: 0
-  m_Name: BGM_Player
+  m_Name: BGM_Player+CageShopLogic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3372,11 +3372,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_timeToSell:
     minValue: 3
-    maxValue: 15
+    maxValue: 14.712231
   m_sellAmount:
     minValue: 4
     maxValue: 10
-  m_pens: []
+  m_pens:
+  - {fileID: 11400000, guid: b9234bc793c1c0846a60067e952688b8, type: 2}
+  - {fileID: 11400000, guid: 8619848975c55d943a676d796e8666ff, type: 2}
+  - {fileID: 11400000, guid: 646e6a57943e0c546874a35951895019, type: 2}
+  - {fileID: 11400000, guid: 1a895e3b2eb3ff6469e5090dff59bffd, type: 2}
   m_inventory: {fileID: 11400000, guid: d12a3e6992b99a74dad465200c48d34a, type: 2}
   m_moneyText: {fileID: 1561269538}
 --- !u!1 &455889209
