@@ -41,6 +41,11 @@ public class BunnyOrderSlot : MonoBehaviour {
         m_bunnyOrderController.UpdateCoinCounter(m_playerInventory.m_money);
         //ShowUI(false);
         m_spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
+
+        if(m_customerOrder.m_isActive)
+        {
+            m_spriteRenderer.enabled = true;
+        }
     }
 
     void ShowUI(bool isEnabled)
