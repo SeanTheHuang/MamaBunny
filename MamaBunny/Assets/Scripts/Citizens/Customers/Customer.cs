@@ -40,6 +40,8 @@ public class Customer : MonoBehaviour {
 
     public ModelType m_modelType;
 
+    public CitzenSpawner m_citzenSpawner;
+
     private void Start()
     {
         m_face = GetComponentInChildren<CustomerFace>();
