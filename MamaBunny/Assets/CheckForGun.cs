@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class CheckForGun : MonoBehaviour {
 
+    public GameObject m_spawner;
+    private CitzenSpawner m_citzenSpawner;
+
+    private void Start()
+    {
+        m_citzenSpawner = m_spawner.GetComponent<CitzenSpawner>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         PlayerControl control = other.GetComponent<PlayerControl>();
@@ -12,7 +20,7 @@ public class CheckForGun : MonoBehaviour {
             // Make everyone run
             if(control.IsGunActive())
             {
-
+                
             }
         }
     }
