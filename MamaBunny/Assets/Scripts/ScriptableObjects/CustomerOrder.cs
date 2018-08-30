@@ -23,7 +23,7 @@ public class CustomerOrder : ScriptableObject
 
     public void ResetVariables()
     {
-        m_size = 0;
+        m_size = RabboidCalculator.SMALL_SIZE;
         m_colour = null;
         m_mouthPart = null;
         m_backPart = null;

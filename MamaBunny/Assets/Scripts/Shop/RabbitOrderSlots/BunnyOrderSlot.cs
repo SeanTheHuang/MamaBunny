@@ -87,7 +87,7 @@ public class BunnyOrderSlot : MonoBehaviour {
                     }
                     else
                     {
-                        m_customerOrder.m_size = RabboidCalculator.SMALL_SIZE;
+                        m_customerOrder.m_size = RabboidCalculator.NORMAL_SIZE;
                     }
                 }
                 // Chose a colour
