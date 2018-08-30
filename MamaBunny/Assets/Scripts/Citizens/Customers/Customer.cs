@@ -322,6 +322,7 @@ public class Customer : MonoBehaviour {
     // The customers order is complete
     public void OrderComplete(int _score)
     {//4 bad     //20 + good
+        Debug.Log("SCORE: " + _score);
         if(_score < 5)
         {
             if (Random.Range(0, 2) == 0)
